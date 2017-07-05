@@ -1,0 +1,41 @@
+language: node_js
+
+cache:
+  directories:
+  - node_modules
+
+node_js:
+  - 'stable'
+
+sudo: false
+
+before_install:
+  - if [[ `npm -v` != 5* ]]; then npm i -g npm@5; fi
+  - npm install -g typings
+  - npm install -g codeclimate-test-reporter
+
+script:
+  - npm run build
+  - npm run validate
+
+after_script:
+  - codeclimate-test-reporter < coverage/lcov.info
+  - node_modules/.bin/coveralls < coverage/lcov.info
+
+before_deploy:
+  - npm run build:dist && node ./script/package-dist.js
+
+deploy:
+  provider: npm
+  email: 'larsvanbraam@gmail.com'
+  api_key:
+    secure: '' # TODO: add key
+  on:
+    tags: true
+    node: 'stable'
+  skip_cleanup: true
+
+addons:
+  code_climate:
+    repo_token:
+      secure: '' # TODO: add key

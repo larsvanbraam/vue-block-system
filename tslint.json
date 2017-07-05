@@ -1,0 +1,20 @@
+{
+  "extends": "tslint-config-airbnb",
+  "defaultSeverity": "error",
+  "rules": {
+    "no-debugger": 2,
+    "no-console": [true, "log"],
+    "prefer-array-literal": [ true, { "allow-type-parameters": true } ],
+    "variable-name": [ true, "allow-pascal-case", "allow-leading-underscore" ],
+    "indent": [true, "tabs"],
+    "ter-indent": [
+      true,
+      "tab",
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "max-line-length": [true, 120],
+    "import-name": false
+  }
+}
