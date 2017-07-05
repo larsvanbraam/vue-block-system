@@ -12,10 +12,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/gsap@^1.19.1":
-  version "1.19.1"
-  resolved "https://registry.yarnpkg.com/@types/gsap/-/gsap-1.19.1.tgz#ee93590b1ef7dc86b0b779e94e38b5bad6e8c678"
-
 "@types/handlebars@^4.0.31":
   version "4.0.32"
   resolved "https://registry.yarnpkg.com/@types/handlebars/-/handlebars-4.0.32.tgz#637e8d945a9354aab47df7125005490fe9f8e592"
@@ -3958,6 +3954,19 @@ vrsource-tslint-rules@^5.1.0:
   dependencies:
     chokidar-cli "~1.2.0"
     tslint "~5.1.0"
+
+vue-transition-component@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/vue-transition-component/-/vue-transition-component-0.6.0.tgz#5f681ef40cfc50492e8c539c449e387e35e314bb"
+  dependencies:
+    array-find-index "^1.0.2"
+    array.prototype.find "^2.0.4"
+    es6-promise "^3.2.1"
+    gsap "^1.19.1"
+    seng-disposable "^1.0.1"
+    seng-event "^1.1.1"
+    ts-helpers "^1.1.1"
+    tslib "^1.2.0"
 
 vue@^2.3.4:
   version "2.3.4"
