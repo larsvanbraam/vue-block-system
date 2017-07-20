@@ -62,7 +62,7 @@ If you want to create the distribution files yourself, you can run the
 `dist` folder:
 
 - **/dist/vue-block-system.js**: bundled with webpack, can be loaded from
-	a script tag, available as `window.SengBoilerplate`
+	a script tag, available as `window.SengScrollTracker`
 - **/dist/vue-block-system.min.js**: same as above, but minified
 - **/dist/vue-block-system-amd.js**: bundled with webpack, can be used
 	with e.g. requirejs
