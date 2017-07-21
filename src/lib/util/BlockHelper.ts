@@ -19,7 +19,7 @@ class BlockHelper {
 	 * @description Collection of the available blocks as provided by the BlockSystem plugin
 	 * @type { Array<string> }
 	 */
-	public static availableBlocks: Array<string>;
+	public static availableBlocks: Array<string> = [];
 
 	/**
 	 * @public
