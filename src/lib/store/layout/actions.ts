@@ -17,7 +17,7 @@ export default {
 				resolve(getters.blocks);
 			} else {
 				let layout = null;
-				axios.get(config.pageCall.url + url + (config.pageCall.useJsonFile ? '.json' : ''))
+				axios.get(config.api.pageCall.replace('{page}', url))
 					// Parse the result to the correct format!
 					.then(result => PageLayoutHelper.parse(result.data.data, url))
 					// Temp store it

@@ -5,7 +5,7 @@ import { config } from '../../index';
 export default {
 	setInit({ commit, getters }, url) {
 		let initData = null;
-		return axios.get(config.initCall.url + (config.initCall.useJsonFile ? '.json' : ''))
+		return axios.get(config.api.initCall)
 			.then(result => (initData = result.data.data))
 			// Store the routes
 			.then(result => commit(SET_ROUTES, initData.routes))

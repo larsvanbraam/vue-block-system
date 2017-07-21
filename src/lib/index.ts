@@ -6,13 +6,9 @@ import { Promise } from 'es6-promise';
 
 // Global configuration object
 export const config = {
-	initCall: {
-		url: '/api/init',
-		useJsonFile: false,
-	},
-	pageCall: {
-		url: '/api/page/',
-		useJsonFile: false,
+	api: {
+		initCall: '/api/page/{page}',
+		pageCall: '/api/page/init',
 	},
 	debugLabelStyling: {
 		font: '10px/1 sans-serif',
