@@ -3,4 +3,4 @@ export default {
 	pageData: state => state.pageData,
 	pageTitle: state => state.pageTitle,
 	layoutCache: state => state.layoutCache,
-}
+};

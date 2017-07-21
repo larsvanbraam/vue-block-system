@@ -16,11 +16,11 @@ class PageLayoutHelper {
 	public static parse(pageLayout: IPageLayout, pageId: string): Promise<IPageLayout> {
 		return new Promise((resolve: (result: IPageLayout) => void) => {
 			// Create the layout object
-			let layout: IPageLayout = {
+			const layout: IPageLayout = {
 				id: pageId,
 				data: pageLayout.data || {},
 				title: pageLayout.title,
-				blocks: []
+				blocks: [],
 			};
 
 			// Loop through all the blocks and check if they are valid

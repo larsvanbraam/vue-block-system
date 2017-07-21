@@ -18,9 +18,9 @@ export default {
 				blocks.forEach((block) => {
 					++blockCount;
 					// Restart if nested blocks
-					if(block.data && isArray(block.data.blocks) ) countBlocks(block.data.blocks);
-				})
-			}
+					if (block.data && isArray(block.data.blocks)) countBlocks(block.data.blocks);
+				});
+			};
 			countBlocks(this.blocks);
 			return blockCount;
 		},
@@ -86,9 +86,9 @@ export default {
 	 */
 	beforeRouteUpdate(to, from, next) {
 		Promise.all(Object.keys(this.blockComponents).map(key => this.blockComponents[key].transitionOut()))
-			.then(()=> {
+			.then(() => {
 				// Empty the dom before we update the route
-				this.setLayout({blocks: [], pageTitle: '', id: '' });
+				this.setLayout({ blocks: [], pageTitle: '', id: '' });
 
 				// Wait for the DOM to be empty before updating the view
 				this.$nextTick(() => {
@@ -99,9 +99,11 @@ export default {
 					// Route update should be done right away!
 					this.handleRouteChange(to.path)
 						.then(() => next())
-						.catch(() => console.log('stuk?'));
+						.catch((reason) => {
+							console.error('[AbstractContentPageComponent] Something broke after the route update');
+						});
 				});
-			})
+			});
 	},
 	methods: {
 		...mapActions(LayoutNamespace, ['updateLayout']),
@@ -155,7 +157,7 @@ export default {
 								onCancel: resolve,
 							});
 						}
-					})
+					});
 				} else {
 					resolve();
 				}
@@ -282,7 +284,9 @@ export default {
 					// Remove the block reference
 					delete this.blockComponents[blockId];
 				} else {
-					console.warn(`[AbstractContentPageComponent] Block with id: [${blockId}] does not exist, unable to remove it`);
+					console.warn(
+						`[AbstractContentPageComponent] Block with id: [${blockId}] does not exist, unable to remove it`,
+					);
 				}
 			});
 		},
@@ -305,7 +309,7 @@ export default {
 
 				scrollTrackerPoint.position = Math.round(parent.offsetTop + element.offsetTop + threshold);
 				scrollTrackerPoint.height = elementHeight;
-			})
+			});
 		},
 	},
 	/**
@@ -316,7 +320,7 @@ export default {
 	 */
 	beforeDestroy() {
 		if (this.blockComponents) {
-			this.removeBlocksFromScrollTracker(this.blockComponents)
+			this.removeBlocksFromScrollTracker(this.blockComponents);
 			this.blockComponents = null;
 		}
 
@@ -329,5 +333,5 @@ export default {
 			window.removeEventListener('resize', this.resizeListener);
 			this.resizeListener = null;
 		}
-	}
+	},
 };

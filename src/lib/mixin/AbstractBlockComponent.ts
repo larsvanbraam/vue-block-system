@@ -22,13 +22,13 @@ export default {
 		},
 		transitionInThreshold: {
 			type: Number,
-			default: 0.25
+			default: 0.25,
 		},
 	},
 	data() {
 		return {
-			inView: false
-		}
+			inView: false,
+		};
 	},
 	methods: {
 		/**
@@ -42,10 +42,11 @@ export default {
 
 			// Try to find the first parent that is a page, have a limit of 50 so we will never enter an infinite loop!
 			while (parent.componentType !== ComponentType.PAGE_COMPONENT && attempts < 50) {
+				++attempts;
 				parent = parent.$parent;
 			}
 
-			return parent
+			return parent;
 		},
 		/**
 		 * @public
@@ -57,7 +58,7 @@ export default {
 		 */
 		handleBlockComponentReady(component) {
 			// Bubble up to the parent page
-			this.getParentPage().handleBlockComponentReady(component)
+			this.getParentPage().handleBlockComponentReady(component);
 		},
 		/**
 		 * @public
@@ -70,18 +71,18 @@ export default {
 			const debugLabel = document.createElement('div');
 			let breadCrumbs = '';
 			let parent = this.$parent;
-			while(parent && parent.componentType !== ComponentType.PAGE_COMPONENT) {
-				breadCrumbs = `${this.$parent.componentId} » ${breadCrumbs}`
+			while (parent && parent.componentType !== ComponentType.PAGE_COMPONENT) {
+				breadCrumbs = `${this.$parent.componentId} » ${breadCrumbs}`;
 				parent = parent.$parent;
 			}
 			debugLabel.innerHTML = breadCrumbs + this.componentId;
 			TweenLite.set(debugLabel, debugLabelStyling);
 			this.$el.appendChild(debugLabel);
-		}
+		},
 	},
 	mounted() {
 		if (this.debugLabel) {
 			this.addDebugLabel();
 		}
-	}
+	},
 };

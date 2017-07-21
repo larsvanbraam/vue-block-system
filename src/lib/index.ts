@@ -21,7 +21,7 @@ export default {
 
 		// Set the styling for the debug label
 		if (options.debugLabelStyling) {
-			assign(debugLabelStyling, options.debugLabelStyling)
+			assign(debugLabelStyling, options.debugLabelStyling);
 		}
 
 		// Create the stores

@@ -4,4 +4,4 @@ export default {
 	[SET_ROUTES](state, routes) {
 		state.routes = routes;
 	},
-}
+};

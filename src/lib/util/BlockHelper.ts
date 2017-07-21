@@ -33,9 +33,9 @@ class BlockHelper {
 	public static parseBlocks(parameters: {
 		parsedBlocks: Array<IBlock>,
 		blocks: Array<IBlock>,
-		recursive?: boolean
+		recursive?: boolean,
 	}): Array<IBlock> | void {
-		let { parsedBlocks, blocks, recursive } = parameters;
+		const { parsedBlocks, blocks, recursive } = parameters;
 		// Loop through the blocks
 		blocks.forEach((block, index) => {
 			const blockId = BlockHelper.parseBlockId(block.id);
@@ -50,12 +50,12 @@ class BlockHelper {
 				parsedBlocks.push(JSON.parse(JSON.stringify(block)));
 
 				if (block.data.blocks !== void 0) {
-					let lastBlock = parsedBlocks[parsedBlocks.length - 1];
+					const lastBlock = parsedBlocks[parsedBlocks.length - 1];
 					lastBlock.data.blocks = [];
 					BlockHelper.parseBlocks({
 						parsedBlocks: lastBlock.data.blocks,
 						blocks: block.data.blocks,
-						recursive: true
+						recursive: true,
 					});
 				}
 			}
@@ -78,7 +78,8 @@ class BlockHelper {
 		if (BlockHelper.availableBlocks.indexOf(BlockHelper.parseBlockId(id)) > -1) {
 			return true;
 		} else {
-			console.warn(`[PageLayoutModel] Unknown block (${BlockHelper.parseBlockId(id)}), please register it when initializing the BlockSystem plugin.`);
+			console.warn(`[PageLayoutModel] Unknown block (${BlockHelper.parseBlockId(id)}), please register it when 
+			initializing the BlockSystem plugin.`);
 			return false;
 		}
 	}
@@ -86,7 +87,8 @@ class BlockHelper {
 	/**
 	 * @private
 	 * @method parseBlockId
-	 * @description If the backend returns the block id with the block prefix we want to strip this out. Because blocks never start with the block prefix.
+	 * @description If the backend returns the block id with the block prefix we want to strip this out. Because
+	 * blocks never start with the block prefix.
 	 * @param id
 	 * @returns {string}
 	 */

@@ -13,8 +13,8 @@ export default {
 		state.layoutCache[url] = layout;
 	},
 	[ADD_UNKNOWN_URL](state, { url }) {
-		if (state.unknownUrls.indexOf(url) === -1 ) {
+		if (state.unknownUrls.indexOf(url) === -1) {
 			state.unknownUrls.push(url);
 		}
 	},
-}
+};

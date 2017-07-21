@@ -29,5 +29,4 @@ export default {
 	 * @description An array of urls that failed so we do not try to load it again when it fails!
 	 */
 	unknownUrls: [],
-}
-
+};
