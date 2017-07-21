@@ -5,6 +5,8 @@
 
 # vue-block-system
 
+**!!!! Work in progress, contains bugs !!!**
+
 Easily create block based websites! 
 
 The block system uses the vue-transition-component to handle all component transitions. If you want to read more about this see the [documentation](https://larsvanbraam.github.io/vue-transition-component/). All blocks are transitioned when they enter the viewport. This is done using the [seng-scroll-tracker](https://mediamonks.github.io/seng-scroll-tracker/). 
