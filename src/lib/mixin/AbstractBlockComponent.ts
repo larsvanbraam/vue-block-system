@@ -1,5 +1,5 @@
 import { TweenLite } from 'gsap';
-import { debugLabelStyling } from '../index';
+import { config } from '../index';
 import { AbstractTransitionComponent, ComponentType } from 'vue-transition-component';
 
 export default {
@@ -76,7 +76,7 @@ export default {
 				parent = parent.$parent;
 			}
 			debugLabel.innerHTML = breadCrumbs + this.componentId;
-			TweenLite.set(debugLabel, debugLabelStyling);
+			TweenLite.set(debugLabel, config.debugLabelStyling);
 			this.$el.appendChild(debugLabel);
 		},
 	},
