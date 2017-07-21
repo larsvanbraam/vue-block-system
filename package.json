@@ -114,13 +114,13 @@
 	},
 	"dependencies": {
 		"axios": "^0.16.2",
-		"es6-promise": "^4.1.1",
+		"es6-promise": "^3.2.1",
 		"lodash": "^4.17.4",
 		"seng-scroll-tracker": "^1.0.2",
 		"ts-helpers": "^1.1.1",
 		"tslib": "^1.2.0",
 		"vue-scrollto": "^2.7.2",
-		"vue-transition-component": "^0.6.0",
+		"vue-transition-component": "^0.8.0",
 		"vuex": "^2.3.1"
 	}
 }

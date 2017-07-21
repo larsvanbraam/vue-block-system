@@ -1,8 +1,8 @@
 language: node_js
 
-# cache:
-#  directories:
-#  - node_modules
+cache:
+  directories:
+  - node_modules
 
 node_js:
   - 'stable'
@@ -38,4 +38,4 @@ deploy:
 addons:
   code_climate:
     repo_token:
-      secure: 'Wgi0KrB2IgR+QIhieZSYqSWQ9pGmiMXNJXT/tCeu9SPlb4Che7Tzx/V49Dvgi2zJuEiSTx1O5rL0J1CGxAoGnphRD4GmlhuEOodBFUGKHQjCc4y3uEbiGFpg+1GDnuNmkDcqbKcOXGsGHyq63+uQCN4cPmHHYI7GXHkR7B58fUGAaYYDfXp4sxIQnzxRqSn/hnMdJ5CVgr0uV7os05kGaeei5SFxksfb7x23ZvcaPXKQ7h/kl/bvMz0g2E7zYI+xfJMcS6fOP6blXPEUeBMRgDCuO827TrICMPa5KCT1Qe62nmduaqZ6Y2tNetGgcfyOg+9GzCLrwLVTsaDVeHk8SmUOc6+0hedZIR9N2S4NkwqAqRe4M6sUA8A6PfbvOxY8xHPMrJ/chWqYWm6+ckFvMLAfTK0OtyvEoivp5bmRbQ0o7y6ugZiJvhqSXI6AF37HvWX1CxxXHyma5mwgi+pHzO9nAJ3Br83etLJJ3ATgmx6DiOaYl7W/VOawtM8aP2sgAZuJrV+8Dinu4eeH3v/1nBSqEovy1yszIVSErgfpnh6B+72LQQya28jz2xjeDUOcu4lm+0yiC+0SqgQmFyA6yMLY8oIvHCE12c8Rh4WvL6k1YPng8psHnIl/4azE+qCMQcZV+7cuvGQDKS3eEgGPOz+Z4ZrJ6/gGLQCnt0qyeUA="'
+      secure: 'ONHyuZ4TqJq07CDYNtF2RU7vM0nBIGd1fPk8MvDbWWOeXvJ5B8bnhmHejW8yxodKZLkKnnDHCWw0GPPYlVwC+NbZLGFPz3vpifcUWlPS0jyL60DiNaMxKQc7bYLFpcoQaKZ2x/QLqIxa25pGH2ivXMaK/P9r2/e17Z9IxDhLu9WPcky6FeRyD5jKYtTQqWQ/COWj0gkMjdJdoDe/9lfWVea+sJUVu57ABx53sgDtNmNvkQPfhfllF2x6ly87G0xjIqItCR6Al4DAAzHf87HRi7EnMdf3rTLga/flrkDXzcZDOoaHqN6l5pQAZQGuzq5ZdudDXDx6+uy6J6WqHG8IXCQEu7NoSQ/OI6LN5gwVgegsK/d/JZk2Kru+0lnTjDmRhCP19Qkgu2++3tEO6CPOXG7WgIULYqsXn3zvit0kSKsYekNnjRYpCyQthivz3gWGX8GS3i6TtamdL83YcOP91QoKie+S4eVmamwuttxFEIaQAz97J1bBtHgMvYgAGoT6YOr0OBKKZ2q+sak2+8KmRIP4PGWrziXMuJoJYZGf6ip7LYkRcy0vNC+piXw7wgNMU+NxytkWvNjo7UoIHlyDh3vxgpP5f940nNsGp4fF0eGdEXd8xgVKVh6QXpWS3dE+KAqKj4Kcog7Z0pIPiJk9Ed49CLwTa3df6bOqGsOqH8A='

@@ -1,5 +1,5 @@
 import init, { InitNamespace } from './store/init';
-import layout, { LayoutNamespace } from './store/layout';
+import layout2, { LayoutNamespace } from './store/layout';
 import BlockHelper from './util/BlockHelper';
 import { assign } from 'lodash';
 
@@ -26,7 +26,7 @@ export default {
 
 		// Create the stores
 		options.store.registerModule(InitNamespace, init);
-		options.store.registerModule(LayoutNamespace, layout);
+		options.store.registerModule(LayoutNamespace, layout2);
 
 		// Store the available blocks so we can validate backend responses
 		BlockHelper.availableBlocks = Object.keys(options.block);

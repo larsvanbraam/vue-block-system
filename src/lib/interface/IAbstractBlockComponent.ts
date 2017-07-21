@@ -1,4 +1,4 @@
-import IAbstractTransitionComponent from 'vue-transition-component/lib/interface/IAbstractTransitionComponent';
+import { IAbstractTransitionComponent } from 'vue-transition-component';
 
 interface IAbstractBlockComponent extends IAbstractTransitionComponent {
 

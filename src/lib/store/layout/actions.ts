@@ -5,11 +5,13 @@ import { SET_LAYOUT, SET_CACHED_LAYOUT, ADD_UNKNOWN_URL } from './mutations';
 
 export default {
 	updateLayout({ commit, getters }, url) {
-		return new Promise((resolve, reject) => {
+		// Note: without the <any> cast it will throw an error when building for npm (compile:npm) when creating the
+		// definitions file (Default export of the module has or is using private name 'Promise'.)
+		return <any>new Promise((resolve, reject) => {
 			// Check if the layout is already in cache!
 			if (getters.layoutCache[url]) {
 				// Update the current UI
-				commit(SET_LAYOUT, getters.layoutCache[url]);
+				commit(SET_LAYOUT, getters.layoutCache[url])
 				// Return the new blocks
 				resolve(getters.blocks);
 			} else {
@@ -30,9 +32,10 @@ export default {
 						// Save the broken URL in the store
 						commit(ADD_UNKNOWN_URL, { url });
 						// Notify the parent about the failure
-						reject(`[UpdateLayout] Something went wrong updating the layout: ${error}`);
+						reject(`[UpdateLayout] Something went wrong updating the layout: ${error}`)
 					});
 			}
 		});
+
 	},
-};
+}
