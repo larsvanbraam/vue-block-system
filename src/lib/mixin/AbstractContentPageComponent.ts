@@ -135,7 +135,7 @@ export default {
 		 * @returns Promise<void>
 		 */
 		handleRouteChange(route) {
-			return this.updateLayout(route + '.json')
+			return this.updateLayout(route)
 				.then(() => this.scrollToBlockFromUrl())
 				.catch(error => this.$router.push(this.notFoundRoute));
 		},

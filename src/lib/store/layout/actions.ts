@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Promise } from 'es6-promise';
 import PageLayoutHelper from '../../util/PageLayoutHelper';
 import { SET_LAYOUT, SET_CACHED_LAYOUT, ADD_UNKNOWN_URL } from './mutations';
+import { config } from '../../index';
 
 export default {
 	updateLayout({ commit, getters }, url) {
@@ -16,7 +17,7 @@ export default {
 				resolve(getters.blocks);
 			} else {
 				let layout = null;
-				axios.get(`page${url}`)
+				axios.get(config.pageCall.url + url + (config.pageCall.useJsonFile ? '.json' : ''))
 					// Parse the result to the correct format!
 					.then(result => PageLayoutHelper.parse(result.data.data, url))
 					// Temp store it

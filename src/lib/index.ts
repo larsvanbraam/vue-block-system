@@ -14,6 +14,17 @@ export const debugLabelStyling = {
 	left: '0px',
 };
 
+export const config = {
+	initCall: {
+		url: '/api/init',
+		useJsonFile: false,
+	},
+	pageCall: {
+		url: '/api/page/',
+		useJsonFile: false,
+	},
+}
+
 export default {
 	install(Vue, options) {
 		// register all block components globally
@@ -23,6 +34,9 @@ export default {
 		if (options.debugLabelStyling) {
 			assign(debugLabelStyling, options.debugLabelStyling);
 		}
+
+		// Merge the default config with the provided config
+		assign(config, options.config);
 
 		// Create the stores
 		options.store.registerModule(InitNamespace, init);
