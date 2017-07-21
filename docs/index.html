@@ -68,12 +68,18 @@
 					<a href="https://codeclimate.com/github/larsvanbraam/vue-block-system"><img src="https://img.shields.io/codeclimate/github/larsvanbraam/vue-block-system.svg?maxAge=2592000" alt="Code Climate"></a>
 					<a href="https://www.npmjs.com/package/vue-block-system"><img src="https://img.shields.io/npm/dm/vue-block-system.svg?maxAge=2592000" alt="npm"></a>
 				<a href="https://github.com/larsvanbraam/vue-block-system/issues"><img src="https://img.shields.io/github/issues/larsvanbraam/vue-block-system.svg?style=flat-square" alt="GitHub issues"></a></p>
-				<h1 id="work-in-progress-do-not-use-">WORK IN PROGRESS, DO NOT USE!</h1>
 				<h1 id="vue-block-system">vue-block-system</h1>
-				<p>Easily create block based websites!</p>
+				<p>Easily create block based websites! </p>
+				<p>The block system uses the vue-transition-component to handle all component transitions. If you want to read more about this see the <a href="https://larsvanbraam.github.io/vue-transition-component/">documentation</a>. All blocks are transitioned when they enter the viewport. This is done using the <a href="https://mediamonks.github.io/seng-scroll-tracker/">seng-scroll-tracker</a>. </p>
 				<h2 id="table-of-contents">Table of contents</h2>
 				<ol>
 					<li><a href="#installation">Installation</a></li>
+					<li><a href="#setup-for-usage">Usage</a><ol>
+							<li><a href="#step-1:-enable-the-plugin">Step 1: Enable the plugin</a></li>
+							<li><a href="#step-2:-creating-a-wildcard-route-&amp;-content-page">Step 2: Creating a wildcard route &amp; content page</a></li>
+							<li><a href="#step-3:-generating-a-block">Step 3: Generating a block</a></li>
+						</ol>
+					</li>
 					<li><a href="#building">Building</a></li>
 					<li><a href="#authors">Authors</a></li>
 					<li><a href="#contribute">Contribute</a></li>
@@ -84,6 +90,136 @@
 				<pre><code class="lang-sh">yarn add vue-block-system
 </code></pre>
 				<pre><code class="lang-sh">npm i -S vue-block-system
+</code></pre>
+				<h2 id="global-note-">Global note:</h2>
+				<p>All examples below are based on the <a href="https://github.com/hjeti/vue-skeleton">vue-skeleton</a> by <a href="https://github.com/hjeti/">hjeti</a>. </p>
+				<h2 id="usage">Usage</h2>
+				<p>To use the block system there are a couple of steps to follow:</p>
+				<h3 id="step-1-enable-the-plugin">Step 1: Enable the plugin</h3>
+				<p>To start using the block system you have to enable the Vue plugin in the <code>src/control/startUp.js</code> file</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> BlockSystem <span class="hljs-keyword">from</span> <span class="hljs-string">'vue-block-system'</span>;
+<span class="hljs-keyword">import</span> block <span class="hljs-keyword">from</span> <span class="hljs-string">'block'</span>;
+
+...
+Vue.use(BlockSystem, {
+        store,
+        block,
+        config: {
+            api: {
+                pageCall: <span class="hljs-string">'static/api/page/{page}.json'</span>,
+                initCall: <span class="hljs-string">'static/api/init.json'</span>,
+            },
+            debugLabelStyling: {
+                backgroundColor: <span class="hljs-string">'blue'</span>,
+            },
+        },
+    });
+...
+</code></pre>
+				<h4 id="store">Store</h4>
+				<p>The store option is the reference to the vuex store.</p>
+				<h4 id="block">Block</h4>
+				<p>The block option is the collection of blocks components that can be used on the page. Create a folder called <strong>block</strong> in the root of your applications src directory (<code>src/block</code>). This file should contain an <code>index.js</code> file that exports the block components just like any other component.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> BlockBar <span class="hljs-keyword">from</span> <span class="hljs-string">'./BlockBar'</span>;
+<span class="hljs-keyword">import</span> BlockFoo <span class="hljs-keyword">from</span> <span class="hljs-string">'./BlockFoo'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    BlockBar,
+    BlockFoo,
+};
+</code></pre>
+				<h4 id="config">Config</h4>
+				<p>The config object contains the configuration for the block-system</p>
+				<h5 id="api-configuration">API configuration</h5>
+				<p>The block system uses axios to do XHR requests, there are two types of requests that will be made. The first one is the <code>initCall</code>, this call should return at all the basic information that is required for the site to work. </p>
+				<pre><code class="lang-json">{
+    <span class="hljs-attr">"data"</span>: {
+        <span class="hljs-attr">"routes"</span>: {
+            <span class="hljs-attr">"landing"</span>: <span class="hljs-string">"/home"</span>,
+            <span class="hljs-attr">"notFound"</span>: <span class="hljs-string">"/page-not-found"</span>
+        }
+    }
+}
+</code></pre>
+				<p>After the init call is completed the block-system will try and load the page layout using the <code>pageCall</code>. The response should be in the following stucture.</p>
+				<pre><code class="lang-json">{
+    <span class="hljs-attr">"statusCode"</span>: <span class="hljs-number">200</span>,
+    <span class="hljs-attr">"data"</span>: {
+        <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Home"</span>,
+        <span class="hljs-attr">"data"</span>: {
+            <span class="hljs-attr">"headerTheme"</span>: <span class="hljs-string">"red"</span>
+        },
+        <span class="hljs-attr">"blocks"</span>: [
+            {
+                <span class="hljs-attr">"id"</span>: <span class="hljs-string">"blockFoo"</span>,
+                <span class="hljs-attr">"data"</span>: {}
+            },
+            {
+                <span class="hljs-attr">"id"</span>: <span class="hljs-string">"blockBar"</span>,
+                <span class="hljs-attr">"data"</span>: {
+                    <span class="hljs-attr">"blocks"</span>: [
+                        {
+                            <span class="hljs-attr">"id"</span>: <span class="hljs-string">"blockFoo"</span>,
+                            <span class="hljs-attr">"data"</span>: {}
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
+</code></pre>
+				<p>As you can see the root contains the main information about the page. The title being the title displayed in the tab-bar and the data is extra page related data that you might need on page level coding. After the data the array of blocks is provided and as you can see blocks can be recursively nested. You can see more about this on the block example section</p>
+				<h5 id="debug-label-configuration">Debug label configuration</h5>
+				<p>Since your site might have a lot of different blocks nested within each other it might be usefull to display their name so you can easily track them in your block folder. Therefore the debug label was added, by default the debug label is located at the top left corner in red with white text. If you want to change any of this styling you can use this object to add all your CSS styling.</p>
+				<h3 id="step-2-creating-a-wildcard-route-content-page">Step 2: Creating a wildcard route &amp; content page</h3>
+				<p>Since the entire layout will be generated by either a static json file or a dynamic backend we need to frontend to work with a wildcard route that always ends up at the same vue page. You can do this by generating a content page with the <a href="https://github.com/mediamonks/seng-generator">seng-generator</a>. I&#39;ve included a template folder that contains the files for generating this page. After you&#39;ve went through the installation steps of the seng-generator you can add the new template path with the following actions:</p>
+				<pre><code class="lang-sh">sg init
+</code></pre>
+				<p>This will allow you to change the settings, you can provide multiple paths as a template, make sure you keep the original value and add this path to the block-system templates. Leave the destination as it is.</p>
+				<pre><code class="lang-sh">./template,./node_modules/block-system/template
+</code></pre>
+				<h4 id="rendering-the-content-page">Rendering the content page</h4>
+				<p>After you&#39;ve added the templates to the seng-generator you can run:</p>
+				<pre><code class="lang-sh">sg wizard
+</code></pre>
+				<p>from the root of your project. This will give you a couple of template options, choose the that is named <code>block-content-page</code>, the seng-generator will now prompt you with a name for your new page. I would suggest <code>ContentPage</code> to keep it as generic as possible. </p>
+				<h4 id="adding-the-wildcard-route">Adding the wildcard route</h4>
+				<p>You now need to add the new page to the vue router. You can open the <code>src/router/routes.js</code> file and add the new page to the object</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> ContentPage <span class="hljs-keyword">from</span> <span class="hljs-string">'page/ContentPage'</span>;
+
+...
+{
+    path: Pages.CONTENT_PAGE,
+    component: ContentPage,
+    name: PageNames.CONTENT_PAGE,
+    props: { componentId: PageNames.CONTENT_PAGE },
+}
+...
+</code></pre>
+				<p>Make sure the path for the new page is set to * when you open the <code>src/data/enum/Pages.js</code> file.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    CONTENT_PAGE: <span class="hljs-string">'*'</span>,
+};
+</code></pre>
+				<p>If you open op the <code>src/page/ContentPage/ContentPage.vue</code> file you can see where the magic happens. here you can disable the debug label if you want to.</p>
+				<h3 id="step-3-generating-a-block">Step 3: Generating a block</h3>
+				<p>Creating blocks is just as easy as generating the content page, just run</p>
+				<pre><code class="lang-sh">sg wizard
+</code></pre>
+				<p>from the root of your project. This will give you a couple of template options, choose the one that is named: <code>block-component</code> and choose your desired name, I would suggest starting blocks with the <code>Block</code> prefix. </p>
+				<p><em>Note: make sure to add the newly generated block to the <code>src/block/index.js</code></em></p>
+				<h4 id="nesting-blocks-within-blocks">Nesting blocks within blocks</h4>
+				<p>If you want to nest blocks within other blocks you need to add some code to your parent block. This will make sure it will render out the child blocks, this should be pretty much plug and play!</p>
+				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">component</span>
+    <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(block, index) in data.blocks"</span>
+    @<span class="hljs-attr">isReady</span>=<span class="hljs-string">"handleBlockComponentReady"</span>
+    <span class="hljs-attr">:scrollId</span>=<span class="hljs-string">"block.scrollId"</span>
+    <span class="hljs-attr">:data</span>=<span class="hljs-string">"block.data"</span>
+    <span class="hljs-attr">:debugLabel</span>=<span class="hljs-string">"true"</span>
+    <span class="hljs-attr">:is</span>=<span class="hljs-string">"block.id"</span>
+    <span class="hljs-attr">:componentId</span>=<span class="hljs-string">"block.id + '.' + block.blockIndex"</span>
+    <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">component</span>&gt;</span>
 </code></pre>
 				<h2 id="building">Building</h2>
 				<p>In order to build vue-block-system, ensure that you have <a href="http://git-scm.com/downloads">Git</a> and <a href="http://nodejs.org/">Node.js</a> installed.</p>
@@ -184,7 +320,7 @@ yarn doc             <span class="hljs-comment"># generate typedoc documentation
 						<a href="globals.html#layoutmutationtypes" class="tsd-kind-icon">Layout<wbr>Mutation<wbr>Types</a>
 					</li>
 					<li class=" tsd-kind-object-literal">
-						<a href="globals.html#debuglabelstyling" class="tsd-kind-icon">debug<wbr>Label<wbr>Styling</a>
+						<a href="globals.html#config" class="tsd-kind-icon">config</a>
 					</li>
 				</ul>
 			</nav>
