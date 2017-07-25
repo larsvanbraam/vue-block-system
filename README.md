@@ -15,17 +15,17 @@ The block system uses the vue-transition-component to handle all component trans
 
 1. [Installation](#installation)
 2. [Baisc usage](#basic-usage)
-	1. [Step 1: Configure the seng-generator](#step-1:-configure-the-seng-generator)
+	1. [Step 1: Configure the seng generator](#step-1:-configure-the-seng-generator)
 		1. [Updating the template path](#updating-the-template-path)
 	2. [Step 2: Generating a page](#step-2:generating-a-page)
-	3. [Step 3: Creating a wildcard route](#step-3:creating-a-wildcard-route)
-	4. [Step 4: Enable the plugin](#enable-the-plugin)
+	3. [Step 3: Creating a wildcard route](#step-3:-creating-a-wildcard-route)
+	4. [Step 4: Enable the plugin](#step-4:-enable-the-plugin)
 		1. [Store](#store)
 		2. [Block](#block)
 		3. [Config](#config)
 			1. [API Configuration](#api-configuration)
 			2. [Debug label configuration](#debug-label-configuration)
-	5. [Step 5: Creating a block](#generating-a-block)
+	5. [Step 5: Creating a block](#step-5:-creating-a-block)
 3. [Extra Features](#extra-features)
 	1. [Nesting blocks withing blocks](#nesting-blocks-within-blocks)
 	2. [Buttons](#buttons)
@@ -248,6 +248,40 @@ Buttons are pretty common in fancy websites to make sure you keep them structure
 
 ```sh
 sg wizard
+```
+
+When creating a button you need to provide a couple of props:
+
+1. **type**
+	- Type: `LinkType` 
+	- Required: `true`
+2. **label**
+	- Type: `string`
+	- Required: `true`	
+3. **link**	
+	- Type `ILink`
+	- required: `false` - the link is only required if the type is set to LinkType.LINK
+
+**Action example:**
+
+```html
+<ButtonFoo 
+	label="Click me" 
+	:type="ButtonType.ACTION" 
+	@click="handleClick"></ButtonFoo>
+```
+
+**Link example:**
+
+```html
+<ButtonFoo 
+	label="Click me" 
+	:type="ButtonType.LINK" 
+	:link="{
+		type: LinkType.INTERNAL,
+		target: 'path/to/page',
+		title: 'Click me',
+	}"></ButtonFoo>
 ```
 
 ## Building
