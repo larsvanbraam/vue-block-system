@@ -121,6 +121,7 @@
 		"tslib": "^1.2.0",
 		"vue-scrollto": "^2.7.2",
 		"vue-transition-component": "^0.8.0",
+		"vue-types": "^1.0.1",
 		"vuex": "^2.3.1"
 	}
 }

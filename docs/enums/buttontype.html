@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PageLayoutHelper | vue-block-system</title>
+	<title>ButtonType | vue-block-system</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,74 +56,59 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="pagelayouthelper.html">PageLayoutHelper</a>
+					<a href="buttontype.html">ButtonType</a>
 				</li>
 			</ul>
-			<h1>Class PageLayoutHelper</h1>
+			<h1>Enumeration ButtonType</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-hierarchy">
-				<h3>Hierarchy</h3>
-				<ul class="tsd-hierarchy">
-					<li>
-						<span class="target">PageLayoutHelper</span>
-					</li>
-				</ul>
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Enum for typing the type of the button. LINK means it&#39;s a link object which is usually provided in the block
+						data. If the type is set to ACTION this means an click event will be $emitted.</p>
+					</div>
+				</div>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Methods</h3>
+							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="pagelayouthelper.html#parse" class="tsd-kind-icon">parse</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="buttontype.html#action" class="tsd-kind-icon">ACTION</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="buttontype.html#link" class="tsd-kind-icon">LINK</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="parse" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> parse</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">parse<span class="tsd-signature-symbol">(</span>pageLayout<span class="tsd-signature-symbol">: </span><a href="../interfaces/ipagelayout.html" class="tsd-signature-type">IPageLayout</a>, pageId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/ipagelayout.html" class="tsd-signature-type">IPageLayout</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/larsvanbraam/vue-block-system/blob/dc751be/src/lib/util/PageLayoutHelper.ts#L16">lib/util/PageLayoutHelper.ts:16</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<dl class="tsd-comment-tags">
-									<dt>method</dt>
-									<dd><p>parse</p>
-									</dd>
-									<dt>description</dt>
-									<dd><p>Method that parses the page layout!</p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>pageLayout: <a href="../interfaces/ipagelayout.html" class="tsd-signature-type">IPageLayout</a></h5>
-								</li>
-								<li>
-									<h5>pageId: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/ipagelayout.html" class="tsd-signature-type">IPageLayout</a><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
+				<h2>Enumeration members</h2>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="action" class="tsd-anchor"></a>
+					<h3>ACTION</h3>
+					<div class="tsd-signature tsd-kind-icon">ACTION<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;1</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/larsvanbraam/vue-block-system/blob/dc751be/src/lib/enum/ButtonType.ts#L7">lib/enum/ButtonType.ts:7</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="link" class="tsd-anchor"></a>
+					<h3>LINK</h3>
+					<div class="tsd-signature tsd-kind-icon">LINK<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;0</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/larsvanbraam/vue-block-system/blob/dc751be/src/lib/enum/ButtonType.ts#L6">lib/enum/ButtonType.ts:6</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -137,27 +122,30 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="../enums/buttontype.html" class="tsd-kind-icon">Button<wbr>Type</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="../enums/linktype.html" class="tsd-kind-icon">Link<wbr>Type</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="blockhelper.html" class="tsd-kind-icon">Block<wbr>Helper</a>
-					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class">
-						<a href="pagelayouthelper.html" class="tsd-kind-icon">Page<wbr>Layout<wbr>Helper</a>
+					<li class="current tsd-kind-enum">
+						<a href="buttontype.html" class="tsd-kind-icon">Button<wbr>Type</a>
 						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="pagelayouthelper.html#parse" class="tsd-kind-icon">parse</a>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="buttontype.html#action" class="tsd-kind-icon">ACTION</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="buttontype.html#link" class="tsd-kind-icon">LINK</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-enum">
+						<a href="linktype.html" class="tsd-kind-icon">Link<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/blockhelper.html" class="tsd-kind-icon">Block<wbr>Helper</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/pagelayouthelper.html" class="tsd-kind-icon">Page<wbr>Layout<wbr>Helper</a>
+					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/iabstractblockcomponent.html" class="tsd-kind-icon">IAbstract<wbr>Block<wbr>Component</a>
 					</li>

@@ -10,7 +10,6 @@ import { LayoutNamespace } from '../store/layout/index';
 export default {
 	name: 'AbstractContentPageController',
 	extends: AbstractPageTransitionComponent,
-	props: {},
 	computed: {
 		totalBlocks() {
 			let blockCount = 0;
