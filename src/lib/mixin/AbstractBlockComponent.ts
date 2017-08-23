@@ -9,12 +9,10 @@ export default {
 		data: {
 			type: Object,
 			default: () => {},
-			required: false,
 		},
 		debugLabel: {
 			type: Boolean,
 			default: false,
-			required: false,
 		},
 		scrollId: {
 			type: String,

@@ -136,7 +136,18 @@ export default {
 		handleRouteChange(route) {
 			return this.updateLayout(route)
 				.then(() => this.scrollToBlockFromUrl())
+				.then(() => this.handleRouteChangeComplete())
 				.catch(error => this.$router.push(this.notFoundRoute));
+		},
+		/**
+		 * @public
+		 * @method handleRouteChangeComplete
+		 * @description When the route change is completed this method is triggered, this can be used to implement
+		 * page tracking, or show page loaders.
+		 * @returns void
+		 */
+		handleRouteChangeComplete() {
+			// Nothing by default
 		},
 		/**
 		 * @public

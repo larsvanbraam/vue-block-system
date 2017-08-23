@@ -29,6 +29,9 @@ The block system uses the vue-transition-component to handle all component trans
 3. [Extra Features](#extra-features)
 	1. [Nesting blocks withing blocks](#nesting-blocks-within-blocks)
 	2. [Buttons](#buttons)
+	3. [Before and after route changes](#before-and-after-route-changes)
+		1. [Before route change](#before-route-change)
+		2. [After route change](#after-route-change)
 4. [Building](#building)
 5. [Authors](#authors)
 6. [Contribute](#contribute)
@@ -282,6 +285,43 @@ When creating a button you need to provide a couple of props:
 		target: 'path/to/page',
 		title: 'Click me',
 	}"></ButtonFoo>
+```
+
+### Before and after route changes
+The vue-router offers a couple of [in-component guards](https://router.vuejs.org/en/advanced/navigation-guards.html), these guards are used for detecting page changes and updating the current layout.
+
+#### Before route change
+If you want to hijack the before route update you can use the `beforeRouteUpdate` method to prepend your application specific code (for example: adding a full page mask to do pretty page transitions).
+
+```typescript
+export default {
+	name: 'HomePage',
+	extends: AbstractContentPageComponent,
+	beforeRouteUpdate(to, from, next) {
+		// Add your awesome project specific code here.
+		console.log('Awesome!');
+		// When you are done, you should call the next method!
+		next();
+	},
+};
+
+```
+
+#### After route change
+After a route change is completed a method is triggered, this can be used to hide your full page mask or trigger page tracking code. 
+
+```typescript
+export default {
+	name: 'HomePage',
+	extends: AbstractContentPageComponent,
+	methods: {
+		handleRouteChangeComplete() {
+			// Route change is completed.
+			// This means all new blocks are registered and in the DOM.
+		},
+	},
+};
+
 ```
 
 ## Building

@@ -17,6 +17,11 @@ interface IAbstractContentPageController extends IAbstractTransitionComponent {
 	handleRouteChange(route): Promise<void>;
 	/**
 	 * @public
+	 * @method handleRouteChangeComplete
+	 */
+	handleRouteChangeComplete(): void;
+	/**
+	 * @public
 	 * @method scrollToBlockFromUrl
 	 */
 	scrollToBlockFromUrl(): Promise<void>;

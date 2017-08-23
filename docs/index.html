@@ -76,13 +76,13 @@
 				<ol>
 					<li><a href="#installation">Installation</a></li>
 					<li><a href="#basic-usage">Baisc usage</a><ol>
-							<li><a href="#step-1:-configure-the-seng-generator">Step 1: Configure the seng-generator</a><ol>
+							<li><a href="#step-1:-configure-the-seng-generator">Step 1: Configure the seng generator</a><ol>
 									<li><a href="#updating-the-template-path">Updating the template path</a></li>
 								</ol>
 							</li>
 							<li><a href="#step-2:generating-a-page">Step 2: Generating a page</a></li>
-							<li><a href="#step-3:creating-a-wildcard-route">Step 3: Creating a wildcard route</a></li>
-							<li><a href="#enable-the-plugin">Step 4: Enable the plugin</a><ol>
+							<li><a href="#step-3:-creating-a-wildcard-route">Step 3: Creating a wildcard route</a></li>
+							<li><a href="#step-4:-enable-the-plugin">Step 4: Enable the plugin</a><ol>
 									<li><a href="#store">Store</a></li>
 									<li><a href="#block">Block</a></li>
 									<li><a href="#config">Config</a><ol>
@@ -92,12 +92,17 @@
 									</li>
 								</ol>
 							</li>
-							<li><a href="#generating-a-block">Step 5: Creating a block</a></li>
+							<li><a href="#step-5:-creating-a-block">Step 5: Creating a block</a></li>
 						</ol>
 					</li>
 					<li><a href="#extra-features">Extra Features</a><ol>
 							<li><a href="#nesting-blocks-within-blocks">Nesting blocks withing blocks</a></li>
 							<li><a href="#buttons">Buttons</a></li>
+							<li><a href="#before-and-after-route-changes">Before and after route changes</a><ol>
+									<li><a href="#before-route-change">Before route change</a></li>
+									<li><a href="#after-route-change">After route change</a></li>
+								</ol>
+							</li>
 						</ol>
 					</li>
 					<li><a href="#building">Building</a></li>
@@ -266,6 +271,68 @@ Vue.use(BlockSystem, {
 				<h3 id="buttons">Buttons</h3>
 				<p>Buttons are pretty common in fancy websites to make sure you keep them structured and in the same directory I&#39;ve added a template for buttons. Once you&#39;ve completed <a href="#step-1:-configure-the-seng-generator">step 1</a> the button-component should be visible once you run</p>
 				<pre><code class="lang-sh">sg wizard
+</code></pre>
+				<p>When creating a button you need to provide a couple of props:</p>
+				<ol>
+					<li><strong>type</strong><ul>
+							<li>Type: <code>LinkType</code> </li>
+							<li>Required: <code>true</code></li>
+						</ul>
+					</li>
+					<li><strong>label</strong><ul>
+							<li>Type: <code>string</code></li>
+							<li>Required: <code>true</code>    </li>
+						</ul>
+					</li>
+					<li><strong>link</strong>    <ul>
+							<li>Type <code>ILink</code></li>
+							<li>required: <code>false</code> - the link is only required if the type is set to LinkType.LINK</li>
+						</ul>
+					</li>
+				</ol>
+				<p><strong>Action example:</strong></p>
+				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">ButtonFoo</span>
+    <span class="hljs-attr">label</span>=<span class="hljs-string">"Click me"</span> 
+    <span class="hljs-attr">:type</span>=<span class="hljs-string">"ButtonType.ACTION"</span> 
+    @<span class="hljs-attr">click</span>=<span class="hljs-string">"handleClick"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ButtonFoo</span>&gt;</span>
+</code></pre>
+				<p><strong>Link example:</strong></p>
+				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">ButtonFoo</span>
+    <span class="hljs-attr">label</span>=<span class="hljs-string">"Click me"</span> 
+    <span class="hljs-attr">:type</span>=<span class="hljs-string">"ButtonType.LINK"</span> 
+    <span class="hljs-attr">:link</span>=<span class="hljs-string">"{
+        type: LinkType.INTERNAL,
+        target: 'path/to/page',
+        title: 'Click me',
+    }"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ButtonFoo</span>&gt;</span>
+</code></pre>
+				<h3 id="before-and-after-route-changes">Before and after route changes</h3>
+				<p>The vue-router offers a couple of <a href="https://router.vuejs.org/en/advanced/navigation-guards.html">in-component guards</a>, these guards are used for detecting page changes and updating the current layout.</p>
+				<h4 id="before-route-change">Before route change</h4>
+				<p>If you want to hijack the before route update you can use the <code>beforeRouteUpdate</code> method to prepend your application specific code (for example: adding a full page mask to do pretty page transitions).</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    name: <span class="hljs-string">'HomePage'</span>,
+    <span class="hljs-keyword">extends</span>: AbstractContentPageComponent,
+    beforeRouteUpdate(to, <span class="hljs-keyword">from</span>, next) {
+        <span class="hljs-comment">// Add your awesome project specific code here.</span>
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Awesome!'</span>);
+        <span class="hljs-comment">// When you are done, you should call the next method!</span>
+        next();
+    },
+};
+</code></pre>
+				<h4 id="after-route-change">After route change</h4>
+				<p>After a route change is completed a method is triggered, this can be used to hide your full page mask or trigger page tracking code. </p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    name: <span class="hljs-string">'HomePage'</span>,
+    <span class="hljs-keyword">extends</span>: AbstractContentPageComponent,
+    methods: {
+        handleRouteChangeComplete() {
+            <span class="hljs-comment">// Route change is completed.</span>
+            <span class="hljs-comment">// This means all new blocks are registered and in the DOM.</span>
+        },
+    },
+};
 </code></pre>
 				<h2 id="building">Building</h2>
 				<p>In order to build vue-block-system, ensure that you have <a href="http://git-scm.com/downloads">Git</a> and <a href="http://nodejs.org/">Node.js</a> installed.</p>
