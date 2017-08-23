@@ -199,7 +199,9 @@ sg wizard
 ```
 from the root of your project. This will give you a couple of template options, choose the one that is named: **block-component** and choose your desired name, I would suggest starting blocks with the `Block` prefix. 
 
-*Note: make sure to add the newly generated block to the `src/block/index.js`*
+*Note: The first time you generate a button you need to make sure `src/component/block` exists. If it doesn't you'll have to create it manually or run the seng enerator in [forced mode](https://github.com/mediamonks/seng-generator#generate)*
+
+*Note 2: make sure to add the newly generated block to the `src/block/index.js`*
 
 ## Extra features
 Beside the basic usage there are a couple of extra features added which make it faster to build block websites.
@@ -247,12 +249,18 @@ To make sure the **blockFoo** is dynamically rendered within **blockBar** you ha
 This will make sure the data is passed to the new block, all the callback methods are properly set and the right component is loaded. Everything should be pretty much plug and play!
 
 ### Buttons
-Buttons are pretty common in fancy websites to make sure you keep them structured and in the same directory I've added a template for buttons. Once you've completed [step 1](#step-1:-configure-the-seng-generator) the button-component should be visible once you run
+Buttons are pretty common in fancy websites to make sure you keep them structured and in the same directory I've added a template for buttons. 
+
+#### Generating a button
+Once you've completed [step 1](#step-1:-configure-the-seng-generator) the button-component should be visible once you run
 
 ```sh
 sg wizard
 ```
 
+**Note:** *The first time you generate a button you need to make sure `src/component/button` exists. If it doesn't you'll have to create it manually or run the seng enerator in [forced mode](https://github.com/mediamonks/seng-generator#generate)*
+
+#### Added data to the button
 When creating a button you need to provide a couple of props:
 
 1. **type**
@@ -286,6 +294,7 @@ When creating a button you need to provide a couple of props:
 		title: 'Click me',
 	}"></ButtonFoo>
 ```
+
 
 ### Before and after route changes
 The vue-router offers a couple of [in-component guards](https://router.vuejs.org/en/advanced/navigation-guards.html), these guards are used for detecting page changes and updating the current layout.

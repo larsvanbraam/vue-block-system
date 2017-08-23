@@ -1,7 +1,8 @@
 import { AbstractTransitionComponent } from 'vue-transition-component';
-import * as VueTypes from 'vue-types';
 import LinkType from '../enum/LinkType';
 import ButtonType from '../enum/ButtonType';
+import VueTypes = require('vue-types/dist');
+
 
 export default {
 	name: 'AbstractButtonComponent',
@@ -9,22 +10,25 @@ export default {
 	props: {
 		label: {
 			type: String,
-			required: true,
+			default: '',
 		},
-		type: VueTypes.oneOf([ButtonType.ACTION, ButtonType.LINK]).isRequired,
+		title: {
+			type: String,
+			default: '',
+		},
+		type: VueTypes.oneOf([
+			ButtonType.ACTION,
+			ButtonType.LINK,
+		]).isRequired,
 		link: VueTypes.shape({
-			type: VueTypes.oneOf([LinkType.INTERNAL, LinkType.EXTERNAL, LinkType.EXTERNAL_BLANK]).isRequired,
+			type: VueTypes.oneOf([
+				LinkType.INTERNAL,
+				LinkType.EXTERNAL,
+				LinkType.EXTERNAL_BLANK,
+			]).isRequired,
 			target: {
 				type: String,
 				required: true,
-			},
-			label: {
-				type: String,
-				required: true,
-			},
-			title: {
-				type: String,
-				required: false,
 			},
 		}),
 	},
@@ -37,7 +41,7 @@ export default {
 		handleClick() {
 			switch (this.type) {
 				case ButtonType.LINK:
-					switch (this.action.type) {
+					switch (this.link.type) {
 						case LinkType.EXTERNAL:
 							this.openExternalLink();
 							break;

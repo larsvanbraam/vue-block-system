@@ -4449,9 +4449,9 @@ vue-transition-component@^0.8.0:
     ts-helpers "^1.1.1"
     tslib "^1.2.0"
 
-vue-types@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/vue-types/-/vue-types-1.0.1.tgz#09e66d9afb2cd3872acb9d0e3c78a77e08baf8c0"
+vue-types@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vue-types/-/vue-types-1.0.2.tgz#8a6504deaee92dec8ee75a38ed52fddc7f066c98"
   dependencies:
     lodash.isplainobject "4.0.6"
 
