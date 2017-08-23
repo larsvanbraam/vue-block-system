@@ -29,7 +29,7 @@ export default {
 			// Modify the merge hook for the router so we enable childToParent merging
 			Vue.config.optionMergeStrategies.beforeRouteUpdate = (parent, child) => {
 				return child ? parent ? [child].concat(parent) : Array.isArray(child) ? child : [child] : parent;
-			};;
+			};
 
 			// register all block components globally
 			Object.keys(options.block).forEach(key => Vue.component(key, options.block[key]));
