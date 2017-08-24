@@ -37,7 +37,7 @@ export default {
 		 * @method handleClick
 		 * @description When the user clicks on the button a action is triggered!
 		 */
-			handleClick() {
+		handleClick() {
 			switch (this.type) {
 				case ButtonType.LINK:
 					switch (this.link.type) {
@@ -64,7 +64,7 @@ export default {
 		 * @method openInternalLInk
 		 * @description When the type is an internal link the router should navigate to the provided url
 		 */
-			openInternalLink() {
+		openInternalLink() {
 			this.$router.push(this.link.target);
 		},
 		/**
@@ -72,7 +72,7 @@ export default {
 		 * @Method openExternalLink
 		 * @description When the type is an external link we should open a new window with the provided target
 		 */
-			openExternalLink(blank) {
+		openExternalLink(blank) {
 			if (blank) {
 				window.open(this.link.target);
 			} else {
