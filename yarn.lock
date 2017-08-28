@@ -4437,9 +4437,9 @@ vue-scrollto@^2.7.2:
   dependencies:
     bezier-easing "^2.0.3"
 
-vue-transition-component@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/vue-transition-component/-/vue-transition-component-0.8.0.tgz#ea595d6d72d5b23449b30069aad50bd0434a8167"
+vue-transition-component@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/vue-transition-component/-/vue-transition-component-0.8.2.tgz#877da5e43044975c008d306ccd77f7e0d0a2ca58"
   dependencies:
     es6-promise "^3.2.1"
     gsap "^1.19.1"

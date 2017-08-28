@@ -32,6 +32,7 @@ The block system uses the vue-transition-component to handle all component trans
 	3. [Before and after route changes](#before-and-after-route-changes)
 		1. [Before route change](#before-route-change)
 		2. [After route change](#after-route-change)
+	4. [Custom data in the init call](#custom-data-in-the-init-call)
 4. [Building](#building)
 5. [Authors](#authors)
 6. [Contribute](#contribute)
@@ -295,7 +296,6 @@ When creating a button you need to provide a couple of props:
 	}"></ButtonFoo>
 ```
 
-
 ### Before and after route changes
 The vue-router offers a couple of [in-component guards](https://router.vuejs.org/en/advanced/navigation-guards.html), these guards are used for detecting page changes and updating the current layout.
 
@@ -332,6 +332,42 @@ export default {
 };
 
 ```
+
+### Custom data in the init call
+The init call should contain the routes object, this object defines the default landing route and the not found route. Sometimes you might want to add custom data to this init call that is project specific. This can be done by [subscribing](https://vuex.vuejs.org/en/plugins.html) to the init mutation and passing along your data. Your example init call response could look like this:
+
+```json
+{
+  "statusCode": 200,
+  "data": {
+	"routes": {
+	  "landing": "/home",
+	  "notFound": "/page-not-found"
+	},
+	"user": {
+	  "firstName": "John",
+	  "lastName": "Doe"
+	}
+  }
+}
+```
+In the `src/control/startUp.js` file you can add the following piece of code before the vue-block-system plugin is initialized:
+
+```typescript
+...
+// Subscribe to the mutation so we can store the init data in other stores as well!
+const unSubscribe = store.subscribe((mutation) => {
+	if (mutation.type === 'init/setData') {
+		// un-subscribe after we received the setData mutation
+		unSubscribe();
+		// commit the data to the desired stores
+		store.commit(`user/${SET_USER}`, mutation.payload.user);
+	}
+});
+...
+```
+
+
 
 ## Building
 

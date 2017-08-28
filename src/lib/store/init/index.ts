@@ -1,10 +1,10 @@
 import init from './init';
-import { SET_ROUTES } from './mutations';
+import { SET_DATA } from './mutations';
 
 export const InitNamespace = 'init';
 
 export const InitMutationTypes = {
-	SET_ROUTES: `${InitNamespace}/${SET_ROUTES}`,
+	SET_DATA: `${InitNamespace}/${SET_DATA}`,
 };
 
 export default init;

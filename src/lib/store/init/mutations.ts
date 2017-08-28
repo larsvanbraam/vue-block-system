@@ -1,7 +1,7 @@
-export const SET_ROUTES = 'setRoutes';
+export const SET_DATA = 'setData';
 
 export default {
-	[SET_ROUTES](state, routes) {
-		state.routes = routes;
+	[SET_DATA](state, data) {
+		state.routes = data.routes;
 	},
 };
