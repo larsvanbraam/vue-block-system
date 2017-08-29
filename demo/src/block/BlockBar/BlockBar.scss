@@ -1,0 +1,25 @@
+:local {
+
+	.wrapper {
+		@include size(100%, auto);
+		background: #C7C162;
+		position: relative;
+
+		.content {
+			@include size(100%, 500px);
+			position: relative;
+		}
+
+		.inner-content {
+			@include offset(50%, 50%);
+			transform: translate(-50%, -50%);
+			position: absolute;
+			text-align: center;
+		}
+	}
+
+	.sub-blocks {
+		@include size(100%, auto);
+		box-sizing: border-box;
+	}
+}

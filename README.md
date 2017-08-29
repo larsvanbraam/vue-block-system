@@ -14,29 +14,33 @@ The block system uses the vue-transition-component to handle all component trans
 ## Table of contents
 
 1. [Installation](#installation)
+2. [Demo](#demo)
 2. [Baisc usage](#basic-usage)
-	1. [Configure the seng generator](#configure-the-seng-generator)
+	1. [Step 1: Configure the seng generator](#step-1:-configure-the-seng-generator)
 		1. [Updating the template path](#updating-the-template-path)
-	2. [Generating a page](#generating-a-page)
-	3. [Creating a wildcard route](#creating-a-wildcard-route)
-	4. [Enable the plugin](#enable-the-plugin)
+	2. [Step 2: Generating a page](#step-2:generating-a-page)
+	3. [Step 3: Creating a wildcard route](#step-3:-creating-a-wildcard-route)
+	4. [Step 4: Enable the plugin](#step-4:-enable-the-plugin)
 		1. [Store](#store)
 		2. [Block](#block)
 		3. [Config](#config)
 			1. [API Configuration](#api-configuration)
 			2. [Debug label configuration](#debug-label-configuration)
-	5. [Creating a block](#creating-a-block)
-3. [Extra Features](#extra-features)
+	5. [Step 5: Creating a block](#step-5:-creating-a-block)
+4. [Extra Features](#extra-features)
 	1. [Nesting blocks withing blocks](#nesting-blocks-within-blocks)
 	2. [Buttons](#buttons)
 	3. [Before and after route changes](#before-and-after-route-changes)
 		1. [Before route change](#before-route-change)
 		2. [After route change](#after-route-change)
 	4. [Custom data in the init call](#custom-data-in-the-init-call)
-4. [Building](#building)
-5. [Authors](#authors)
-6. [Contribute](#contribute)
-7. [License](#license)
+5. [Building](#building)
+6. [Authors](#authors)
+7. [Contribute](#contribute)
+8. [License](#license)
+
+## Global note: 
+All examples below are based on the [vue-skeleton](https://github.com/hjeti/vue-skeleton) by [hjeti](https://github.com/hjeti/). 
 
 ## Installation
 ### yarn / npm
@@ -49,13 +53,16 @@ yarn add vue-block-system
 npm i -S vue-block-system
 ```
 
-## Global note: 
-All examples below are based on the [vue-skeleton](https://github.com/hjeti/vue-skeleton) by [hjeti](https://github.com/hjeti/). 
+## Demo
+The repository contains a demo setup for the block system. It's based on the 0.3.1 version of the vue-skeleton. Since the block system is a plugin it should still work with newer versions of the skeleton. You can preview the demo either downloading the demo folder and running `yarn` to install all dependencies and then run `yarn dev` to start the dev server. 
+
+### [Alternatively you can check the demo online.](http://vue-block-system.larsvanbraam.nl)
+
 
 ## Basic usage
 To use the block system there are a couple of steps to follow:
 
-### Configure the seng generator
+### Step 1: Configure the seng generator
 The block system uses mixins to extend the desired functionality. Extending the data could be a manual thing by copy and pasting the extends and creating the transition controllers manually. But to make it a little bit easier you should use the [seng-generator](https://github.com/mediamonks/seng-generator). If you followed the steps as described in the seng-generator install instructions you can follow these steps to add the custom templates for generating blocks and content pages!
 
 #### Updating the template path
@@ -70,7 +77,7 @@ After this you can modify the seng-generator configuration. The thing we want to
 ./template,./node_modules/vue-block-system/template
 ```
 
-### Generating a page
+### Step 2: Generating a page
 After configuring the seng-generator you have to generate your vue page that will be used to output the pages. To do this we will use the seng-generator. So change directory to the root of you project and run the following:
 
 ```sh
@@ -82,7 +89,7 @@ This will give you a couple of template options, choose the that is labeled: **b
 ContentPage
 ```
 
-### Creating a wildcard route
+### Step 3: Creating a wildcard route
 You now need to add the new page to the vue router. You can open the `src/router/routes.js` file and add the new page to the object
 
 ```typescript
@@ -106,7 +113,7 @@ export default {
 ```
 If you open op the `src/page/ContentPage/ContentPage.vue` file you can see where the magic happens. here you can disable the debug label if you want to.
 
-### Enable the plugin
+### Step 4: Enable the plugin
 To start using the block system you have to enable the Vue plugin in the `src/control/startUp.js` file
 
 ```typescript
@@ -192,7 +199,7 @@ As you can see the root contains the main information about the page. The title 
 ##### Debug label configuration
 Since your site might have a lot of different blocks nested within each other it might be usefull to display their name so you can easily track them in your block folder. Therefore the debug label was added, by default the debug label is located at the top left corner in red with white text. If you want to change any of this styling you can use this object to add all your CSS styling.
 
-### Creating a block
+### Step 5: Creating a block
 Creating blocks is just as easy as generating the content page, just run
 
 ```sh

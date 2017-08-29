@@ -8,6 +8,7 @@ typings
 npm-debug.log
 /coverage
 /dist
+/demo
 /seng-*.zip
 /seng-*.tar.gz
 /test/*.js

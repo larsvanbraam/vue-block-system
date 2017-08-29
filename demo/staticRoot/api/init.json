@@ -1,0 +1,13 @@
+{
+  "statusCode": 200,
+  "data": {
+	"routes": {
+	  "landing": "/home",
+	  "notFound": "/page-not-found"
+	},
+	"user": {
+	  "firstName": "John",
+	  "lastName": "Doe"
+	}
+  }
+}
