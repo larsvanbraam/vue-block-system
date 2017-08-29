@@ -16,17 +16,17 @@ The block system uses the vue-transition-component to handle all component trans
 1. [Installation](#installation)
 2. [Demo](#demo)
 2. [Baisc usage](#basic-usage)
-	1. [Step 1: Configure the seng generator](#step-1:-configure-the-seng-generator)
+	1. [Step 1: Configure the seng generator](#configure-the-seng-generator)
 		1. [Updating the template path](#updating-the-template-path)
-	2. [Step 2: Generating a page](#step-2:generating-a-page)
-	3. [Step 3: Creating a wildcard route](#step-3:-creating-a-wildcard-route)
-	4. [Step 4: Enable the plugin](#step-4:-enable-the-plugin)
+	2. [Step 2: Generating a page](#generating-a-page)
+	3. [Step 3: Creating a wildcard route](#creating-a-wildcard-route)
+	4. [Step 4: Enable the plugin](#enable-the-plugin)
 		1. [Store](#store)
 		2. [Block](#block)
 		3. [Config](#config)
 			1. [API Configuration](#api-configuration)
 			2. [Debug label configuration](#debug-label-configuration)
-	5. [Step 5: Creating a block](#step-5:-creating-a-block)
+	5. [Step 5: Creating a block](#creating-a-block)
 4. [Extra Features](#extra-features)
 	1. [Nesting blocks withing blocks](#nesting-blocks-within-blocks)
 	2. [Buttons](#buttons)
@@ -62,7 +62,7 @@ The repository contains a demo setup for the block system. It's based on the 0.3
 ## Basic usage
 To use the block system there are a couple of steps to follow:
 
-### Step 1: Configure the seng generator
+### Configure the seng generator
 The block system uses mixins to extend the desired functionality. Extending the data could be a manual thing by copy and pasting the extends and creating the transition controllers manually. But to make it a little bit easier you should use the [seng-generator](https://github.com/mediamonks/seng-generator). If you followed the steps as described in the seng-generator install instructions you can follow these steps to add the custom templates for generating blocks and content pages!
 
 #### Updating the template path
@@ -77,7 +77,7 @@ After this you can modify the seng-generator configuration. The thing we want to
 ./template,./node_modules/vue-block-system/template
 ```
 
-### Step 2: Generating a page
+### Generating a page
 After configuring the seng-generator you have to generate your vue page that will be used to output the pages. To do this we will use the seng-generator. So change directory to the root of you project and run the following:
 
 ```sh
@@ -89,7 +89,7 @@ This will give you a couple of template options, choose the that is labeled: **b
 ContentPage
 ```
 
-### Step 3: Creating a wildcard route
+### Creating a wildcard route
 You now need to add the new page to the vue router. You can open the `src/router/routes.js` file and add the new page to the object
 
 ```typescript
@@ -113,7 +113,7 @@ export default {
 ```
 If you open op the `src/page/ContentPage/ContentPage.vue` file you can see where the magic happens. here you can disable the debug label if you want to.
 
-### Step 4: Enable the plugin
+### Enable the plugin
 To start using the block system you have to enable the Vue plugin in the `src/control/startUp.js` file
 
 ```typescript
@@ -199,7 +199,7 @@ As you can see the root contains the main information about the page. The title 
 ##### Debug label configuration
 Since your site might have a lot of different blocks nested within each other it might be usefull to display their name so you can easily track them in your block folder. Therefore the debug label was added, by default the debug label is located at the top left corner in red with white text. If you want to change any of this styling you can use this object to add all your CSS styling.
 
-### Step 5: Creating a block
+### Creating a block
 Creating blocks is just as easy as generating the content page, just run
 
 ```sh
