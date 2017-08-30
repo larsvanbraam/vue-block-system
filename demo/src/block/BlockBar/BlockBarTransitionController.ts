@@ -1,4 +1,5 @@
 import { AbstractTransitionController } from 'vue-transition-component';
+import { Elastic, Back } from 'gsap';
 
 class BlockBarTransitionController extends AbstractTransitionController {
 	/**
@@ -7,7 +8,12 @@ class BlockBarTransitionController extends AbstractTransitionController {
 	 * @description Use this method to setup your transition in timeline
 	 * */
 	protected setupTransitionInTimeline(): void {
-		this.transitionInTimeline.fromTo(this.viewModel.$el, 1, { autoAlpha: 0 }, { autoAlpha: 1 });
+		this.transitionInTimeline.fromTo(
+			this.viewModel.$el,
+			1,
+			{ xPercent: 100, rotation: 180, autoAlpha: 0 },
+			{ xPercent: 0, rotation: 0, autoAlpha: 1, ease: Elastic.easeOut },
+		);
 	}
 
 	/**
@@ -16,7 +22,11 @@ class BlockBarTransitionController extends AbstractTransitionController {
 	 * @description Use this method to setup your transition out timeline
 	 * */
 	protected setupTransitionOutTimeline(): void {
-		this.transitionOutTimeline.to(this.viewModel.$el, 0.2, { autoAlpha: 0 });
+		this.transitionOutTimeline.to(
+			this.viewModel.$el,
+			0.5,
+			{ xPercent: 100, ease: Back.easeIn },
+		);
 	}
 }
 

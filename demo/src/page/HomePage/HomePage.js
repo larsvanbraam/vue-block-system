@@ -1,14 +1,14 @@
 import { AbstractContentPageComponent, ButtonType, LinkType } from 'vue-block-system';
-import ButtonMain from '../../component/button/ButtonMain/ButtonMain';
+import Actions from '../../component/Actions';
 
 export default {
 	name: 'HomePage',
 	extends: AbstractContentPageComponent,
 	components: {
-		ButtonMain,
+		Actions,
 	},
 	created() {
-		this.actions = [
+		this.headerActions = [
 			{
 				label: 'Home',
 				title: 'Home',
@@ -37,28 +37,39 @@ export default {
 				},
 			},
 			{
-				label: 'MediaMonks.com (self)',
-				title: 'MediaMonks.com',
-				type: ButtonType.LINK,
-				link: {
-					type: LinkType.EXTERNAL,
-					target: 'http://www.mediamonks.com',
-				},
-			},
-			{
-				label: 'MediaMonks.com (blank)',
-				title: 'MediaMonks.com',
-				type: ButtonType.LINK,
-				link: {
-					type: LinkType.EXTERNAL_BLANK,
-					target: 'http://www.mediamonks.com',
-				},
-			},
-			{
 				label: 'Click me for an action',
 				title: 'Click me for an action',
 				type: ButtonType.ACTION,
 				click: this.handleButtonMainClick,
+			},
+		];
+		this.noteActions = [
+			{
+				label: 'View project on NPM',
+				title: 'View project on NPM',
+				type: ButtonType.LINK,
+				link: {
+					type: LinkType.EXTERNAL_BLANK,
+					target: 'https://www.npmjs.com/package/vue-block-system',
+				},
+			},
+			{
+				label: 'View project on GitHub',
+				title: 'View project on GitHub',
+				type: ButtonType.LINK,
+				link: {
+					type: LinkType.EXTERNAL_BLANK,
+					target: 'https://www.github.com/larsvanbraam/vue-block-system',
+				},
+			},
+			{
+				label: 'View demo source',
+				title: 'View demo source',
+				type: ButtonType.LINK,
+				link: {
+					type: LinkType.EXTERNAL_BLANK,
+					target: 'https://github.com/larsvanbraam/vue-block-system/tree/master/demo',
+				},
 			},
 		];
 	},
@@ -70,7 +81,8 @@ export default {
 			console.log('Route change is completed!');
 		},
 		handleButtonMainClick() {
-			alert('clicked');
+			// eslint-disable-next-line no-useless-escape
+			alert('Nothing here ¯\\_(ツ)_/¯');
 		},
 	},
 };

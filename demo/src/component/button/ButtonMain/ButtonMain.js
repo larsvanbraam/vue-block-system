@@ -1,4 +1,4 @@
-import { AbstractButtonComponent } from 'vue-block-system';
+import { AbstractButtonComponent, ButtonType } from 'vue-block-system';
 import ButtonMainTransitionController from './ButtonMainTransitionController';
 
 export default {
@@ -9,5 +9,8 @@ export default {
 			this.transitionController = new ButtonMainTransitionController(this);
 			this.isReady();
 		},
+	},
+	computed: {
+		ButtonType() { return ButtonType; },
 	},
 };

@@ -37,7 +37,8 @@ export default {
 		 * @method handleClick
 		 * @description When the user clicks on the button a action is triggered!
 		 */
-		handleClick() {
+		handleClick(event) {
+			event.preventDefault(); // Always kill the default action because otherwise it will execute the href
 			switch (this.type) {
 				case ButtonType.LINK:
 					switch (this.link.type) {

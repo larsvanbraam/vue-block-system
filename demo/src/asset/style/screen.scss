@@ -2,6 +2,15 @@
 
 body {
 	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+h1 {
+	font-size: 15px;
+	margin: 0;
+	font-weight: 600;
+	color: #fff;
+	font-family: 'Helvetica';
 }
 
 h2 {
@@ -12,9 +21,9 @@ h2 {
 	font-family: 'Helvetica';
 }
 
+a,
 p {
 	margin: 0;
-	font-size: 14px;
 	color: #fff;
 	font-family: 'Helvetica';
 }

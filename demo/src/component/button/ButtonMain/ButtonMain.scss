@@ -1,3 +1,17 @@
 :local {
+	.button {
+		a,
+		button {
+			padding: 5px;
+			background: transparent;
+			border: none;
+			color: #96C4F0;
+			cursor: pointer;
+			text-decoration: none;
 
+			@include hover() {
+				text-decoration: underline;
+			}
+		}
+	}
 }

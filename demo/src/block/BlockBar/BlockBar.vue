@@ -15,7 +15,7 @@
 				@isReady="handleBlockComponentReady"
 				:scrollId="block.scrollId"
 				:data="block.data"
-				:debugLabel="true"
+				:debugLabel="$config.getVariable(VariableNames.DEBUG_LABEL_ENABLED)"
 				:is="block.id"
 				:componentId="block.id + '.' + block.blockIndex"
 				:key="index"></component>
