@@ -57,4 +57,12 @@
 			}
 		}
 	}
+
+	@include respond-to(x_small) {
+		li {
+			width: 100%;
+			text-align: center;
+		}
+
+	}
 }
