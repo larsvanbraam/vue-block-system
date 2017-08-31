@@ -1,26 +1,30 @@
 {
-	"statusCode": 200,
+  "statusCode": 200,
+  "data": {
+	"title": "Home",
 	"data": {
-		"title": "Home",
+	  "headerTheme": "red"
+	},
+	"blocks": [
+	  {
+		"id": "blockFoo",
 		"data": {
-			"headerTheme": "red"
-		},
-		"blocks": [
+		  "heading": "Lorem ipsum dolor sit amet"
+		}
+	  },
+	  {
+		"id": "blockBar",
+		"data": {
+		  "blocks": [
 			{
-				"id": "blockFoo",
-				"data": {}
-			},
-			{
-				"id": "blockBar",
-				"data": {
-					"blocks": [
-						{
-							"id": "blockFoo",
-							"data": {}
-						}
-					]
-				}
+			  "id": "blockFoo",
+			  "data": {
+				"heading": "Lorem ipsum dolor sit amet"
+			  }
 			}
-		]
-	}
+		  ]
+		}
+	  }
+	]
+  }
 }
