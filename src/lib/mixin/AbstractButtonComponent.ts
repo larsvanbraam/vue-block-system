@@ -1,20 +1,14 @@
+import * as VueTypes from 'vue-types/dist';
 import { AbstractTransitionComponent } from 'vue-transition-component';
 import LinkType from '../enum/LinkType';
 import ButtonType from '../enum/ButtonType';
-import * as VueTypes from 'vue-types/dist';
 
 export default {
 	name: 'AbstractButtonComponent',
 	extends: AbstractTransitionComponent,
 	props: {
-		label: {
-			type: String,
-			default: '',
-		},
-		title: {
-			type: String,
-			default: '',
-		},
+		label: VueTypes.string.isRequired,
+		title: VueTypes.string.isRequired,
 		type: VueTypes.oneOf([
 			ButtonType.ACTION,
 			ButtonType.LINK,
@@ -25,10 +19,7 @@ export default {
 				LinkType.EXTERNAL,
 				LinkType.EXTERNAL_BLANK,
 			]).isRequired,
-			target: {
-				type: String,
-				required: true,
-			},
+			target: VueTypes.string.isRequired,
 		}),
 	},
 	methods: {

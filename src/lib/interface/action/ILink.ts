@@ -1,5 +1,3 @@
-import LinkType from '../../enum/LinkType';
-
 interface ILink {
 	/**
 	 * @property
@@ -22,7 +20,7 @@ interface ILink {
 	 * @description The type of the link
 	 * @placeholder 0
 	 */
-	type: LinkType;
+	type: string;
 }
 
 export default ILink;

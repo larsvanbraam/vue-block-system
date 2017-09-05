@@ -1,27 +1,16 @@
-import { TweenLite } from 'gsap';
-import { config } from '../index';
 import { AbstractTransitionComponent, ComponentType } from 'vue-transition-component';
+import { TweenLite } from 'gsap';
+import * as VueTypes from 'vue-types/dist';
+import { config } from '../index';
 
 export default {
 	name: 'AbstractBlockComponent',
 	extends: AbstractTransitionComponent,
 	props: {
-		data: {
-			type: Object,
-			default: () => {},
-		},
-		debugLabel: {
-			type: Boolean,
-			default: false,
-		},
-		scrollId: {
-			type: String,
-			required: false,
-		},
-		transitionInThreshold: {
-			type: Number,
-			default: 0.25,
-		},
+		data: VueTypes.object.isRequired,
+		debugLabel: VueTypes.boolean,
+		scrollId: VueTypes.string,
+		transitionInThreshold: VueTypes.number.def(10),
 	},
 	data() {
 		return {

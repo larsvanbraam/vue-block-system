@@ -3,7 +3,7 @@
  * window.location.href and EXTERNAL_BLANK means window.open
  */
 export default {
-	'INTERNAL': 'link-type-internal',
-	'EXTERNAL': 'link-type-external',
-	'EXTERNAL_BLANK': 'link-type-external-blank',
+	INTERNAL: 'link-type-internal',
+	EXTERNAL: 'link-type-external',
+	EXTERNAL_BLANK: 'link-type-external-blank',
 };

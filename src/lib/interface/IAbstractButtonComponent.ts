@@ -1,5 +1,4 @@
 import { IAbstractTransitionComponent } from 'vue-transition-component';
-import ButtonType from '../enum/ButtonType';
 import ILink from './action/ILink';
 
 interface IAbstractButtonComponent extends IAbstractTransitionComponent {
@@ -7,7 +6,7 @@ interface IAbstractButtonComponent extends IAbstractTransitionComponent {
 	 * @property
 	 * @description The type of the button
 	 */
-	type: ButtonType;
+	type: string;
 	/**
 	 * @public
 	 * @property
