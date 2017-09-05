@@ -1,7 +1,9 @@
 .DS_Store
 node_modules/
 dist/
+documentation/
 npm-debug.log
+.blockdocumentation
 .idea
 stats.json
 */.idea

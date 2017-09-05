@@ -13,6 +13,7 @@ import BlockSystem from 'vue-block-system';
 import block from 'block';
 import { SET_USER } from '../store/module/user/user';
 
+
 const initPlugins = (store) => {
 	const configManager = getValue(CONFIG_MANAGER);
 

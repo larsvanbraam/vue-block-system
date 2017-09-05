@@ -7046,9 +7046,9 @@ vrsource-tslint-rules@^5.1.0:
     chokidar-cli "~1.2.0"
     tslint "~5.1.0"
 
-vue-block-system@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/vue-block-system/-/vue-block-system-0.0.6.tgz#9abf2bfaa04c46b9741d4f749dfbbc44a1806fb2"
+vue-block-system@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/vue-block-system/-/vue-block-system-0.1.2.tgz#0b2433d7d7d97956d6b7754cb0f328b59221377e"
   dependencies:
     axios "^0.16.2"
     es6-promise "^3.2.1"
@@ -7057,7 +7057,8 @@ vue-block-system@^0.0.6:
     ts-helpers "^1.1.1"
     tslib "^1.2.0"
     vue-scrollto "^2.7.2"
-    vue-transition-component "^0.8.0"
+    vue-transition-component "^0.8.2"
+    vue-types "^1.0.2"
     vuex "^2.3.1"
 
 vue-hot-reload-api@^2.1.0:
@@ -7132,9 +7133,27 @@ vue-transition-component@^0.8.0:
     ts-helpers "^1.1.1"
     tslib "^1.2.0"
 
+vue-transition-component@^0.8.2:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/vue-transition-component/-/vue-transition-component-0.8.3.tgz#d95d3e7cfdacb044786f30cbf13c78124909afce"
+  dependencies:
+    es6-promise "^3.2.1"
+    gsap "^1.19.1"
+    lodash "^4.17.4"
+    seng-disposable "^1.0.1"
+    seng-event "^1.1.1"
+    ts-helpers "^1.1.1"
+    tslib "^1.2.0"
+
 vue-types@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/vue-types/-/vue-types-1.0.1.tgz#09e66d9afb2cd3872acb9d0e3c78a77e08baf8c0"
+  dependencies:
+    lodash.isplainobject "4.0.6"
+
+vue-types@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vue-types/-/vue-types-1.0.2.tgz#8a6504deaee92dec8ee75a38ed52fddc7f066c98"
   dependencies:
     lodash.isplainobject "4.0.6"
 

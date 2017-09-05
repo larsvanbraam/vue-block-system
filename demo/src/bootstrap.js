@@ -18,6 +18,7 @@ import setupInjects from 'util/setupInjects';
 import localeLoader from 'util/localeLoader';
 import App from 'App';
 
+
 // register filters globally
 Object.keys(filter).forEach(key => Vue.filter(key, filter[key]));
 
@@ -32,6 +33,7 @@ setupInjects();
 const router = setupRouter();
 const store = setupStore();
 const localeConfig = getLocaleConfig();
+
 
 if (localeConfig.localeEnabled) {
 	Vue.use(VueI18nManager, {

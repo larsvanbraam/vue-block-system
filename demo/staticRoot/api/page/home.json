@@ -9,7 +9,16 @@
 	  {
 		"id": "blockFoo",
 		"data": {
-		  "heading": "Lorem ipsum dolor sit amet"
+		  "heading": "Lorem ipsum dolor sit amet",
+		  "link": {
+			"label": "Link",
+			"title": "Link",
+			"type": 0,
+			"link": {
+			  "type": 0,
+			  "target": "/home"
+			}
+		  }
 		}
 	  },
 	  {

@@ -3,6 +3,8 @@ import { AbstractBlockComponent } from 'vue-block-system';
 import BlockFooTransitionController from './BlockFooTransitionController';
 import BlockFooData from './BlockFooData';
 
+console.log(BlockFooData);
+
 export default {
 	name: 'BlockFoo',
 	extends: AbstractBlockComponent,
