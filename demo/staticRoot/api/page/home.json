@@ -13,9 +13,9 @@
 		  "link": {
 			"label": "Link",
 			"title": "Link",
-			"type": 0,
+			"type": "button-type-link",
 			"link": {
-			  "type": 0,
+			  "type": "link-type-internal",
 			  "target": "/home"
 			}
 		  }
