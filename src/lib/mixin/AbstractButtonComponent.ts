@@ -7,7 +7,7 @@ export default {
 	name: 'AbstractButtonComponent',
 	extends: AbstractTransitionComponent,
 	props: {
-		label: VueTypes.string.isRequired,
+		label: VueTypes.string,
 		title: VueTypes.string.isRequired,
 		type: VueTypes.oneOf([
 			ButtonType.ACTION,
