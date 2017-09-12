@@ -7,7 +7,7 @@
 	},
 	"blocks": [
 	  {
-		"id": "blockFoo",
+		"id": "BlockFoo",
 		"data": {
 		  "heading": "Lorem ipsum dolor sit amet",
 		  "link": {
@@ -22,11 +22,11 @@
 		}
 	  },
 	  {
-		"id": "blockBar",
+		"id": "BlockBar",
 		"data": {
 		  "blocks": [
 			{
-			  "id": "blockFoo",
+			  "id": "BlockFoo",
 			  "data": {
 				"heading": "Lorem ipsum dolor sit amet"
 			  }

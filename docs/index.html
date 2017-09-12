@@ -75,14 +75,15 @@
 				<h2 id="table-of-contents">Table of contents</h2>
 				<ol>
 					<li><a href="#installation">Installation</a></li>
+					<li><a href="#demo">Demo</a></li>
 					<li><a href="#basic-usage">Baisc usage</a><ol>
-							<li><a href="#configure-the-seng-generator">Configure the seng generator</a><ol>
+							<li><a href="#configure-the-seng-generator">Step 1: Configure the seng generator</a><ol>
 									<li><a href="#updating-the-template-path">Updating the template path</a></li>
 								</ol>
 							</li>
-							<li><a href="#generating-a-page">Generating a page</a></li>
-							<li><a href="#creating-a-wildcard-route">Creating a wildcard route</a></li>
-							<li><a href="#enable-the-plugin">Enable the plugin</a><ol>
+							<li><a href="#generating-a-page">Step 2: Generating a page</a></li>
+							<li><a href="#creating-a-wildcard-route">Step 3: Creating a wildcard route</a></li>
+							<li><a href="#enable-the-plugin">Step 4: Enable the plugin</a><ol>
 									<li><a href="#store">Store</a></li>
 									<li><a href="#block">Block</a></li>
 									<li><a href="#config">Config</a><ol>
@@ -92,11 +93,15 @@
 									</li>
 								</ol>
 							</li>
-							<li><a href="#creating-a-block">Creating a block</a></li>
+							<li><a href="#creating-a-block">Step 5: Creating a block</a></li>
 						</ol>
 					</li>
 					<li><a href="#extra-features">Extra Features</a><ol>
-							<li><a href="#nesting-blocks-within-blocks">Nesting blocks withing blocks</a></li>
+							<li><a href="#nesting-blocks-within-blocks">Nesting blocks withing blocks</a><ol>
+									<li><a href="#nesting-blocks-within-blocks-using-an-array">Nesting blocks within blocks using an array</a></li>
+									<li><a href="#nesting-blocks-within-blocks-using-an-object">Nesting blocks within blocks using an object</a></li>
+								</ol>
+							</li>
 							<li><a href="#buttons">Buttons</a></li>
 							<li><a href="#before-and-after-route-changes">Before and after route changes</a><ol>
 									<li><a href="#before-route-change">Before route change</a></li>
@@ -111,14 +116,17 @@
 					<li><a href="#contribute">Contribute</a></li>
 					<li><a href="#license">License</a></li>
 				</ol>
+				<h2 id="global-note-">Global note:</h2>
+				<p>All examples below are based on the <a href="https://github.com/hjeti/vue-skeleton">vue-skeleton</a> by <a href="https://github.com/hjeti/">hjeti</a>. </p>
 				<h2 id="installation">Installation</h2>
 				<h3 id="yarn-npm">yarn / npm</h3>
 				<pre><code class="lang-sh">yarn add vue-block-system
 </code></pre>
 				<pre><code class="lang-sh">npm i -S vue-block-system
 </code></pre>
-				<h2 id="global-note-">Global note:</h2>
-				<p>All examples below are based on the <a href="https://github.com/hjeti/vue-skeleton">vue-skeleton</a> by <a href="https://github.com/hjeti/">hjeti</a>. </p>
+				<h2 id="demo">Demo</h2>
+				<p>The repository contains a demo setup for the block system. It&#39;s based on the 0.3.1 version of the vue-skeleton. Since the block system is a plugin it should still work with newer versions of the skeleton. You can preview the demo either downloading the demo folder and running <code>yarn</code> to install all dependencies and then run <code>yarn dev</code> to start the dev server. </p>
+				<h3 id="-alternatively-you-can-check-the-demo-online-http-vue-block-system-larsvanbraam-nl-"><a href="http://vue-block-system.larsvanbraam.nl">Alternatively you can check the demo online.</a></h3>
 				<h2 id="basic-usage">Basic usage</h2>
 				<p>To use the block system there are a couple of steps to follow:</p>
 				<h3 id="configure-the-seng-generator">Configure the seng generator</h3>
@@ -212,11 +220,11 @@ Vue.use(BlockSystem, {
         },
         <span class="hljs-attr">"blocks"</span>: [
             {
-                <span class="hljs-attr">"id"</span>: <span class="hljs-string">"blockFoo"</span>,
+                <span class="hljs-attr">"id"</span>: <span class="hljs-string">"BlockFoo"</span>,
                 <span class="hljs-attr">"data"</span>: {}
             },
             {
-                <span class="hljs-attr">"id"</span>: <span class="hljs-string">"blockBar"</span>,
+                <span class="hljs-attr">"id"</span>: <span class="hljs-string">"BlockBar"</span>,
                 <span class="hljs-attr">"data"</span>: {}
             }
         ]
@@ -236,7 +244,9 @@ Vue.use(BlockSystem, {
 				<h2 id="extra-features">Extra features</h2>
 				<p>Beside the basic usage there are a couple of extra features added which make it faster to build block websites.</p>
 				<h3 id="nesting-blocks-within-blocks">Nesting blocks within blocks</h3>
-				<p>If you want to you can nest blocks within other blocks, to achieve this you must pass an array of blocks within the data of the parent block, in this case the <strong>blockBar</strong> has a child block which is named <strong>blockFoo</strong></p>
+				<p>You can nest blocks within blocks in two different ways. One would be an array of blocks which could be anything. Another way would be an object with keys as the block id and the data as the value</p>
+				<h4 id="nesting-blocks-within-blocks-using-an-array">Nesting blocks within blocks using an array</h4>
+				<p>When nesting blocks with an array you must provide an array with blocks like shown below, in this case the <strong>BlockBar</strong> has a child block which is named <strong>BlockFoo</strong></p>
 				<pre><code class="lang-json">{
     <span class="hljs-attr">"statusCode"</span>: <span class="hljs-number">200</span>,
     <span class="hljs-attr">"data"</span>: {
@@ -244,11 +254,11 @@ Vue.use(BlockSystem, {
         <span class="hljs-attr">"data"</span>: {},
         <span class="hljs-attr">"blocks"</span>: [
             {
-                <span class="hljs-attr">"id"</span>: <span class="hljs-string">"blockBar"</span>,
+                <span class="hljs-attr">"id"</span>: <span class="hljs-string">"BlockBar"</span>,
                 <span class="hljs-attr">"data"</span>: {
                     <span class="hljs-attr">"blocks"</span>: [
                         {
-                            <span class="hljs-attr">"id"</span>: <span class="hljs-string">"blockFoo"</span>,
+                            <span class="hljs-attr">"id"</span>: <span class="hljs-string">"BlockFoo"</span>,
                             <span class="hljs-attr">"data"</span>: {}
                         }
                     ]
@@ -258,7 +268,7 @@ Vue.use(BlockSystem, {
     }
 }
 </code></pre>
-				<p>To make sure the <strong>blockFoo</strong> is dynamically rendered within <strong>blockBar</strong> you have to add the following piece of code to the blockBar template file:</p>
+				<p>To make sure the <strong>BlockFoo</strong> is dynamically rendered within <strong>BlockBar</strong> you have to add the following piece of code to the blockBar template file:</p>
 				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">component</span>
     <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(block, index) in data.blocks"</span>
     @<span class="hljs-attr">isReady</span>=<span class="hljs-string">"handleBlockComponentReady"</span>
@@ -267,7 +277,41 @@ Vue.use(BlockSystem, {
     <span class="hljs-attr">:debugLabel</span>=<span class="hljs-string">"true"</span>
     <span class="hljs-attr">:is</span>=<span class="hljs-string">"block.id"</span>
     <span class="hljs-attr">:componentId</span>=<span class="hljs-string">"block.id + '.' + block.blockIndex"</span>
-    <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">component</span>&gt;</span>
+    <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span> /&gt;</span>
+</code></pre>
+				<p>This will make sure the data is passed to the new block, all the callback methods are properly set and the right component is loaded. Everything should be pretty much plug and play!</p>
+				<h4 id="nesting-blocks-within-blocks-using-an-object">Nesting blocks within blocks using an object</h4>
+				<p>When nesting blocks within an object you must provide an object with blocks like shown below, in this case the <strong>BlockBar</strong> has a child block which is named <strong>BlockFoo</strong></p>
+				<pre><code class="lang-json">{
+    <span class="hljs-attr">"statusCode"</span>: <span class="hljs-number">200</span>,
+    <span class="hljs-attr">"data"</span>: {
+        <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Home"</span>,
+        <span class="hljs-attr">"data"</span>: {},
+        <span class="hljs-attr">"blocks"</span>: [
+            {
+                <span class="hljs-attr">"id"</span>: <span class="hljs-string">"BlockBar"</span>,
+                <span class="hljs-attr">"data"</span>: {
+                    <span class="hljs-attr">"blocks"</span>: {
+                        <span class="hljs-attr">"BlockFoo"</span>: {
+                            <span class="hljs-attr">"data"</span>: {}
+                        }
+                    }                
+                }
+            }
+        ]
+    }
+}
+</code></pre>
+				<p>To make sure the <strong>BlockFoo</strong> is dynamically rendered within <strong>BlockBar</strong> you have to add the following piece of code to the blockBar template file:</p>
+				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">component</span>
+    <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(block, key) in data.blocks"</span>
+    @<span class="hljs-attr">isReady</span>=<span class="hljs-string">"handleBlockComponentReady"</span>
+    <span class="hljs-attr">:class</span>=<span class="hljs-string">"$style[camelCase(key)]"</span>
+    <span class="hljs-attr">:scrollId</span>=<span class="hljs-string">"block.scrollId"</span>
+    <span class="hljs-attr">:data</span>=<span class="hljs-string">"block.data"</span>
+    <span class="hljs-attr">:is</span>=<span class="hljs-string">"key"</span>
+    <span class="hljs-attr">:componentId</span>=<span class="hljs-string">"key + '.' + block.blockIndex"</span>
+    <span class="hljs-attr">:key</span>=<span class="hljs-string">"key"</span> /&gt;</span>
 </code></pre>
 				<p>This will make sure the data is passed to the new block, all the callback methods are properly set and the right component is loaded. Everything should be pretty much plug and play!</p>
 				<h3 id="buttons">Buttons</h3>
@@ -428,12 +472,6 @@ yarn doc             <span class="hljs-comment"># generate typedoc documentation
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="enums/buttontype.html" class="tsd-kind-icon">Button<wbr>Type</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/linktype.html" class="tsd-kind-icon">Link<wbr>Type</a>
-					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/blockhelper.html" class="tsd-kind-icon">Block<wbr>Helper</a>
 					</li>

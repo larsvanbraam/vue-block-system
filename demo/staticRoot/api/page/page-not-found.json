@@ -4,7 +4,7 @@
 		"title": "Page not found",
 		"blocks": [
 			{
-				"id": "blockFoo",
+				"id": "BlockFoo",
 				"data": {}
 			}
 		]

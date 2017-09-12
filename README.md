@@ -27,8 +27,11 @@ The block system uses the vue-transition-component to handle all component trans
 			1. [API Configuration](#api-configuration)
 			2. [Debug label configuration](#debug-label-configuration)
 	5. [Step 5: Creating a block](#creating-a-block)
+		1. [Typing block data](#typing-block-data)
 4. [Extra Features](#extra-features)
 	1. [Nesting blocks withing blocks](#nesting-blocks-within-blocks)
+		1. [Nesting blocks within blocks using an array](#nesting-blocks-within-blocks-using-an-array)
+		2. [Nesting blocks within blocks using an object](#nesting-blocks-within-blocks-using-an-object)
 	2. [Buttons](#buttons)
 	3. [Before and after route changes](#before-and-after-route-changes)
 		1. [Before route change](#before-route-change)
@@ -182,11 +185,11 @@ After the init call is completed the block-system will try and load the page lay
 		},
 		"blocks": [
 			{
-				"id": "blockFoo",
+				"id": "BlockFoo",
 				"data": {}
 			},
 			{
-				"id": "blockBar",
+				"id": "BlockBar",
 				"data": {}
 			}
 		]
@@ -211,11 +214,44 @@ from the root of your project. This will give you a couple of template options, 
 
 *Note 2: make sure to add the newly generated block to the `src/block/index.js`*
 
+#### Typing block data
+When a block is created you get a `[blockNam]Data.js` file in your block folder, you should use this file to predefine all the data that your block will receive from the backend in the page call. This typing is done using [VueTypes](https://github.com/dwightjack/vue-types) which is included in the vue-skeleton. Typing your data is a way to avoid data mismatches with the backend and for generating documentation.
+
+```javascript
+import VueTypes from 'vue-types';
+import { ButtonType, LinkType } from 'vue-block-system';
+
+export default {
+	heading: VueTypes.string.isRequired,
+	link: VueTypes.shape({
+		label: VueTypes.string.isRequired,
+		title: VueTypes.string.isRequired,
+		type: VueTypes.oneOf([
+			ButtonType.ACTION,
+			ButtonType.LINK,
+		]),
+		link: VueTypes.shape({
+			type: VueTypes.oneOf([
+				LinkType.INTERNAL,
+				LinkType.EXTERNAL,
+				LinkType.EXTERNAL_BLANK,
+			]).isRequired,
+			target: VueTypes.string.isRequired,
+		}),
+	}),
+};
+
+```
+
+
 ## Extra features
 Beside the basic usage there are a couple of extra features added which make it faster to build block websites.
 
 ### Nesting blocks within blocks
-If you want to you can nest blocks within other blocks, to achieve this you must pass an array of blocks within the data of the parent block, in this case the **blockBar** has a child block which is named **blockFoo**
+You can nest blocks within blocks in two different ways. One would be an array of blocks which could be anything. Another way would be an object with keys as the block id and the data as the value
+
+#### Nesting blocks within blocks using an array
+When nesting blocks with an array you must provide an array with blocks like shown below, in this case the **BlockBar** has a child block which is named **BlockFoo**. When nesting blocks within other blocks while using an array you cannot type the contents of the array since its dynamic, when you want to force certain blocks as a child you you should use the [object method of nesting blocks](#nesting-blocks-within-blocks-using-an-object).
 
 ```json
 {
@@ -225,11 +261,11 @@ If you want to you can nest blocks within other blocks, to achieve this you must
 		"data": {},
 		"blocks": [
 			{
-				"id": "blockBar",
+				"id": "BlockBar",
 				"data": {
 					"blocks": [
 						{
-							"id": "blockFoo",
+							"id": "BlockFoo",
 							"data": {}
 						}
 					]
@@ -238,10 +274,19 @@ If you want to you can nest blocks within other blocks, to achieve this you must
 		]
 	}
 }
-
 ```
 
-To make sure the **blockFoo** is dynamically rendered within **blockBar** you have to add the following piece of code to the blockBar template file:
+You should update the `BlockBarData.js` file to let it expect blocks as data, since it's an array it could be anything so we can use the following:
+
+```javascript
+import VueTypes from 'vue-types';
+
+export default {
+	blocks: VueTypes.array,
+};
+```
+
+To make sure the **BlockFoo** is dynamically rendered within **BlockBar** you have to add the following piece of code to the blockBar template file:
 
 ```html
 <component
@@ -252,7 +297,63 @@ To make sure the **blockFoo** is dynamically rendered within **blockBar** you ha
 	:debugLabel="true"
 	:is="block.id"
 	:componentId="block.id + '.' + block.blockIndex"
-	:key="index"></component>
+	:key="index" />
+```
+This will make sure the data is passed to the new block, all the callback methods are properly set and the right component is loaded. Everything should be pretty much plug and play!
+
+#### Nesting blocks within blocks using an object
+When nesting blocks within an object you must provide an object with blocks like shown below, in this case the **BlockBar** has a child block which is named **BlockFoo**
+
+```json
+{
+	"statusCode": 200,
+	"data": {
+		"title": "Home",
+		"data": {},
+		"blocks": [
+			{
+				"id": "BlockBar",
+				"data": {
+					"blocks": {
+						"BlockFoo": {
+							"data": {}
+						}
+					}				
+				}
+			}
+		]
+	}
+}
+```
+
+You should update the `BlockBarData.js` file to let it expect blocks as data, since it's an object you could use the following:
+
+```javascript
+import VueTypes from 'vue-types';
+
+export default {
+	blocks: VueTypes.shape({
+		BlockBar: VueTypes.shape({
+			blockIndex: VueTypes.number,
+			data: VueTypes.object
+		});
+	}),
+};
+```
+*Note: The blockIndex has to be added when we use object style of nesting blocks*
+
+To make sure the **BlockFoo** is dynamically rendered within **BlockBar** you have to add the following piece of code to the blockBar template file:
+
+```html
+<component
+	v-for="(block, key) in data.blocks"
+	@isReady="handleBlockComponentReady"
+	:class="$style[camelCase(key)]"
+	:scrollId="block.scrollId"
+	:data="block.data"
+	:is="key"
+	:componentId="key + '.' + block.blockIndex"
+	:key="key" />
 ```
 This will make sure the data is passed to the new block, all the callback methods are properly set and the right component is loaded. Everything should be pretty much plug and play!
 

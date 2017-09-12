@@ -1,11 +1,12 @@
 import { Promise } from 'es6-promise';
-import { debounce, isArray } from 'lodash';
+import { debounce } from 'lodash';
 import ScrollTracker, { ScrollTrackerEvent } from 'seng-scroll-tracker';
 import VueScrollTo from 'vue-scrollto/vue-scrollto';
 import { AbstractPageTransitionComponent } from 'vue-transition-component';
 import { mapState, mapActions, mapGetters, mapMutations } from 'vuex';
 import { InitNamespace } from '../store/init';
 import { LayoutNamespace } from '../store/layout/index';
+import BlockHelper from '../util/BlockHelper';
 
 export default {
 	name: 'AbstractContentPageController',
@@ -16,11 +17,11 @@ export default {
 			const countBlocks = (blocks) => {
 				blocks.forEach((block) => {
 					++blockCount;
-					// Restart if nested blocks
-					if (block.data && isArray(block.data.blocks)) countBlocks(block.data.blocks);
+					// Start the loop recursively if there are child blocks
+					if(block.data && block.data.blocks) countBlocks(BlockHelper.normalizeChildBlocks(block.data.blocks));
 				});
 			};
-			countBlocks(this.blocks);
+			countBlocks(BlockHelper.normalizeChildBlocks(this.blocks));
 			return blockCount;
 		},
 		...mapState(LayoutNamespace, ['blocks', 'pageTitle']),

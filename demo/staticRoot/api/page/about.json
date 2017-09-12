@@ -4,21 +4,21 @@
 		"title": "About",
 		"blocks": [
 			{
-				"id": "blockBar",
+				"id": "BlockBar",
 				"data": {}
 			},
 			{
-				"id": "blockFoo",
+				"id": "BlockFoo",
 				"data": {
 				  "heading": "Lorem ipsum dolor sit amet"
 				}
 			},
 			{
-				"id": "blockBar",
+				"id": "BlockBar",
 				"data": {}
 			},
 			{
-				"id": "blockFoo",
+				"id": "BlockFoo",
 				"data": {
 				  "heading": "Lorem ipsum dolor sit amet"
 				}

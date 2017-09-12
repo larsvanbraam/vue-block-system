@@ -18,7 +18,7 @@ interface IBlock {
 	 * @property
 	 * @description The data for the block
 	 */
-	data: any | Array<IBlock>;
+	data: any | Array<IBlock> | {[key:string]:IBlock};
 }
 
 export default IBlock;
