@@ -18,7 +18,7 @@ export default {
 				blocks.forEach((block) => {
 					++blockCount;
 					// Start the loop recursively if there are child blocks
-					if(block.data && block.data.blocks) countBlocks(BlockHelper.normalizeChildBlocks(block.data.blocks));
+					if (block.data && block.data.blocks) countBlocks(BlockHelper.normalizeChildBlocks(block.data.blocks));
 				});
 			};
 			countBlocks(BlockHelper.normalizeChildBlocks(this.blocks));

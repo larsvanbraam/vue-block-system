@@ -102,10 +102,10 @@ class BlockHelper {
 		if (isArray(blocks)) {
 			return blocks;
 		} else {
-			return Object.keys(blocks).map(key => {
+			return Object.keys(blocks).map((key) => {
 				return {
-					'id': key,
-					'data': blocks[key],
+					id: key,
+					data: blocks[key],
 				};
 			});
 		}
