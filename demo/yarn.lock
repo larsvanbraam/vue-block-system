@@ -7046,9 +7046,9 @@ vrsource-tslint-rules@^5.1.0:
     chokidar-cli "~1.2.0"
     tslint "~5.1.0"
 
-vue-block-system@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/vue-block-system/-/vue-block-system-0.1.4.tgz#576a93be0bca1233c0c4fb95910c88f4e0a6a320"
+vue-block-system@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/vue-block-system/-/vue-block-system-0.1.6.tgz#5d8175b3ae7ce88fdba64112d51a72275c0bec73"
   dependencies:
     axios "^0.16.2"
     es6-promise "^3.2.1"

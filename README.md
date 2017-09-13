@@ -26,6 +26,7 @@ The block system uses the vue-transition-component to handle all component trans
 		3. [Config](#config)
 			1. [API Configuration](#api-configuration)
 			2. [Debug label configuration](#debug-label-configuration)
+		4. [Wait for the plugin to be ready](#wait-for-the-plugin-to-be-ready)
 	5. [Step 5: Creating a block](#creating-a-block)
 		1. [Typing block data](#typing-block-data)
 4. [Extra Features](#extra-features)
@@ -139,6 +140,8 @@ Vue.use(BlockSystem, {
 	});
 ...
 ```
+
+
 #### Store
 The store option is the reference to the vuex store.
 
@@ -198,6 +201,21 @@ After the init call is completed the block-system will try and load the page lay
 
 ```
 As you can see the root contains the main information about the page. The title being the title displayed in the tab-bar and the data is extra page related data that you might need on page level coding. After the data the array of blocks is provided and as you can see blocks can be recursively nested. You can see more about this on the block example section
+
+### Wait for the plugin to be ready
+To make sure the block system is ready there is a promise available that will be resolved when the init call is completed. You can use the promise `Vue.blockSystemReady` to check if the system is ready. Simply add it to the `Startup.js` in the `Promise.all[]` check
+
+```javascript
+...
+
+// Add async methods to the Promise.all array
+return Promise.all([
+	Vue.blockSystemReady,
+	configManager.getVariable(VariableNames.LOCALE_ENABLED) ? waitForLocale(store) : Promise.resolve(),
+]);
+
+...
+```
 
 ##### Debug label configuration
 Since your site might have a lot of different blocks nested within each other it might be usefull to display their name so you can easily track them in your block folder. Therefore the debug label was added, by default the debug label is located at the top left corner in red with white text. If you want to change any of this styling you can use this object to add all your CSS styling.
