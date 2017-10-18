@@ -20,12 +20,12 @@ class PageLayoutHelper {
 				id: pageId,
 				data: pageLayout.data || {},
 				title: pageLayout.title,
-				blocks: [],
+				blocks: {},
 			};
 
 			// Loop through all the blocks and check if they are valid
-			layout.blocks = <Array<IBlock>>BlockHelper.parseBlocks(
-				{ parsedBlocks: layout.blocks, blocks: pageLayout.blocks });
+			layout.blocks = <{ [key: string]: IBlock }>BlockHelper.parseBlocks(
+				layout.blocks, pageLayout.blocks);
 
 			resolve(layout);
 		});

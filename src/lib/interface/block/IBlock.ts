@@ -6,7 +6,7 @@ interface IBlock {
 	id: string;
 	/**
 	 * @property
-	 * @description the unique index of the block
+	 * @description the unique index of the blockx
 	 */
 	blockIndex?: number;
 	/**
@@ -18,7 +18,7 @@ interface IBlock {
 	 * @property
 	 * @description The data for the block
 	 */
-	data: any | Array<IBlock> | {[key:string]:IBlock};
+	data: any;
 }
 
 export default IBlock;

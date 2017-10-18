@@ -261,6 +261,8 @@ export default {
 
 ```
 
+#### Using Block Data
+
 
 ## Extra features
 Beside the basic usage there are a couple of extra features added which make it faster to build block websites.

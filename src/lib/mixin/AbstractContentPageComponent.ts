@@ -6,7 +6,6 @@ import { AbstractPageTransitionComponent } from 'vue-transition-component';
 import { mapState, mapActions, mapGetters, mapMutations } from 'vuex';
 import { InitNamespace } from '../store/init';
 import { LayoutNamespace } from '../store/layout/index';
-import BlockHelper from '../util/BlockHelper';
 
 export default {
 	name: 'AbstractContentPageController',
@@ -15,13 +14,12 @@ export default {
 		totalBlocks() {
 			let blockCount = 0;
 			const countBlocks = (blocks) => {
-				blocks.forEach((block) => {
+				Object.keys(blocks).forEach((key) => {
 					++blockCount;
-					// Start the loop recursively if there are child blocks
-					if (block.data && block.data.blocks) countBlocks(BlockHelper.normalizeChildBlocks(block.data.blocks));
+					if (blocks[key].data && blocks[key].data.blocks) countBlocks(blocks[key].data.blocks);
 				});
 			};
-			countBlocks(BlockHelper.normalizeChildBlocks(this.blocks));
+			countBlocks(this.blocks);
 			return blockCount;
 		},
 		...mapState(LayoutNamespace, ['blocks', 'pageTitle']),

@@ -9,6 +9,8 @@ export const config = {
 	api: {
 		initCall: '/api/page/{page}',
 		pageCall: '/api/page/init',
+		axiosInstance: null,
+		layoutCache: true,
 	},
 	debugLabelStyling: {
 		font: '10px/1 sans-serif',

@@ -1,4 +1,4 @@
-import IBlock from '../block/IBlock';
+import IParsedBlocks from '../block/IParsedBlocks';
 
 interface IPageLayout {
 	/**
@@ -20,7 +20,8 @@ interface IPageLayout {
 	 * @property blocks
 	 * @description The array of blocks that make up the page
 	 */
-	blocks: Array<IBlock>;
+	blocks: IParsedBlocks;
 }
 
 export default IPageLayout;
+

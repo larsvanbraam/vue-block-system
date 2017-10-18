@@ -1,5 +1,6 @@
 import { isArray, isObject } from 'lodash';
 import IBlock from '../interface/block/IBlock';
+import IParsedBlocks from '../interface/block/IParsedBlocks';
 
 /**
  * @class BlockHelper
@@ -21,6 +22,48 @@ class BlockHelper {
 	 */
 	public static availableBlocks: Array<string> = [];
 
+	private static parseArrayBlocks(
+		parsedBlocks: IParsedBlocks,
+		blocks: Array<IBlock>,
+	): void {
+
+		blocks.forEach((block, index) => {
+			if (BlockHelper.isValidBlock(block.id)) {
+				// Add an index so all blocks can be unique even though they have the same Id
+				block.blockIndex = BlockHelper.counter++;
+				const blockKey = Object.keys(parsedBlocks).length.toString();
+
+				// Store a clone in the parsed block array
+				parsedBlocks[blockKey] = JSON.parse(JSON.stringify(block));
+
+				if (parsedBlocks[blockKey].data.blocks !== void 0) {
+					(<IBlock>parsedBlocks[blockKey]).data.blocks = {};
+					this.parseBlocks(parsedBlocks[blockKey].data.blocks, block.data.blocks, true);
+				}
+			}
+		});
+	}
+
+	private static parseObjectBlocks(
+		parsedBlocks: IParsedBlocks,
+		blocks: { [key: string]: IBlock },
+	): void {
+		// Add the block index to the child blocks
+		Object.keys(blocks).forEach((key) => {
+			const block = blocks[key];
+
+			if (BlockHelper.isValidBlock(key)) {
+				block.blockIndex = BlockHelper.counter++;
+				parsedBlocks[key] = JSON.parse(JSON.stringify(block));
+
+				if (block.data.blocks !== void 0) {
+					(<IBlock>parsedBlocks[key]).data.blocks = {};
+					this.parseBlocks(<IParsedBlocks>parsedBlocks[key].data.blocks, block.data.blocks, true);
+				}
+			}
+		});
+	}
+
 	/**
 	 * @public
 	 * @method parsedBlocks
@@ -30,43 +73,58 @@ class BlockHelper {
 	 * @description A simple method that parses an array of blocks as provided by the API and converts them to something
 	 * the application understands. It also filters out unsupported blocks
 	 */
-	public static parseBlocks(parameters: {
-		parsedBlocks: Array<IBlock>,
+	public static parseBlocks(
+		parsedBlocks: IParsedBlocks,
 		blocks: Array<IBlock> | { [key: string]: IBlock },
 		recursive?: boolean,
-	}): Array<IBlock> | void {
-		const { parsedBlocks, blocks, recursive } = parameters;
+	): IParsedBlocks | void {
+
 		if (isArray(blocks)) {
-			// Loop through the blocks
-			blocks.forEach((block, index) => {
-				if (BlockHelper.isValidBlock(block.id)) {
-					// Add an index so all blocks can be unique even though they have the same Id
-					block.blockIndex = BlockHelper.counter++;
-					// Store a clone in the parsed block array
-					parsedBlocks.push(JSON.parse(JSON.stringify(block)));
-					if (block.data.blocks !== void 0) {
-						if (isArray(block.data.blocks)) {
-							const lastBlock = parsedBlocks[parsedBlocks.length - 1];
-							lastBlock.data.blocks = [];
-							BlockHelper.parseBlocks({
-								parsedBlocks: lastBlock.data.blocks,
-								blocks: block.data.blocks,
-								recursive: true,
-							});
-						} else if (isObject(block.data.blocks)) {
-							// Add the block index to the child blocks
-							Object.keys(parsedBlocks[index].data.blocks).forEach((key) => {
-								const block = parsedBlocks[index].data.blocks[key];
-								block.blockIndex = BlockHelper.counter++;
-							});
-						} else {
-							throw new Error('Unsupported block type!');
-						}
-					}
-				}
-			});
+			BlockHelper.parseArrayBlocks(
+				parsedBlocks,
+				<Array<IBlock>>blocks,
+			);
+
+		} else if (isObject(blocks)) {
+			BlockHelper.parseObjectBlocks(
+				parsedBlocks,
+				<{ [key: string]: IBlock }>blocks,
+			);
+		} else {
+			throw new Error('Unsupported block type!');
 		}
 
+		// if (isArray(blocks)) {
+		// 	// Loop through the blocks
+		// 	blocks.forEach((block, index) => {
+		// 		if (BlockHelper.isValidBlock(block.id)) {
+		// 			// Add an index so all blocks can be unique even though they have the same Id
+		// 			block.blockIndex = BlockHelper.counter++;
+		// 			// Store a clone in the parsed block array
+		// 			parsedBlocks.push(JSON.parse(JSON.stringify(block)));
+		// 			if (block.data.blocks !== void 0) {
+		// 				if (isArray(block.data.blocks)) {
+		// 					const lastBlock = parsedBlocks[parsedBlocks.length - 1];
+		// 					lastBlock.data.blocks = [];
+		// 					BlockHelper.parseBlocks({
+		// 						parsedBlocks: lastBlock.data.blocks,
+		// 						blocks: block.data.blocks,
+		// 						recursive: true,
+		// 					});
+		// 				} else if (isObject(block.data.blocks)) {
+		// 					// Add the block index to the child blocks
+		// 					Object.keys(parsedBlocks[index].data.blocks).forEach((key) => {
+		// 						const block = parsedBlocks[index].data.blocks[key];
+		// 						block.blockIndex = BlockHelper.counter++;
+		// 					});
+		// 				} else {
+		// 					throw new Error('Unsupported block type!');
+		// 				}
+		// 			}
+		// 		}
+		// 	});
+		// }
+		//
 
 		if (!recursive) {
 			return parsedBlocks;
