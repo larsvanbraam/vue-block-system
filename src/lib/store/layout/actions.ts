@@ -10,14 +10,16 @@ export default {
 		// definitions file (Default export of the module has or is using private name 'Promise'.)
 		return <any>new Promise((resolve, reject) => {
 			// Check if the layout is already in cache!
-			if (getters.layoutCache[url]) {
+			if (config.api.layoutCache && getters.layoutCache[url]) {
 				// Update the current UI
 				commit(SET_LAYOUT, getters.layoutCache[url]);
 				// Return the new blocks
 				resolve(getters.blocks);
 			} else {
 				let layout = null;
-				axios.get(config.api.pageCall.replace('{page}', url))
+				const gateway = config.api.axiosInstance || axios;
+
+				gateway.get(config.api.pageCall.replace('{page}', url))
 					// Parse the result to the correct format!
 					.then(result => PageLayoutHelper.parse(result.data.data, url))
 					// Temp store it
