@@ -1,4 +1,3 @@
-import { Promise } from 'es6-promise';
 import { debounce } from 'lodash';
 import ScrollTracker, { ScrollTrackerEvent } from 'seng-scroll-tracker';
 import VueScrollTo from 'vue-scrollto/vue-scrollto';
@@ -6,6 +5,7 @@ import { AbstractPageTransitionComponent } from 'vue-transition-component';
 import { mapState, mapActions, mapGetters, mapMutations } from 'vuex';
 import { InitNamespace } from '../store/init';
 import { LayoutNamespace } from '../store/layout/index';
+import { Promise } from 'es6-promise';
 
 export default {
 	name: 'AbstractContentPageController',

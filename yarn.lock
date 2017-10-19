@@ -12,6 +12,10 @@
   dependencies:
     "@types/node" "*"
 
+"@types/gsap@^1.19.1":
+  version "1.19.1"
+  resolved "https://registry.yarnpkg.com/@types/gsap/-/gsap-1.19.1.tgz#ee93590b1ef7dc86b0b779e94e38b5bad6e8c678"
+
 "@types/handlebars@^4.0.31":
   version "4.0.34"
   resolved "https://registry.yarnpkg.com/@types/handlebars/-/handlebars-4.0.34.tgz#7b7b887b55bfaaa5bb2183a932a97bd4161c3671"
@@ -436,6 +440,10 @@ boom@2.x.x:
   resolved "https://registry.yarnpkg.com/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
   dependencies:
     hoek "2.x.x"
+
+bowser@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/bowser/-/bowser-1.8.0.tgz#889d46ac922ec5db8297672747362ef836781ba7"
 
 brace-expansion@^1.0.0, brace-expansion@^1.1.7:
   version "1.1.8"
@@ -1144,6 +1152,10 @@ es6-promise@^3.2.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-3.3.1.tgz#a08cdde84ccdbf34d027a1451bc91d4bcd28a613"
 
+es6-promise@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.1.1.tgz#8811e90915d9a0dba36274f0b242dbda78f9c92a"
+
 es6-promise@~4.0.3:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.0.5.tgz#7882f30adde5b240ccfa7f7d78c548330951ae42"
@@ -1675,9 +1687,9 @@ growl@1.9.2:
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/growl/-/growl-1.9.2.tgz#0ea7743715db8d8de2c5ede1775e1b45ac85c02f"
 
-gsap@^1.19.1:
-  version "1.20.2"
-  resolved "https://registry.yarnpkg.com/gsap/-/gsap-1.20.2.tgz#c78abd906c32ee21964c1b90f921b5110180c65a"
+gsap@^1.20.3:
+  version "1.20.3"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-1.20.3.tgz#c9a6e7be057cf59417483448f925472fa2f73cd7"
 
 gulp-util@3.0.7:
   version "3.0.7"
@@ -3569,23 +3581,26 @@ send@0.15.3:
     range-parser "~1.2.0"
     statuses "~1.3.1"
 
-seng-disposable@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/seng-disposable/-/seng-disposable-1.0.1.tgz#76a2838f71dc31b49a4643ee0b17c030007df150"
-
-seng-event@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/seng-event/-/seng-event-1.1.1.tgz#a6aa6f5c446cff9c6111edc0195a357a943387b3"
+seng-disposable@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/seng-disposable/-/seng-disposable-1.1.2.tgz#3689f5d08e9d0996aa7dccecb3e6a2ec49a8127b"
   dependencies:
-    seng-disposable "^1.0.1"
+    tslib "^1.2.0"
 
-seng-scroll-tracker@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/seng-scroll-tracker/-/seng-scroll-tracker-1.0.2.tgz#436f80bda7121dd7b03b105597ca11a8afd58e82"
+seng-event@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/seng-event/-/seng-event-1.2.2.tgz#189e0dcd49b5f804dfd23a360c2908a5d8f678f3"
+  dependencies:
+    seng-disposable "^1.1.2"
+    tslib "^1.2.0"
+
+seng-scroll-tracker@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/seng-scroll-tracker/-/seng-scroll-tracker-1.1.0.tgz#ee7337c9425110628b91a19f832cc18589a7add5"
   dependencies:
     element-size "^1.1.1"
     lodash "^4.17.4"
-    seng-event "^1.1.1"
+    seng-event "^1.2.2"
     tslib "^1.2.0"
 
 serve-index@^1.7.2:
@@ -4437,16 +4452,17 @@ vue-scrollto@^2.7.2:
   dependencies:
     bezier-easing "^2.0.3"
 
-vue-transition-component@^0.8.2:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/vue-transition-component/-/vue-transition-component-0.8.2.tgz#877da5e43044975c008d306ccd77f7e0d0a2ca58"
+vue-transition-component@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/vue-transition-component/-/vue-transition-component-1.1.0.tgz#9d3a398fe803dd9805f28054d3cfa6eb6eb8e4ed"
   dependencies:
-    es6-promise "^3.2.1"
-    gsap "^1.19.1"
+    "@types/gsap" "^1.19.1"
+    bowser "^1.8.0"
+    es6-promise "^4.1.1"
+    gsap "^1.20.3"
     lodash "^4.17.4"
-    seng-disposable "^1.0.1"
-    seng-event "^1.1.1"
-    ts-helpers "^1.1.1"
+    seng-disposable "^1.1.2"
+    seng-event "^1.2.2"
     tslib "^1.2.0"
 
 vue-types@^1.0.2:

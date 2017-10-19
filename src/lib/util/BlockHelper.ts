@@ -1,4 +1,4 @@
-import { isArray, isObject } from 'lodash';
+import { isArray, isObject, upperFirst } from 'lodash';
 import IBlock from '../interface/block/IBlock';
 import IParsedBlocks from '../interface/block/IParsedBlocks';
 
@@ -28,6 +28,9 @@ class BlockHelper {
 	): void {
 
 		blocks.forEach((block, index) => {
+			// Pascal case the backend response in case it's in the wrong format!
+			block.id = upperFirst(block.id);
+
 			if (BlockHelper.isValidBlock(block.id)) {
 				// Add an index so all blocks can be unique even though they have the same Id
 				block.blockIndex = BlockHelper.counter++;
@@ -51,6 +54,9 @@ class BlockHelper {
 		// Add the block index to the child blocks
 		Object.keys(blocks).forEach((key) => {
 			const block = blocks[key];
+
+			// Pascal case the backend response in case it's in the wrong format!
+			block.id = upperFirst(block.id);
 
 			if (BlockHelper.isValidBlock(key)) {
 				block.blockIndex = BlockHelper.counter++;
