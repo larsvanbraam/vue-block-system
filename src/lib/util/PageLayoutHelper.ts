@@ -20,6 +20,7 @@ class PageLayoutHelper {
 				id: pageId,
 				data: pageLayout.data || {},
 				title: pageLayout.title,
+				disableCache: pageLayout.disableCache || false,
 				blocks: {},
 			};
 

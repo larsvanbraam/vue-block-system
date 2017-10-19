@@ -10,7 +10,7 @@ export default {
 		// definitions file (Default export of the module has or is using private name 'Promise'.)
 		return <any>new Promise((resolve, reject) => {
 			// Check if the layout is already in cache!
-			if (config.api.layoutCache && getters.layoutCache[url]) {
+			if (getters.layoutCache[url]) {
 				// Update the current UI
 				commit(SET_LAYOUT, getters.layoutCache[url]);
 				// Return the new blocks
@@ -20,12 +20,18 @@ export default {
 				const gateway = config.api.axiosInstance || axios;
 
 				gateway.get(config.api.pageCall.replace('{page}', url))
-					// Parse the result to the correct format!
+				// Parse the result to the correct format!
 					.then(result => PageLayoutHelper.parse(result.data.data, url))
 					// Temp store it
 					.then(parsedResult => (layout = parsedResult))
 					// Save the response in the cached layout object for faster retrieval
-					.then(() => commit(SET_CACHED_LAYOUT, { layout, url }))
+					.then(() => {
+						// Cache the layout if set by the config AND the page-response does not disable the caching
+						// for this specific layout.
+						if (config.api.layoutCache && !layout.disableCache) {
+							commit(SET_CACHED_LAYOUT, { layout, url });
+						}
+					})
 					// Update the current UI
 					.then(() => commit(SET_LAYOUT, layout))
 					// Return the new blocks!

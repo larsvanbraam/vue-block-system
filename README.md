@@ -132,6 +132,7 @@ Vue.use(BlockSystem, {
 			api: {
 				pageCall: 'static/api/page/{page}.json',
 				initCall: 'static/api/init.json',
+				layoutCache: true,
 			},
 			debugLabelStyling: {
 				backgroundColor: 'blue',
@@ -163,6 +164,7 @@ The config object contains the configuration for the block-system
 
 ##### API configuration
 The block system uses axios to do XHR requests, there are two types of requests that will be made. The first one is the `initCall`, this call should return at all the basic information that is required for the site to work. 
+By default every pageCall is cached, this can be disabled by changing the boolean to false.
 
 ```json
 {
@@ -183,6 +185,7 @@ After the init call is completed the block-system will try and load the page lay
 	"statusCode": 200,
 	"data": {
 		"title": "Home",
+		"disableCache": false,
 		"data": {
 			"headerTheme": "red"
 		},
@@ -200,7 +203,10 @@ After the init call is completed the block-system will try and load the page lay
 }
 
 ```
-As you can see the root contains the main information about the page. The title being the title displayed in the tab-bar and the data is extra page related data that you might need on page level coding. After the data the array of blocks is provided and as you can see blocks can be recursively nested. You can see more about this on the block example section
+As you can see the root contains the main information about the page. The title being the title displayed in the 
+tab-bar, the disableCache can be set to false to disable caching of this specific layout(default is set to true) and 
+the data is extra page related data that you might need on page level coding. 
+After the data the array of blocks is provided and as you can see blocks can be recursively nested. You can see more about this on the block example section
 
 ### Wait for the plugin to be ready
 To make sure the block system is ready there is a promise available that will be resolved when the init call is completed. You can use the promise `Vue.blockSystemReady` to check if the system is ready. Simply add it to the `Startup.js` in the `Promise.all[]` check

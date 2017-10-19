@@ -17,6 +17,11 @@ interface IPageLayout {
 	 */
 	data?: any;
 	/**
+	 * @property
+	 * @description By default every page is cached, with this boolean you can disable caching the layout per page.
+	 */
+	disableCache: boolean;
+	/**
 	 * @property blocks
 	 * @description The array of blocks that make up the page
 	 */
