@@ -6,6 +6,7 @@ import { Promise } from 'es6-promise';
 
 // Global configuration object
 export const config = {
+	enablePageTransitionOut: true,
 	api: {
 		initCall: '/api/page/{page}',
 		pageCall: '/api/page/init',

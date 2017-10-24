@@ -1,3 +1,4 @@
+import { config } from '../index';
 import { debounce } from 'lodash';
 import ScrollTracker, { ScrollTrackerEvent } from 'seng-scroll-tracker';
 import VueScrollTo from 'vue-scrollto/vue-scrollto';
@@ -16,7 +17,9 @@ export default {
 			const countBlocks = (blocks) => {
 				Object.keys(blocks).forEach((key) => {
 					++blockCount;
-					if (blocks[key].data && blocks[key].data.blocks) countBlocks(blocks[key].data.blocks);
+					if (blocks[key].data && blocks[key].data.blocks) {
+						countBlocks(blocks[key].data.blocks);
+					}
 				});
 			};
 			countBlocks(this.blocks);
@@ -83,25 +86,28 @@ export default {
 	 * @param next
 	 */
 	beforeRouteUpdate(to, from, next) {
-		Promise.all(Object.keys(this.blockComponents).map(key => this.blockComponents[key].transitionOut()))
-			.then(() => {
-				// Empty the dom before we update the route
-				this.setLayout({ blocks: [], pageTitle: '', id: '' });
+		Promise.all(
+			config.enablePageTransitionOut ? Object.keys(this.blockComponents).map(
+				key => this.blockComponents[key].transitionOut()) : [Promise.resolve()],
+		)
+		.then(() => {
+			// Empty the dom before we update the route
+			this.setLayout({ blocks: [], pageTitle: '', id: '' });
 
-				// Wait for the DOM to be empty before updating the view
-				this.$nextTick(() => {
-					// The route is about to be updated so remove all the blocks from the scrollTracker
-					this.removeBlocksFromScrollTracker(this.blockComponents);
-					// Remove the block reference because they will be destroyed
-					this.blockComponents = {};
-					// Route update should be done right away!
-					this.handleRouteChange(to.path)
-						.then(() => next())
-						.catch((reason) => {
-							console.error('[AbstractContentPageComponent] Something broke after the route update');
-						});
+			// Wait for the DOM to be empty before updating the view
+			this.$nextTick(() => {
+				// The route is about to be updated so remove all the blocks from the scrollTracker
+				this.removeBlocksFromScrollTracker(this.blockComponents);
+				// Remove the block reference because they will be destroyed
+				this.blockComponents = {};
+				// Route update should be done right away!
+				this.handleRouteChange(to.path)
+				.then(() => next())
+				.catch((reason) => {
+					console.error('[AbstractContentPageComponent] Something broke after the route update');
 				});
 			});
+		});
 	},
 	methods: {
 		...mapActions(LayoutNamespace, ['updateLayout']),
@@ -134,9 +140,9 @@ export default {
 		 */
 		handleRouteChange(route) {
 			return this.updateLayout(route)
-				.then(() => this.scrollToBlockFromUrl())
-				.then(() => this.handleRouteChangeComplete())
-				.catch(error => this.$router.push(this.notFoundRoute));
+			.then(() => this.scrollToBlockFromUrl())
+			.then(() => this.handleRouteChangeComplete())
+			.catch(error => this.$router.push(this.notFoundRoute));
 		},
 		/**
 		 * @public

@@ -127,7 +127,7 @@ import block from 'block';
 ...
 Vue.use(BlockSystem, {
 		store,
-		block,
+		block
 		config: {
 			api: {
 				pageCall: 'static/api/page/{page}.json',
@@ -137,6 +137,7 @@ Vue.use(BlockSystem, {
 			debugLabelStyling: {
 				backgroundColor: 'blue',
 			},
+			enablePageTransition: false,
 		},
 	});
 ...
