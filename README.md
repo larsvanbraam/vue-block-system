@@ -137,7 +137,7 @@ Vue.use(BlockSystem, {
 			debugLabelStyling: {
 				backgroundColor: 'blue',
 			},
-			enablePageTransition: false,
+			enablePageTransitionOut: false,
 		},
 	});
 ...
