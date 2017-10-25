@@ -7,6 +7,13 @@ import { Promise } from 'es6-promise';
 // Global configuration object
 export const config = {
 	enablePageTransitionOut: true,
+	blockConfig: {
+		maxFindParentPageCount: 50,
+	},
+	buttonConfig: {
+		scrollToNextBlockDuration: 1000,
+		maxFindParentBlockCount: 50,
+	},
 	api: {
 		initCall: '/api/page/{page}',
 		pageCall: '/api/page/init',

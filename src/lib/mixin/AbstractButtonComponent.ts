@@ -1,7 +1,10 @@
 import * as VueTypes from 'vue-types/dist';
+import * as VueScrollTo from 'vue-scrollto/vue-scrollto';
 import { AbstractTransitionComponent } from 'vue-transition-component';
+import { config } from '../index';
 import LinkType from '../enum/LinkType';
 import ButtonType from '../enum/ButtonType';
+import BlockSystemComponentType from '../enum/BlockSystemComponentType';
 
 export default {
 	name: 'AbstractButtonComponent',
@@ -9,18 +12,27 @@ export default {
 	props: {
 		label: VueTypes.string,
 		title: VueTypes.string.isRequired,
-		type: VueTypes.oneOf([
-			ButtonType.ACTION,
-			ButtonType.LINK,
-		]).isRequired,
-		link: VueTypes.shape({
-			type: VueTypes.oneOf([
-				LinkType.INTERNAL,
-				LinkType.EXTERNAL,
-				LinkType.EXTERNAL_BLANK,
-			]).isRequired,
-			target: VueTypes.string.isRequired,
-		}),
+		type: VueTypes.oneOf(
+			[
+				ButtonType.ACTION,
+				ButtonType.LINK,
+			],
+		).isRequired,
+		link: VueTypes.shape(
+			{
+				type: VueTypes.oneOf(
+					[
+						LinkType.INTERNAL,
+						LinkType.EXTERNAL,
+						LinkType.EXTERNAL_BLANK,
+					],
+				).isRequired,
+				target: VueTypes.string,
+			},
+		),
+	},
+	beforeCreate() {
+		this.blockSystemComponentType = BlockSystemComponentType.BUTTON_COMPONENT;
 	},
 	methods: {
 		/**
@@ -39,6 +51,9 @@ export default {
 						case LinkType.EXTERNAL_BLANK:
 							this.openExternalLink(true);
 							break;
+						case LinkType.SCROLL_TO_NEXT_BLOCK:
+							this.scrollToNextBlock();
+							break;
 						case LinkType.INTERNAL:
 						default:
 							this.openInternalLink();
@@ -49,6 +64,33 @@ export default {
 				default:
 					this.$emit('click');
 					break;
+			}
+		},
+		getParentBlock() {
+			let parent = this.$parent;
+			let attempts = 0;
+
+			// Try to find the first parent that is a page, have a limit of 50 so we will never enter an infinite loop!
+			while (
+				parent.blockSystemComponentType !== BlockSystemComponentType.BLOCK_COMPONENT &&
+				attempts < config.buttonConfig.maxFindParentBlockCount
+			) {
+				++attempts;
+				parent = parent.$parent;
+			}
+
+			return parent;
+		},
+		scrollToNextBlock() {
+			const parentBlock = this.getParentBlock();
+
+			if (parentBlock) {
+				const nextSection = parentBlock.$el.nextElementSibling;
+				if (nextSection) {
+					VueScrollTo.scrollTo(nextSection, config.buttonConfig.scrollToNextBlockDuration, {
+						cancelable: true,
+					});
+				}
 			}
 		},
 		/**

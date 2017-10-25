@@ -2,6 +2,9 @@ import { AbstractTransitionComponent, ComponentType } from 'vue-transition-compo
 import { TweenLite } from 'gsap';
 import * as VueTypes from 'vue-types/dist';
 import { config } from '../index';
+import BlockSystemComponentType from '../enum/BlockSystemComponentType';
+
+export const blockComponentType = 'BlockComponent';
 
 export default {
 	name: 'AbstractBlockComponent',
@@ -11,6 +14,9 @@ export default {
 		debugLabel: VueTypes.boolean,
 		scrollId: VueTypes.string,
 		transitionInThreshold: VueTypes.number.def(0.25),
+	},
+	beforeCreate() {
+		this.blockSystemComponentType = BlockSystemComponentType.BLOCK_COMPONENT;
 	},
 	data() {
 		return {
@@ -28,7 +34,10 @@ export default {
 			let attempts = 0;
 
 			// Try to find the first parent that is a page, have a limit of 50 so we will never enter an infinite loop!
-			while (parent.componentType !== ComponentType.PAGE_COMPONENT && attempts < 50) {
+			while (
+				parent.componentType !== ComponentType.PAGE_COMPONENT &&
+				attempts < config.blockConfig.maxFindParentPageCount
+			) {
 				++attempts;
 				parent = parent.$parent;
 			}
