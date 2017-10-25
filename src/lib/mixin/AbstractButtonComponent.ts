@@ -5,6 +5,8 @@ import { config } from '../index';
 import LinkType from '../enum/LinkType';
 import ButtonType from '../enum/ButtonType';
 import BlockSystemComponentType from '../enum/BlockSystemComponentType';
+import customButtonEventDispatcher from '../event/CustomButtonEventDispatcher';
+import CustomButtonEvent from '../event/CustomButtonEvent';
 
 export default {
 	name: 'AbstractButtonComponent',
@@ -20,18 +22,13 @@ export default {
 		).isRequired,
 		link: VueTypes.shape(
 			{
-				type: VueTypes.oneOf(
-					[
-						LinkType.INTERNAL,
-						LinkType.EXTERNAL,
-						LinkType.EXTERNAL_BLANK,
-					],
-				).isRequired,
+				type: VueTypes.any.isRequired,
 				target: VueTypes.string,
 			},
 		),
 	},
 	beforeCreate() {
+		this.customButtonEventDispatcher = customButtonEventDispatcher;
 		this.blockSystemComponentType = BlockSystemComponentType.BUTTON_COMPONENT;
 	},
 	methods: {
@@ -55,8 +52,15 @@ export default {
 							this.scrollToNextBlock();
 							break;
 						case LinkType.INTERNAL:
-						default:
 							this.openInternalLink();
+							break;
+						default:
+							// Unknown link types will be dispatched as a custom event
+							this.customButtonEventDispatcher.dispatchEvent(
+								new CustomButtonEvent(CustomButtonEvent.FIRE, {
+									event: this.link.type,
+								}),
+							);
 							break;
 					}
 					break;
@@ -74,7 +78,7 @@ export default {
 			while (
 				parent.blockSystemComponentType !== BlockSystemComponentType.BLOCK_COMPONENT &&
 				attempts < config.buttonConfig.maxFindParentBlockCount
-			) {
+				) {
 				++attempts;
 				parent = parent.$parent;
 			}

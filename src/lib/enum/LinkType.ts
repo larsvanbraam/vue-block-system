@@ -7,5 +7,4 @@ export default {
 	EXTERNAL: 'link-type-external',
 	EXTERNAL_BLANK: 'link-type-external-blank',
 	SCROLL_TO_NEXT_BLOCK: 'link-type-scroll-to-next-block',
-	CUSTOM_EVENT: 'link-type-custom',
 };

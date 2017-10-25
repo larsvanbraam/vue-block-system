@@ -15,4 +15,7 @@ export { default as PageLayoutHelper } from './lib/util/PageLayoutHelper';
 export { default as ButtonType } from './lib/enum/ButtonType';
 export { default as LinkType } from './lib/enum/LinkType';
 
+export { default as CustomButtonEvent } from './lib/event/CustomButtonEvent';
+export { default as customButtonEventDispatcher } from './lib/event/CustomButtonEventDispatcher';
+
 export default _export;
