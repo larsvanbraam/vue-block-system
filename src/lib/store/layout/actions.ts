@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Promise } from 'es6-promise';
 import PageLayoutHelper from '../../util/PageLayoutHelper';
 import { SET_LAYOUT, SET_CACHED_LAYOUT, ADD_UNKNOWN_URL } from './mutations';
-import { config } from '../../index';
+import config from '../../config';
 
 export default {
 	updateLayout({ commit, getters }, url) {

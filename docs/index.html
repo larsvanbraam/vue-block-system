@@ -188,7 +188,7 @@ Vue.use(BlockSystem, {
 				<h4 id="store">Store</h4>
 				<p>The store option is the reference to the vuex store.</p>
 				<h4 id="block">Block</h4>
-				<p>The block option is the collection of blocks components that can be used on the page. Create a folder called <strong>block</strong> in the root of your applications src directory (<code>src/block</code>). This file should contain an <code>index.js</code> file that exports the block components just like any other component.</p>
+				<p>The block option is the collection of blocks components that can be used on the page. Create a folder called <strong>block</strong> in the root of your applications src directory (<code>src/block</code>). This file should contain an <code>config.ts</code> file that exports the block components just like any other component.</p>
 				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> BlockBar <span class="hljs-keyword">from</span> <span class="hljs-string">'./BlockBar'</span>;
 <span class="hljs-keyword">import</span> BlockFoo <span class="hljs-keyword">from</span> <span class="hljs-string">'./BlockFoo'</span>;
 
@@ -240,7 +240,7 @@ Vue.use(BlockSystem, {
 </code></pre>
 				<p>from the root of your project. This will give you a couple of template options, choose the one that is named: <strong>block-component</strong> and choose your desired name, I would suggest starting blocks with the <code>Block</code> prefix. </p>
 				<p><em>Note: The first time you generate a button you need to make sure <code>src/component/block</code> exists. If it doesn&#39;t you&#39;ll have to create it manually or run the seng enerator in <a href="https://github.com/mediamonks/seng-generator#generate">forced mode</a></em></p>
-				<p><em>Note 2: make sure to add the newly generated block to the <code>src/block/index.js</code></em></p>
+				<p><em>Note 2: make sure to add the newly generated block to the <code>src/block/config.ts</code></em></p>
 				<h2 id="extra-features">Extra features</h2>
 				<p>Beside the basic usage there are a couple of extra features added which make it faster to build block websites.</p>
 				<h3 id="nesting-blocks-within-blocks">Nesting blocks within blocks</h3>

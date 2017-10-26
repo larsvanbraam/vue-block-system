@@ -148,7 +148,7 @@ Vue.use(BlockSystem, {
 The store option is the reference to the vuex store.
 
 #### Block
-The block option is the collection of blocks components that can be used on the page. Create a folder called **block** in the root of your applications src directory (`src/block`). This file should contain an `index.js` file that exports the block components just like any other component.
+The block option is the collection of blocks components that can be used on the page. Create a folder called **block** in the root of your applications src directory (`src/block`). This file should contain an `config.ts` file that exports the block components just like any other component.
 
 ```typescript
 import BlockBar from './BlockBar';
@@ -237,7 +237,7 @@ from the root of your project. This will give you a couple of template options, 
 
 *Note: The first time you generate a button you need to make sure `src/component/block` exists. If it doesn't you'll have to create it manually or run the seng enerator in [forced mode](https://github.com/mediamonks/seng-generator#generate)*
 
-*Note 2: make sure to add the newly generated block to the `src/block/index.js`*
+*Note 2: make sure to add the newly generated block to the `src/block/config.ts`*
 
 #### Typing block data
 When a block is created you get a `[blockNam]Data.js` file in your block folder, you should use this file to predefine all the data that your block will receive from the backend in the page call. This typing is done using [VueTypes](https://github.com/dwightjack/vue-types) which is included in the vue-skeleton. Typing your data is a way to avoid data mismatches with the backend and for generating documentation.

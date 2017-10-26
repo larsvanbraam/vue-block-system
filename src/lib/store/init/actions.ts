@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { SET_DATA } from './mutations';
-import { config } from '../../index';
+import config from '../../config';
 
 export default {
 	setInit({ commit, getters }, url) {

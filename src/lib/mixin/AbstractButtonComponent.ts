@@ -1,12 +1,12 @@
 import * as VueTypes from 'vue-types/dist';
 import * as VueScrollTo from 'vue-scrollto/vue-scrollto';
 import { AbstractTransitionComponent } from 'vue-transition-component';
-import { config } from '../index';
 import LinkType from '../enum/LinkType';
 import ButtonType from '../enum/ButtonType';
 import BlockSystemComponentType from '../enum/BlockSystemComponentType';
 import customButtonEventDispatcher from '../event/CustomButtonEventDispatcher';
 import CustomButtonEvent from '../event/CustomButtonEvent';
+import config from '../config';
 
 export default {
 	name: 'AbstractButtonComponent',

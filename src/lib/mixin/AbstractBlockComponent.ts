@@ -1,7 +1,7 @@
 import { AbstractTransitionComponent, ComponentType } from 'vue-transition-component';
 import { TweenLite } from 'gsap';
 import * as VueTypes from 'vue-types/dist';
-import { config } from '../index';
+import config from '../config';
 import BlockSystemComponentType from '../enum/BlockSystemComponentType';
 
 export const blockComponentType = 'BlockComponent';
