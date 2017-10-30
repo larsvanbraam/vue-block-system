@@ -23,7 +23,7 @@ export default {
 		link: VueTypes.shape(
 			{
 				type: VueTypes.any.isRequired,
-				target: VueTypes.string,
+				target: VueTypes.any,
 			},
 		),
 	},
