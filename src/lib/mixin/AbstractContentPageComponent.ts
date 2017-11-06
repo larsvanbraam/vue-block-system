@@ -144,7 +144,7 @@ export default {
 			.then(() => this.handleRouteChangeComplete())
 			.catch(() => {
 				if (this.notFoundRoute === this.$router.currentRoute.path) {
-					this.handleRouteChange(this.notFoundRout)
+					this.handleRouteChange(this.notFoundRout);
 				} else {
 					this.$router.push(this.notFoundRoute);
 				}
