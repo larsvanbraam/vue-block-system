@@ -142,7 +142,13 @@ export default {
 			return this.updateLayout(route)
 			.then(() => this.scrollToBlockFromUrl())
 			.then(() => this.handleRouteChangeComplete())
-			.catch(error => this.$router.push(this.notFoundRoute));
+			.catch(() => {
+				if (this.notFoundRoute === this.$router.currentRoute.path) {
+					this.handleRouteChange(this.notFoundRout)
+				} else {
+					this.$router.push(this.notFoundRoute);
+				}
+			});
 		},
 		/**
 		 * @public
