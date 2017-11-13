@@ -321,7 +321,7 @@ export default {
 		handleResize() {
 			Object.keys(this.scrollTrackerPoints).forEach((blockId) => {
 				const block = this.blockComponents[blockId];
-				const scrollTrackerPoint = this.scrollTrackerPoints[blockId];
+				const scrollTrackerPoint = this.scrollTrackerPoints[blockId].point;
 
 				const element = block.$el;
 				const parent = block.$parent.$el;
