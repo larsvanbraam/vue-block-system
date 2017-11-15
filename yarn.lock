@@ -4687,10 +4687,6 @@ vrsource-tslint-rules@~5.8.0:
   dependencies:
     tslint "~5.8.0"
 
-vue-router@2.8.1:
-  version "2.8.1"
-  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-2.8.1.tgz#9833c9ee57ac83beb0269056fefee71713f20695"
-
 vue-scrollto@^2.7.2:
   version "2.7.10"
   resolved "https://registry.yarnpkg.com/vue-scrollto/-/vue-scrollto-2.7.10.tgz#f79dd9e9068c22a40fab92ee14851227ff2b1554"
@@ -4698,8 +4694,8 @@ vue-scrollto@^2.7.2:
     bezier-easing "^2.0.3"
 
 vue-transition-component@^1.1.0:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/vue-transition-component/-/vue-transition-component-1.1.8.tgz#8d73b4abebba96b655e37473780a41f5897925f2"
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/vue-transition-component/-/vue-transition-component-1.1.10.tgz#cad5fe574c71a9261ad5913811aed7793046e495"
   dependencies:
     "@types/gsap" "^1.19.1"
     bowser "^1.8.0"
@@ -4709,7 +4705,6 @@ vue-transition-component@^1.1.0:
     seng-disposable "^1.1.3"
     seng-event "^1.2.3"
     tslib "^1.2.0"
-    vue-router "2.8.1"
 
 vue-types@^1.0.2:
   version "1.0.2"
@@ -4717,11 +4712,11 @@ vue-types@^1.0.2:
   dependencies:
     lodash.isplainobject "4.0.6"
 
-vue@2.4.4:
+vue@^2.2.5:
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.4.4.tgz#ea9550b96a71465fd2b8b17b61673b3561861789"
 
-vuex@^2.3.1:
+vuex@^2.2.1:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-2.5.0.tgz#20f0265ade6c9a5ac6724a405d3ffdb4726c9741"
 
