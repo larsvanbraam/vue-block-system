@@ -92,6 +92,7 @@ export default {
 				const nextSection = parentBlock.$el.nextElementSibling;
 				if (nextSection) {
 					VueScrollTo.scrollTo(nextSection, config.buttonConfig.scrollToNextBlockDuration, {
+						offset: config.buttonConfig.scrollToNextBlockOffset,
 						cancelable: true,
 					});
 				}

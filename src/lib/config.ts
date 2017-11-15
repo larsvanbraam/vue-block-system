@@ -6,6 +6,7 @@ export default {
 	},
 	buttonConfig: {
 		scrollToNextBlockDuration: 1000,
+		scrollToNextBlockOffset: 0,
 		maxFindParentBlockCount: 50,
 	},
 	api: {
