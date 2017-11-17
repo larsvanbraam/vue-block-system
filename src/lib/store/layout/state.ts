@@ -26,6 +26,11 @@ export default {
 	pageId: '',
 	/**
 	 * @property
+	 * @description The url of the current page
+	 */
+	pageUrl: '',
+	/**
+	 * @property
 	 * @description An array of urls that failed so we do not try to load it again when it fails!
 	 */
 	unknownUrls: [],

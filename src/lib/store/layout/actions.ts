@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Promise } from 'es6-promise';
 import PageLayoutHelper from '../../util/PageLayoutHelper';
-import { SET_LAYOUT, SET_CACHED_LAYOUT, ADD_UNKNOWN_URL } from './mutations';
+import { SET_LAYOUT, SET_PAGE_URL, SET_CACHED_LAYOUT, ADD_UNKNOWN_URL } from './mutations';
 import config from '../../config';
 
 export default {
@@ -11,6 +11,8 @@ export default {
 		return <any>new Promise((resolve, reject) => {
 			// Check if the layout is already in cache!
 			if (getters.layoutCache[url]) {
+				// Update the current page url
+				commit(SET_PAGE_URL, url)
 				// Update the current UI
 				commit(SET_LAYOUT, getters.layoutCache[url]);
 				// Return the new blocks
@@ -32,6 +34,8 @@ export default {
 							commit(SET_CACHED_LAYOUT, { layout, url });
 						}
 					})
+					// Update the current page url
+					.then(() => commit(SET_PAGE_URL, url))
 					// Update the current UI
 					.then(() => commit(SET_LAYOUT, layout))
 					// Return the new blocks!
