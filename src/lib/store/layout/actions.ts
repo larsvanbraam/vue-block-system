@@ -12,7 +12,7 @@ export default {
 			// Check if the layout is already in cache!
 			if (getters.layoutCache[url]) {
 				// Update the current page url
-				commit(SET_PAGE_URL, url)
+				commit(SET_PAGE_URL, url);
 				// Update the current UI
 				commit(SET_LAYOUT, getters.layoutCache[url]);
 				// Return the new blocks

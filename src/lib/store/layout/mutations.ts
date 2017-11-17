@@ -11,7 +11,7 @@ export default {
 		state.pageId = layout.pageId;
 	},
 	[SET_PAGE_URL](state, url) {
-		state.pageUrl = url
+		state.pageUrl = url;
 	},
 	[SET_CACHED_LAYOUT](state, { layout, url }) {
 		state.layoutCache[url] = layout;
