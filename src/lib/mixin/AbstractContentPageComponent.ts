@@ -90,7 +90,7 @@ export default {
 	 * @param next
 	 */
 	beforeRouteUpdate(to, from, next) {
-		if(to.path === from.path && from.hash !== to.hash) {
+		if (to.path === from.path && from.hash !== to.hash) {
 			this.scrollToBlockFromUrl(config.buttonConfig.scrollToNextBlockDuration);
 			next();
 		} else {
@@ -186,14 +186,17 @@ export default {
 							foundComponent = true;
 
 							// Use the scroll plugin to change the scroll position to the desired element!
-							setTimeout(() => {
-								VueScrollTo.scrollTo(this.blockComponents[key].$el, scrollDuration, {
-									cancelable: true,
-									offset: config.buttonConfig.scrollToNextBlockOffset,
-									onDone: resolve,
-									onCancel: resolve,
-								});
-							}, scrollTimeout);
+							setTimeout(
+								() => {
+									VueScrollTo.scrollTo(this.blockComponents[key].$el, scrollDuration, {
+										cancelable: true,
+										offset: config.buttonConfig.scrollToNextBlockOffset,
+										onDone: resolve,
+										onCancel: resolve,
+									});
+								},
+								scrollTimeout,
+							);
 						}
 					});
 
