@@ -73,8 +73,12 @@ export default {
 	 * @param next
 	 */
 	beforeRouteEnter(to, from, next) {
-		// Wait for it to be done, then trigger the route change
-		next(vm => vm.handleRouteChange(to.path === '/' ? vm.landingRoute : to.path));
+		if (to.path === from.path && from.hash !== to.hash) {
+			next();
+		} else {
+			// Wait for it to be done, then trigger the route change
+			next(vm => vm.handleRouteChange(to.path === '/' ? vm.landingRoute : to.path));
+		}
 	},
 	/**
 	 * @public
@@ -86,28 +90,33 @@ export default {
 	 * @param next
 	 */
 	beforeRouteUpdate(to, from, next) {
-		Promise.all(
-			config.enablePageTransitionOut ? Object.keys(this.blockComponents).map(
-				key => this.blockComponents[key].transitionOut()) : [Promise.resolve()],
-		)
-		.then(() => {
-			// Empty the dom before we update the route
-			this.setLayout({ blocks: [], pageTitle: '', id: '' });
+		if(to.path === from.path && from.hash !== to.hash) {
+			this.scrollToBlockFromUrl(config.buttonConfig.scrollToNextBlockDuration);
+			next();
+		} else {
+			Promise.all(
+				config.enablePageTransitionOut ? Object.keys(this.blockComponents).map(
+					key => this.blockComponents[key].transitionOut()) : [Promise.resolve()],
+			)
+			.then(() => {
+				// Empty the dom before we update the route
+				this.setLayout({ blocks: [], pageTitle: '', id: '' });
 
-			// Wait for the DOM to be empty before updating the view
-			this.$nextTick(() => {
-				// The route is about to be updated so remove all the blocks from the scrollTracker
-				this.removeBlocksFromScrollTracker(this.blockComponents);
-				// Remove the block reference because they will be destroyed
-				this.blockComponents = {};
-				// Route update should be done right away!
-				this.handleRouteChange(to.path)
-				.then(() => next())
-				.catch((reason) => {
-					console.error('[AbstractContentPageComponent] Something broke after the route update');
+				// Wait for the DOM to be empty before updating the view
+				this.$nextTick(() => {
+					// The route is about to be updated so remove all the blocks from the scrollTracker
+					this.removeBlocksFromScrollTracker(this.blockComponents);
+					// Remove the block reference because they will be destroyed
+					this.blockComponents = {};
+					// Route update should be done right away!
+					this.handleRouteChange(to.path)
+					.then(() => next())
+					.catch((reason) => {
+						console.error('[AbstractContentPageComponent] Something broke after the route update');
+					});
 				});
 			});
-		});
+		}
 	},
 	methods: {
 		...mapActions(LayoutNamespace, ['updateLayout']),
@@ -129,7 +138,7 @@ export default {
 				// When all components are ready we start adding the blocks to the scroll tracker
 				this.addBlocksToScrollTracker(this.blockComponents);
 				// All blocks loaded so check if we need to scroll to the hash from the url
-				this.scrollToBlockFromUrl();
+				this.scrollToBlockFromUrl(1, 1000);
 			}
 		},
 		/**
@@ -167,7 +176,7 @@ export default {
 		 * @description After page is loaded we can scroll to a block based on the scrollId
 		 * @returns Promise<void>
 		 */
-		scrollToBlockFromUrl() {
+		scrollToBlockFromUrl(scrollDuration:number, scrollTimeout:number = 0) {
 			return new Promise((resolve) => {
 				if (window.location.hash) {
 					let foundComponent = false;
@@ -178,13 +187,13 @@ export default {
 
 							// Use the scroll plugin to change the scroll position to the desired element!
 							setTimeout(() => {
-								VueScrollTo.scrollTo(this.blockComponents[key].$el, 1, {
+								VueScrollTo.scrollTo(this.blockComponents[key].$el, scrollDuration, {
 									cancelable: true,
 									offset: config.buttonConfig.scrollToNextBlockOffset,
 									onDone: resolve,
 									onCancel: resolve,
 								});
-							}, 1000);
+							}, scrollTimeout);
 						}
 					});
 

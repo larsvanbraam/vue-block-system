@@ -104,7 +104,14 @@ export default {
 		 * @description When the type is an internal link the router should navigate to the provided url
 		 */
 		openInternalLink() {
-			this.$router.push(this.link.target);
+			const hash = this.link.target.split('#')[1];
+			const target = this.link.target.split('#')[0];
+
+			if (hash && this.$router.currentRoute.path === target) {
+				window.location.hash = hash;
+			} else {
+				this.$router.push(this.link.target);
+			}
 		},
 		/**
 		 * @public

@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = require("./lib/index");
+var vue_transition_component_1 = require("vue-transition-component");
+exports.COMPONENT_ID = vue_transition_component_1.COMPONENT_ID;
 var AbstractBlockComponent_1 = require("./lib/mixin/AbstractBlockComponent");
 exports.AbstractBlockComponent = AbstractBlockComponent_1.default;
 var AbstractButtonComponent_1 = require("./lib/mixin/AbstractButtonComponent");
