@@ -14,6 +14,7 @@ export default {
 		pageCall: '/api/page/init',
 		axiosInstance: null,
 		layoutCache: true,
+		stripLeadingSlash: false,
 	},
 	debugLabelStyling: {
 		font: '10px/1 sans-serif',

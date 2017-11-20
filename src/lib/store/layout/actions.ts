@@ -5,7 +5,8 @@ import { SET_LAYOUT, SET_PAGE_URL, SET_CACHED_LAYOUT, ADD_UNKNOWN_URL } from './
 import config from '../../config';
 
 export default {
-	updateLayout({ commit, getters }, url) {
+	updateLayout({ commit, getters }, sourceUrl) {
+		const url = config.api.stripLeadingSlash ? sourceUrl.replace(/^\/+/g, '') : sourceUrl;
 		// Note: without the <any> cast it will throw an error when building for npm (compile:npm) when creating the
 		// definitions file (Default export of the module has or is using private name 'Promise'.)
 		return <any>new Promise((resolve, reject) => {
