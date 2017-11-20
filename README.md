@@ -7,8 +7,6 @@
     <img src="http://vue-block-system.larsvanbraam.nl/vue-block-system-1024.png" alt="vue-block-system" width="512"/>
 </p>
 
-# vue-block-system
-
 Easily create block based websites! 
 
 The block system uses the vue-transition-component to handle all component transitions. If you want to read more about this see the [documentation](https://larsvanbraam.github.io/vue-transition-component/). All blocks are transitioned when they enter the viewport. This is done using the [seng-scroll-tracker](https://mediamonks.github.io/seng-scroll-tracker/). 
