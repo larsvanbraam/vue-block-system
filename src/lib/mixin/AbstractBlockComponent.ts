@@ -12,7 +12,6 @@ export default {
 	props: {
 		data: VueTypes.object.isRequired,
 		debugLabel: VueTypes.boolean,
-		scrollId: VueTypes.string,
 		transitionInThreshold: VueTypes.number.def(0.25),
 	},
 	beforeCreate() {

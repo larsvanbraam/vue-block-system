@@ -1,7 +1,7 @@
 import { debounce } from 'lodash';
 import { Promise } from 'es6-promise';
 import ScrollTracker, { ScrollTrackerEvent } from 'seng-scroll-tracker';
-import VueScrollTo from 'vue-scrollto/vue-scrollto';
+import * as VueScrollTo from 'vue-scrollto/vue-scrollto';
 import { AbstractPageTransitionComponent } from 'vue-transition-component';
 import { mapState, mapActions, mapGetters, mapMutations } from 'vuex';
 import { InitNamespace } from '../store/init';
@@ -128,6 +128,8 @@ export default {
 			if (Object.keys(this.blockComponents).length === this.totalBlocks) {
 				// When all components are ready we start adding the blocks to the scroll tracker
 				this.addBlocksToScrollTracker(this.blockComponents);
+				// All blocks loaded so check if we need to scroll to the hash from the url
+				this.scrollToBlockFromUrl();
 			}
 		},
 		/**
@@ -140,7 +142,6 @@ export default {
 		 */
 		handleRouteChange(route) {
 			return this.updateLayout(route)
-			.then(() => this.scrollToBlockFromUrl())
 			.then(() => this.handleRouteChangeComplete())
 			.catch(() => {
 				if (this.notFoundRoute === this.$router.currentRoute.path) {
@@ -169,16 +170,28 @@ export default {
 		scrollToBlockFromUrl() {
 			return new Promise((resolve) => {
 				if (window.location.hash) {
+					let foundComponent = false;
 					Object.keys(this.blockComponents).forEach((key, index) => {
-						if (this.blockComponents[key].scrollId === window.location.hash.slice(1)) {
+						if (this.blockComponents[key].data.scrollId === window.location.hash.slice(1)) {
+							// Mark as found
+							foundComponent = true;
+
 							// Use the scroll plugin to change the scroll position to the desired element!
-							VueScrollTo.scrollTo(this.blockComponents[key].$el, 1, {
-								cancelable: true,
-								onDone: resolve,
-								onCancel: resolve,
-							});
+							setTimeout(() => {
+								VueScrollTo.scrollTo(this.blockComponents[key].$el, 1, {
+									cancelable: true,
+									offset: config.buttonConfig.scrollToNextBlockOffset,
+									onDone: resolve,
+									onCancel: resolve,
+								});
+							}, 1000);
 						}
 					});
+
+					// Scroll section is not  found, so resolve anyway
+					if (!foundComponent) {
+						resolve();
+					}
 				} else {
 					resolve();
 				}
