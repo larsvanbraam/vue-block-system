@@ -3,7 +3,9 @@
 [![npm](https://img.shields.io/npm/dm/vue-block-system.svg?maxAge=2592000)](https://www.npmjs.com/package/vue-block-system)
 [![GitHub issues](https://img.shields.io/github/issues/larsvanbraam/vue-block-system.svg?style=flat-square)](https://github.com/larsvanbraam/vue-block-system/issues)
 
-# vue-block-system
+<p align="center">
+    <img src="http://vue-block-system.larsvanbraam.nl/vue-block-system-1024.png" alt="vue-block-system" width="512"/>
+</p>
 
 Easily create block based websites! 
 
