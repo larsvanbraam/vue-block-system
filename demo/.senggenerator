@@ -1,4 +1,0 @@
-{
-  "templatePath": "./template,./node_modules/vue-block-system/template,./node_modules/vue-transition-component/template",
-  "destination": "./src/component"
-}

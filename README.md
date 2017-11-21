@@ -26,10 +26,12 @@ npm i -S vue-block-system
 ```
 
 ## Demo
-The repository contains a demo setup for the block system. It's based on the 0.3.1 version of the vue-skeleton. Since the block system is a plugin it should still work with newer versions of the skeleton. You can preview the demo either downloading the demo folder and running `yarn` to install all dependencies and then run `yarn dev` to start the dev server. 
+I've created a demo repository that contains the setup for the latest vue-skeleton (v0.8.1) with the vue-block-system
+(v0.7.3) installed. You can inspect the code there or if you just want to preview the block system you can visit the
+demo online!
 
-### [Alternatively you can check the demo online.](http://vue-block-system.larsvanbraam.nl)
-
+### [Demo repository](https://github.com/larsvanbraam/vue-block-system-demo)
+### [Online demo](http://vue-block-system.larsvanbraam.nl)
 
 ## Usage
 
