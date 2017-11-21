@@ -1,6 +1,6 @@
 import { default as _export } from './lib/index';
 
-export { COMPONENT_ID } from 'vue-transition-component';
+export { COMPONENT_ID, AbstractRegistrableComponent } from 'vue-transition-component';
 
 export { default as IBlock } from './lib/interface/block/IBlock';
 export { default as ILink } from './lib/interface/action/ILink';
