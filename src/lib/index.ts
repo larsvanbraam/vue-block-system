@@ -1,9 +1,11 @@
 import init, { InitNamespace } from './store/init';
 import layout2, { LayoutNamespace } from './store/layout';
 import BlockHelper from './util/BlockHelper';
-import { merge } from 'lodash';
 import { Promise } from 'es6-promise';
 import config from './config';
+
+// Tree not working with current webpack setup!
+const merge = require('lodash/merge');
 
 export default {
 	install(Vue, options) {

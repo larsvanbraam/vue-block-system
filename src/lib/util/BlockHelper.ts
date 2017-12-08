@@ -1,6 +1,10 @@
-import { isArray, isObject, upperFirst } from 'lodash';
 import IBlock from '../interface/block/IBlock';
 import IParsedBlocks from '../interface/block/IParsedBlocks';
+
+// Tree not working with current webpack setup!
+const isArray = require('lodash/isArray');
+const isObject = require('lodash/isObject');
+const upperFirst = require('lodash/upperFirst');
 
 /**
  * @class BlockHelper
@@ -100,38 +104,6 @@ class BlockHelper {
 			throw new Error('Unsupported block type!');
 		}
 
-		// if (isArray(blocks)) {
-		// 	// Loop through the blocks
-		// 	blocks.forEach((block, index) => {
-		// 		if (BlockHelper.isValidBlock(block.id)) {
-		// 			// Add an index so all blocks can be unique even though they have the same Id
-		// 			block.blockIndex = BlockHelper.counter++;
-		// 			// Store a clone in the parsed block array
-		// 			parsedBlocks.push(JSON.parse(JSON.stringify(block)));
-		// 			if (block.data.blocks !== void 0) {
-		// 				if (isArray(block.data.blocks)) {
-		// 					const lastBlock = parsedBlocks[parsedBlocks.length - 1];
-		// 					lastBlock.data.blocks = [];
-		// 					BlockHelper.parseBlocks({
-		// 						parsedBlocks: lastBlock.data.blocks,
-		// 						blocks: block.data.blocks,
-		// 						recursive: true,
-		// 					});
-		// 				} else if (isObject(block.data.blocks)) {
-		// 					// Add the block index to the child blocks
-		// 					Object.keys(parsedBlocks[index].data.blocks).forEach((key) => {
-		// 						const block = parsedBlocks[index].data.blocks[key];
-		// 						block.blockIndex = BlockHelper.counter++;
-		// 					});
-		// 				} else {
-		// 					throw new Error('Unsupported block type!');
-		// 				}
-		// 			}
-		// 		}
-		// 	});
-		// }
-		//
-
 		if (!recursive) {
 			return parsedBlocks;
 		}
@@ -164,7 +136,7 @@ class BlockHelper {
 	 */
 	public static normalizeChildBlocks(blocks: Array<IBlock> | { [key: string]: IBlock }): Array<IBlock> {
 		if (isArray(blocks)) {
-			return blocks;
+			return <Array<IBlock>>blocks;
 		} else {
 			return Object.keys(blocks).map((key) => {
 				return {
