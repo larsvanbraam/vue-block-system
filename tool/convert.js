@@ -14,7 +14,7 @@ const actionType = {
 const actions = [
 	{
 		type: actionType.RUN,
-		command: 'sg settings -t ./template,./node_modules/vue-block-system/template',
+		command: 'sg settings -t ./build-tools/template,./node_modules/vue-block-system/template',
 	},
 	{
 		type: actionType.RUN,

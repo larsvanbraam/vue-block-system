@@ -68,7 +68,9 @@ const startUp = store => {
 	// Add async methods to the Promise.all array
 	return Promise.all([
 		Vue.blockSystemReady,
-		configManager.getVariable(VariableNames.LOCALE_ENABLED) ? waitForLocale(store) : Promise.resolve(),
+    configManager.getVariable(VariableNames.LOCALE_ENABLED)
+      ? waitForLocale(store)
+      : Promise.resolve(),
 	]);
 };
 
