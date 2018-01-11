@@ -2,7 +2,5 @@
 <script src="./{{name_pc}}.js"></script>
 
 <template>
-	<button @click="handleClick">
-		{{name_pc}}
-	</button>
+  <button @click="handleClick">{{name_pc}}</button>
 </template>

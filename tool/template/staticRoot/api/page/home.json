@@ -1,8 +1,8 @@
 {
   "statusCode": 200,
   "data": {
-	"title": "Home",
-	"data": {},
-	"blocks": []
+    "title": "Home",
+    "data": {},
+    "blocks": []
   }
 }

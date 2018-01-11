@@ -5,5 +5,5 @@ import VueTypes from 'vue-types';
  * @param {placeholder} scrollId unique-block-id
  */
 export default {
-	scrollId: VueTypes.string,
+  scrollId: VueTypes.string,
 };

@@ -39,14 +39,14 @@ const store = getStore();
 const localeConfig = getLocaleConfig();
 
 if (localeConfig.localeEnabled) {
-	Vue.use(VueI18nManager, {
-		store,
-		router,
-		config: localeConfig.config,
-		proxy: localeLoader,
-	});
+  Vue.use(VueI18nManager, {
+    store,
+    router,
+    config: localeConfig.config,
+    proxy: localeLoader,
+  });
 
-	Vue.initI18nManager();
+  Vue.initI18nManager();
 }
 
 // sync router data to store
@@ -54,9 +54,9 @@ sync(store, router);
 
 // Init new vue app
 const app = new Vue({
-	router,
-	store,
-	render: createElement => createElement(App, { props: { [COMPONENT_ID]: 'app' } }),
+  router,
+  store,
+  render: createElement => createElement(App, { props: { [COMPONENT_ID]: 'app' } }),
 });
 
 // Mount the app after startUp

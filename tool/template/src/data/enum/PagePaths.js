@@ -1,3 +1,3 @@
 export default {
-	CONTENT_PAGE: '*',
+  CONTENT_PAGE: '*',
 };
