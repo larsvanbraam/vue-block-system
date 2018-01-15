@@ -39,8 +39,8 @@ const initPlugins = () => {
     block,
     config: {
       api: {
-        pageCall: 'static/api/page/{page}.json',
-        initCall: 'static/api/init.json',
+        pageCall: 'api/page/{page}.json',
+        initCall: 'api/init.json',
       },
     },
   });
