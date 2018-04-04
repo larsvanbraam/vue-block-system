@@ -33,7 +33,9 @@ export default {
 	watch: {
 		pageTitle(value) {
 			// Update the document title based on the page title value
-			document.title = value;
+			if(value !== undefined) {
+				document.title = value;
+			}
 		},
 	},
 	beforeCreate() {
