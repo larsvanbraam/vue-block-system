@@ -1,19 +1,18 @@
 import Vue from 'vue';
 import BlockSystem, { ButtonType, LinkType } from 'vue-block-system';
-import axios from 'axios';
 import block from 'block';
-import getStore from 'store';
+import axios from 'axios';
 import VueExposePlugin from 'util/VueExposePlugin';
 import { URLNames, PropertyNames, VariableNames } from 'data/enum/configNames';
-import PageNames from 'data/enum/PageNames';
-import PagePaths from 'data/enum/PagePaths';
+import RouteNames from 'data/enum/RouteNames';
+import RoutePaths from 'data/enum/RoutePaths';
 import { createPath } from 'util/routeUtils';
 import Params from 'data/enum/Params';
 import { getValue } from 'util/injector';
 import { CONFIG_MANAGER, GATEWAY } from 'data/Injectables';
 import localeLoader from 'util/localeLoader';
 
-const initPlugins = () => {
+const initPlugins = (store) => {
   const configManager = getValue(CONFIG_MANAGER);
 
   // expose objects to the Vue prototype for easy access in your vue templates and components
@@ -26,16 +25,14 @@ const initPlugins = () => {
     URLNames,
     PropertyNames,
     VariableNames,
-    PageNames,
-    PagePaths,
+    RouteNames,
+    RoutePaths,
     Params,
     createPath,
-    ButtonType,
-    LinkType,
   });
 
   Vue.use(BlockSystem, {
-    store: getStore(),
+    store,
     block,
     config: {
       api: {
@@ -61,7 +58,7 @@ const waitForLocale = store =>
 
 const startUp = store => {
   // Initialise plugins
-  initPlugins();
+  initPlugins(store);
 
   const configManager = getValue(CONFIG_MANAGER);
 

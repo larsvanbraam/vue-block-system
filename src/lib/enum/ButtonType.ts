@@ -3,6 +3,6 @@
  * data. If the type is set to ACTION this means an click event will be $emitted.
  */
 export default {
-	LINK: 'button-type-link',
-	ACTION: 'button-type-action',
+  LINK: 'button-type-link',
+  ACTION: 'button-type-action',
 };

@@ -1,36 +1,34 @@
-import { Promise } from 'es6-promise';
-import IBlock from '../interface/block/IBlock';
-import IPageLayout from '../interface/layout/IPageLayout';
 import BlockHelper from '../util/BlockHelper';
+import { IPageLayout } from '../interface/layout/IPageLayout';
+import { IBlock } from '../interface/block/IBlock';
 
-class PageLayoutHelper {
+export default class PageLayoutHelper {
+  /**
+   * @public
+   * @method parse
+   * @param pageLayout
+   * @param pageId
+   * @description Method that parses the page layout!
+   * @returns {Promise<IPageLayout>}
+   */
+  public static parse(pageLayout: IPageLayout, pageId: string): Promise<IPageLayout> {
+    return new Promise((resolve: (result: IPageLayout) => void) => {
+      // Create the layout object
+      const layout: IPageLayout = {
+        id: pageId,
+        data: pageLayout.data || {},
+        title: pageLayout.title,
+        disableCache: pageLayout.disableCache || false,
+        blocks: {},
+      };
 
-	/**
-	 * @public
-	 * @method parse
-	 * @param pageLayout
-	 * @param pageId
-	 * @description Method that parses the page layout!
-	 * @returns {Promise<IPageLayout>}
-	 */
-	public static parse(pageLayout: IPageLayout, pageId: string): Promise<IPageLayout> {
-		return new Promise((resolve: (result: IPageLayout) => void) => {
-			// Create the layout object
-			const layout: IPageLayout = {
-				id: pageId,
-				data: pageLayout.data || {},
-				title: pageLayout.title,
-				disableCache: pageLayout.disableCache || false,
-				blocks: {},
-			};
+      // Loop through all the blocks and check if they are valid
+      layout.blocks = <{ [key: string]: IBlock }>BlockHelper.parseBlocks(
+        layout.blocks,
+        pageLayout.blocks,
+      );
 
-			// Loop through all the blocks and check if they are valid
-			layout.blocks = <{ [key: string]: IBlock }>BlockHelper.parseBlocks(
-				layout.blocks, pageLayout.blocks);
-
-			resolve(layout);
-		});
-	}
+      resolve(layout);
+    });
+  }
 }
-
-export default PageLayoutHelper;

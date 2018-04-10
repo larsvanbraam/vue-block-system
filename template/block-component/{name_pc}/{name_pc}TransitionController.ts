@@ -1,6 +1,6 @@
 import { AbstractTransitionController } from 'vue-transition-component';
 
-class {{name_pc}}TransitionController extends AbstractTransitionController {
+export default class {{name_pc}}TransitionController extends AbstractTransitionController {
   /**
    * @public
    * @method setupTransitionInTimeline
@@ -17,5 +17,3 @@ class {{name_pc}}TransitionController extends AbstractTransitionController {
   protected setupTransitionOutTimeline(): void {
   }
 }
-
-export default {{name_pc}}TransitionController;
