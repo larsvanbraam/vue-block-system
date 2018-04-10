@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PageLayoutHelper | vue-block-system</title>
+	<title>ILink | vue-block-system</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="pagelayouthelper.html">PageLayoutHelper</a>
+					<a href="ilink.html">ILink</a>
 				</li>
 			</ul>
-			<h1>Class PageLayoutHelper</h1>
+			<h1>Interface ILink</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">PageLayoutHelper</span>
+						<span class="target">ILink</span>
 					</li>
 				</ul>
 			</section>
@@ -79,51 +79,100 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Methods</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="pagelayouthelper.html#parse" class="tsd-kind-icon">parse</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ilink.html#label" class="tsd-kind-icon">label</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ilink.html#target" class="tsd-kind-icon">target</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ilink.html#title" class="tsd-kind-icon">title</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ilink.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="parse" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> parse</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">parse<span class="tsd-signature-symbol">(</span>pageLayout<span class="tsd-signature-symbol">: </span><a href="../interfaces/ipagelayout.html" class="tsd-signature-type">IPageLayout</a>, pageId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/ipagelayout.html" class="tsd-signature-type">IPageLayout</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/larsvanbraam/vue-block-system/blob/fef8cd7/src/lib/util/PageLayoutHelper.ts#L14">src/lib/util/PageLayoutHelper.ts:14</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<dl class="tsd-comment-tags">
-									<dt>method</dt>
-									<dd><p>parse</p>
-									</dd>
-									<dt>description</dt>
-									<dd><p>Method that parses the page layout!</p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>pageLayout: <a href="../interfaces/ipagelayout.html" class="tsd-signature-type">IPageLayout</a></h5>
-								</li>
-								<li>
-									<h5>pageId: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/ipagelayout.html" class="tsd-signature-type">IPageLayout</a><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="label" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> label</h3>
+					<div class="tsd-signature tsd-kind-icon">label<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/larsvanbraam/vue-block-system/blob/fef8cd7/src/lib/interface/action/ILink.ts#L6">src/lib/interface/action/ILink.ts:6</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>property</dt>
+							<dd></dd>
+							<dt>description</dt>
+							<dd><p>The label displayed in the action</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="target" class="tsd-anchor"></a>
+					<h3>target</h3>
+					<div class="tsd-signature tsd-kind-icon">target<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/larsvanbraam/vue-block-system/blob/fef8cd7/src/lib/interface/action/ILink.ts#L17">src/lib/interface/action/ILink.ts:17</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>property</dt>
+							<dd></dd>
+							<dt>description</dt>
+							<dd><p>The target of the link</p>
+							</dd>
+							<dt>placeholder</dt>
+							<dd><p>path/to/page</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="title" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> title</h3>
+					<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/larsvanbraam/vue-block-system/blob/fef8cd7/src/lib/interface/action/ILink.ts#L11">src/lib/interface/action/ILink.ts:11</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>property</dt>
+							<dd></dd>
+							<dt>description</dt>
+							<dd><p>The title used for accessibility</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="type" class="tsd-anchor"></a>
+					<h3>type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/larsvanbraam/vue-block-system/blob/fef8cd7/src/lib/interface/action/ILink.ts#L23">src/lib/interface/action/ILink.ts:23</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>property</dt>
+							<dd></dd>
+							<dt>description</dt>
+							<dd><p>The type of the link</p>
+							</dd>
+							<dt>placeholder</dt>
+							<dd><p>0</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -141,46 +190,55 @@
 						<a href="../enums/blocksystemcomponenttype.html" class="tsd-kind-icon">Block<wbr>System<wbr>Component<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="blockhelper.html" class="tsd-kind-icon">Block<wbr>Helper</a>
+						<a href="../classes/blockhelper.html" class="tsd-kind-icon">Block<wbr>Helper</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="custombuttonevent.html" class="tsd-kind-icon">Custom<wbr>Button<wbr>Event</a>
+						<a href="../classes/custombuttonevent.html" class="tsd-kind-icon">Custom<wbr>Button<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="custombuttoneventdispatcher.html" class="tsd-kind-icon">Custom<wbr>Button<wbr>Event<wbr>Dispatcher</a>
+						<a href="../classes/custombuttoneventdispatcher.html" class="tsd-kind-icon">Custom<wbr>Button<wbr>Event<wbr>Dispatcher</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/pagelayouthelper.html" class="tsd-kind-icon">Page<wbr>Layout<wbr>Helper</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="iabstractblockcomponent.html" class="tsd-kind-icon">IAbstract<wbr>Block<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="iabstractbuttoncomponent.html" class="tsd-kind-icon">IAbstract<wbr>Button<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="iabstractcontentpagecomponent.html" class="tsd-kind-icon">IAbstract<wbr>Content<wbr>Page<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="iblock.html" class="tsd-kind-icon">IBlock</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class">
-						<a href="pagelayouthelper.html" class="tsd-kind-icon">Page<wbr>Layout<wbr>Helper</a>
+					<li class="current tsd-kind-interface">
+						<a href="ilink.html" class="tsd-kind-icon">ILink</a>
 						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="pagelayouthelper.html#parse" class="tsd-kind-icon">parse</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="ilink.html#label" class="tsd-kind-icon">label</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="ilink.html#target" class="tsd-kind-icon">target</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="ilink.html#title" class="tsd-kind-icon">title</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="ilink.html#type" class="tsd-kind-icon">type</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iabstractblockcomponent.html" class="tsd-kind-icon">IAbstract<wbr>Block<wbr>Component</a>
+						<a href="ipagelayout.html" class="tsd-kind-icon">IPage<wbr>Layout</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iabstractbuttoncomponent.html" class="tsd-kind-icon">IAbstract<wbr>Button<wbr>Component</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iabstractcontentpagecomponent.html" class="tsd-kind-icon">IAbstract<wbr>Content<wbr>Page<wbr>Component</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iblock.html" class="tsd-kind-icon">IBlock</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/ilink.html" class="tsd-kind-icon">ILink</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/ipagelayout.html" class="tsd-kind-icon">IPage<wbr>Layout</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iparsedblocks.html" class="tsd-kind-icon">IParsed<wbr>Blocks</a>
+						<a href="iparsedblocks.html" class="tsd-kind-icon">IParsed<wbr>Blocks</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-external tsd-is-not-exported">
 						<a href="../globals.html#is_ready" class="tsd-kind-icon">IS_<wbr>READY</a>

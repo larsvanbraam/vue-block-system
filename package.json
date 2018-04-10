@@ -1,6 +1,6 @@
 {
   "name": "vue-block-system",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0",
   "description": "Easily create block based websites!",
   "main": "./index.js",
   "types": "./index.d.ts",
@@ -19,7 +19,7 @@
     "clean:test": "shx rm -rf coverage .nyc_output",
     "clean:npm": "shx rm -rf lib tmp index.js",
     "doc": "npm-run-all -p doc:*",
-    "doc:typedoc": "typedoc --out docs/ src/ --mode file",
+    "doc:typedoc": "typedoc src/ --out docs/ --mode file --exclude \"**/index.ts\"",
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint src --ext .js --cache",
     "lint:ts": "tslint src/**/*.ts -c tslint.json -p tsconfig.json -t verbose",

@@ -1,0 +1,9 @@
+{
+  "statusCode": 200,
+  "data": {
+    "routes": {
+      "landing": "/home",
+      "notFound": "/page-not-found"
+    }
+  }
+}

@@ -7,7 +7,7 @@
     "dev": "webpack-dev-server --config ./build-tools/webpack.config.js --mode development",
     "build": "webpack --config ./build-tools/webpack.config.js --mode production"
   },
-  "author": "Lars van Braam",
+  "author": "Lars van Braam <larsvanbraam@gmail.com> (larsvanbraam)",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
