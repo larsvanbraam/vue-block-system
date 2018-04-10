@@ -6,7 +6,17 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <router-link :to="{path: '/home'}" class="navbar-brand">vue-transition-component</router-link>
+          <router-link :to="{path: '/home'}" class="navbar-brand">vue-block-system</router-link>
+        </div>
+        <div :class="['collapse', 'navbar-collapse', {'collapse in': mobileMenuActive}]" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li :class="[{'active': pagePath === '/home' || pagePath === '/'}]">
+              <router-link :to="{path: '/home'}">Home</router-link>
+            </li>
+            <li :class="[{'active': pagePath === '/about'}]">
+              <router-link :to="{path: '/about'}">About</router-link>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>

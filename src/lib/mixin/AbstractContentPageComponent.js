@@ -3,7 +3,7 @@ import ScrollTracker, { ScrollTrackerEvent } from 'seng-scroll-tracker';
 import * as VueScrollTo from 'vue-scrollto/vue-scrollto';
 import { mapState, mapActions } from 'vuex';
 import { AbstractPageTransitionComponent } from 'vue-transition-component';
-import BlockSystemComponentType from '../enum/BlockSystemComponentType';
+import ComponentType from '../enum/ComponentType';
 import { InitNamespace } from '../store/init';
 import { LayoutNamespace, LayoutActionTypes } from '../store/layout';
 import config from '../config';
@@ -37,8 +37,7 @@ export default {
     },
   },
   beforeCreate() {
-    // Set the type of the component
-    this.$_blockSystemComponentType = BlockSystemComponentType.CONTENT_PAGE;
+    this.componentType = ComponentType.CONTENT_PAGE;
     // Here we keep track of the block components on the page
     this.blockComponents = {};
     // Here we keep track of the scrollTracker points on this page
@@ -52,15 +51,6 @@ export default {
     // Bind events
     window.addEventListener('resize', this.resizeListener);
   },
-  /**
-   * @public
-   * @method beforeEnter
-   * @description When the page is initialized the beforeRouteEnter event is triggered, this will setup the page
-   * on initial load
-   * @param to
-   * @param from
-   * @param next
-   */
   beforeRouteEnter(to, from, next) {
     if (to.path === from.path && from.hash !== to.hash) {
       next();
@@ -69,15 +59,6 @@ export default {
       next(vm => vm.handleRouteChange(to.path === '/' ? vm.landingRoute : to.path));
     }
   },
-  /**
-   * @public
-   * @method beforeRouteUpdate
-   * @description When the page changes after initial load the beforeRouteUpdate is triggered, this will update
-   * the layout to the new page!
-   * @param to
-   * @param from
-   * @param next
-   */
   beforeRouteUpdate(to, from, next) {
     if (to.path === from.path && from.hash !== to.hash) {
       this.scrollToBlockFromUrl(config.buttonConfig.scrollToNextBlockDuration);
@@ -113,15 +94,6 @@ export default {
       updateLayout: LayoutActionTypes.UPDATE_LAYOUT,
       resetLayout: LayoutActionTypes.RESET_LAYOUT,
     }),
-    /**
-     * @public
-     * @method handleBlockComponentReady
-     * @description When a block component is registered it fires a isReady event this isReady event is handled
-     * by this method it checks if all the components are loaded.
-     * @param component
-     * @param isChildBlock
-     * @returns void
-     */
     handleBlockComponentReady(component) {
       // Register the new block
       this.blockComponents[component.$_componentId] = component;
@@ -133,14 +105,6 @@ export default {
         this.scrollToBlockFromUrl(1, 1000);
       }
     },
-    /**
-     * @public
-     * @method handleRouteChange
-     * @description When the beforeRouteEnter or beforeRouteUpdate is triggered we fire the route change event,
-     * this will ask the store to update the layout!
-     * @param route
-     * @returns Promise<void>
-     */
     handleRouteChange(route) {
       return this.updateLayout(route)
         .then(() => this.handleRouteChangeComplete())
@@ -152,22 +116,9 @@ export default {
           }
         });
     },
-    /**
-     * @public
-     * @method handleRouteChangeComplete
-     * @description When the route change is completed this method is triggered, this can be used to implement
-     * page tracking, or show page loaders.
-     * @returns void
-     */
     handleRouteChangeComplete() {
       // Nothing by default
     },
-    /**
-     * @public
-     * @method scrollToBlockFromUrl
-     * @description After page is loaded we can scroll to a block based on the scrollId
-     * @returns Promise<void>
-     */
     scrollToBlockFromUrl(scrollDuration, scrollTimeout) {
       return new Promise(resolve => {
         if (window.location.hash) {
@@ -198,53 +149,22 @@ export default {
         }
       });
     },
-    /**
-     * @public
-     * @method handleBlockEnterView
-     * @param blockId
-     * @description When a block enters the view we want to trigger the transition in method and mark the block
-     * as inView
-     * @returns void
-     */
     handleBlockEnterView(blockId) {
       if (this.blockComponents[blockId]) {
         this.blockComponents[blockId].inView = true;
         this.blockComponents[blockId].transitionIn();
       }
     },
-    /**
-     * @public
-     * @method handleBlockBeyondView
-     * @param blockId
-     * @description When the scrollbar is dragged down super fast the default enter view event might not be
-     * triggered therefor we have a beyondView event! If it's already transitioned in it will do nothing! But if
-     * it's not transitioned in it will still try to transitionIn
-     * @returns void
-     */
     handleBlockBeyondView(blockId) {
       if (this.blockComponents[blockId]) {
         this.blockComponents[blockId].inView = true;
         this.blockComponents[blockId].transitionIn();
       }
     },
-    /**
-     * @public
-     * @method handleBlockLeaveView
-     * @description When a block leaves the view we set the inView flag to false
-     * @param blockId
-     * @returns void
-     */
     handleBlockLeaveView(blockId) {
       this.blockComponents[blockId].inView = false;
       // TODO: implement looping animations??
     },
-    /**
-     * @public
-     * @method addBlocksToScrollTracker
-     * @description When we want to add new block components to the scrollTracker we can use this method to add
-     * them and let them transition in when they enter the view
-     * @param blocks
-     */
     addBlocksToScrollTracker(blocks) {
       Object.keys(blocks).forEach(blockId => {
         // The block is already added to the blocks object
@@ -287,13 +207,6 @@ export default {
         }
       });
     },
-    /**
-     * @public
-     * @method removeBlocksFromScrollTracker
-     * @description When we want to remove blocks from the scroll tracker you can pass an object with the blocks
-     * you want to remove.
-     * @param blocks
-     */
     removeBlocksFromScrollTracker(blocks) {
       Object.keys(blocks).forEach(blockId => {
         const scrollTrackerPoint = this.scrollTrackerPoints[blockId];
@@ -325,13 +238,6 @@ export default {
         }
       });
     },
-    /**
-     * @public
-     * @method handleResize
-     * @description When the window resize event is triggered  we need to recalculate the scrollTrackerPoints so the
-     * transitionIn happens on the right moments!
-     * @returns void
-     */
     handleResize() {
       Object.keys(this.scrollTrackerPoints).forEach(blockId => {
         const block = this.blockComponents[blockId];
@@ -347,12 +253,6 @@ export default {
       });
     },
   },
-  /**
-   * @public
-   * @method beforeDestroy
-   * @description When the page is destroyed we need to destroy all the instances and remove all the event listeners
-   * @returns void
-   */
   beforeDestroy() {
     if (this.blockComponents) {
       this.removeBlocksFromScrollTracker(this.blockComponents);

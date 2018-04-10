@@ -4445,9 +4445,9 @@ vue-scrollto@^2.11.0:
   dependencies:
     bezier-easing "^2.0.3"
 
-vue-transition-component@^2.0.1-alpha.5:
-  version "2.0.1-alpha.5"
-  resolved "https://registry.yarnpkg.com/vue-transition-component/-/vue-transition-component-2.0.1-alpha.5.tgz#28cdb9f27862df4fb55650e1b923312e48487094"
+vue-transition-component@^2.0.1-alpha.6:
+  version "2.0.1-alpha.6"
+  resolved "https://registry.yarnpkg.com/vue-transition-component/-/vue-transition-component-2.0.1-alpha.6.tgz#62fbd1b04e3c2c41b6ec5183c0dc40bc4eb830be"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.35"
     bowser "^1.8.0"

@@ -18,7 +18,7 @@ Vue.use(BlockSystem, {
       initCall: 'static/api/init.json',
     },
     debugLabel: {
-      nestedLabels: false,
+      nestedLabels: true,
     },
   },
 });

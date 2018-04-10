@@ -5,7 +5,7 @@
   <div>
     <component
       v-for="(block, index) in blocks"
-      @isReady="handleBlockComponentReady"
+      @isReady="$_handleBlockComponentReady"
       :scrollId="block.scrollId"
       :data="block.data"
       :debugLabel="true"

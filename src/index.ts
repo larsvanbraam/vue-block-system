@@ -5,9 +5,9 @@ export { AbstractRegistrableComponent } from 'vue-transition-component';
 export { IBlock } from './lib/interface/block/IBlock';
 export { ILink } from './lib/interface/action/ILink';
 export { IPageLayout } from './lib/interface/layout/IPageLayout';
-export { IAbstractBlockComponent } from './lib/interface/IAbstractBlockComponent';
-export { IAbstractButtonComponent } from './lib/interface/IAbstractButtonComponent';
-export { IAbstractContentPageComponent } from './lib/interface/IAbstractContentPageComponent';
+export { IAbstractBlockComponent } from './lib/interface/mixin/IAbstractBlockComponent';
+export { IAbstractButtonComponent } from './lib/interface/mixin/IAbstractButtonComponent';
+export { IAbstractContentPageComponent } from './lib/interface/mixin/IAbstractContentPageComponent';
 
 export { default as AbstractBlockComponent } from './lib/mixin/AbstractBlockComponent';
 export { default as AbstractButtonComponent } from './lib/mixin/AbstractButtonComponent';

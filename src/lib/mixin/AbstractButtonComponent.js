@@ -3,7 +3,6 @@ import * as VueScrollTo from 'vue-scrollto/vue-scrollto';
 import { AbstractTransitionComponent } from 'vue-transition-component';
 import LinkType from '../enum/LinkType';
 import ButtonType from '../enum/ButtonType';
-import BlockSystemComponentType from '../enum/BlockSystemComponentType';
 import customButtonEventDispatcher from '../util/CustomButtonEventDispatcher';
 import CustomButtonEvent from '../event/CustomButtonEvent';
 import config from '../config';
@@ -22,14 +21,8 @@ export default {
   },
   beforeCreate() {
     this.customButtonEventDispatcher = customButtonEventDispatcher;
-    this.$_blockSystemComponentType = BlockSystemComponentType.BUTTON_COMPONENT;
   },
   methods: {
-    /**
-     * @public
-     * @method handleClick
-     * @description When the user clicks on the button a action is triggered!
-     */
     handleClick(event) {
       event.preventDefault(); // Always kill the default action because otherwise it will execute the href
       switch (this.type) {
@@ -63,21 +56,6 @@ export default {
           break;
       }
     },
-    getParentBlock() {
-      let parent = this.$parent;
-      let attempts = 0;
-
-      // Try to find the first parent that is a page, have a limit of 50 so we will never enter an infinite loop!
-      while (
-        parent.$_blockSystemComponentType !== BlockSystemComponentType.BLOCK_COMPONENT &&
-        attempts < config.buttonConfig.maxFindParentBlockCount
-      ) {
-        attempts += 1;
-        parent = parent.$parent;
-      }
-
-      return parent;
-    },
     scrollToNextBlock() {
       const parentBlock = this.getParentBlock();
 
@@ -91,11 +69,6 @@ export default {
         }
       }
     },
-    /**
-     * @public
-     * @method openInternalLInk
-     * @description When the type is an internal link the router should navigate to the provided url
-     */
     openInternalLink() {
       const hash = this.link.target.split('#')[1];
       const target = this.link.target.split('#')[0];
@@ -106,11 +79,6 @@ export default {
         this.$router.push(this.link.target);
       }
     },
-    /**
-     * @public
-     * @Method openExternalLink
-     * @description When the type is an external link we should open a new window with the provided target
-     */
     openExternalLink(blank) {
       if (blank) {
         window.open(this.link.target);
@@ -118,10 +86,5 @@ export default {
         window.location.href = this.link.target;
       }
     },
-  },
-  mounted() {
-    if (this.debugLabel) {
-      this.addDebugLabel();
-    }
   },
 };

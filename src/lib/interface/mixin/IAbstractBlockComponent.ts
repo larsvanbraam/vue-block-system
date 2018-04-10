@@ -1,9 +1,6 @@
-import {
-  IAbstractTransitionComponent,
-  IAbstractPageTransitionComponent,
-} from 'vue-transition-component';
+import IAbstractComponent from './IAbstractComponent';
 
-export interface IAbstractBlockComponent extends IAbstractTransitionComponent {
+export interface IAbstractBlockComponent extends IAbstractComponent {
   /**
    * @public
    * @property data
@@ -36,14 +33,7 @@ export interface IAbstractBlockComponent extends IAbstractTransitionComponent {
   inView: boolean;
   /**
    * @public
-   * @method getParentPage
-   * @description Method that returns the parent page of the current block component
-   * @returns {IAbstractPageTransitionComponent}
-   */
-  getParentPage(): IAbstractPageTransitionComponent;
-  /**
-   * @public
-   * @method handleBlockComponentReady
+   * @method $_handleBlockComponentReady
    * @description when a block component within a block component is ready it will trigger the component ready on
    * the parent so that it get's added to the root scroll tracker
    * @param component
@@ -51,7 +41,7 @@ export interface IAbstractBlockComponent extends IAbstractTransitionComponent {
   handleBlockComponentReady(component: IAbstractBlockComponent): void;
   /**
    * @public
-   * @method addDebugLabel
+   * @method $_addDebugLabel
    * @description Method that generates the debug label and injects it into the DOM
    */
   addDebugLabel(): void;

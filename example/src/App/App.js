@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import { AbstractRegistrableComponent } from 'vue-transition-component';
 
 export default {
@@ -7,9 +6,18 @@ export default {
   data() {
     return {
       mobileMenuActive: false,
+      pagePath: null,
     };
   },
+  watch: {
+    $route(value) {
+      this.pagePath = value.path;
+    },
+  },
   methods: {
+    handleAllComponentsReady() {
+      this.pagePath = this.$router.currentRoute.path;
+    },
     handleToggleMenu() {
       this.mobileMenuActive = !this.mobileMenuActive;
     },

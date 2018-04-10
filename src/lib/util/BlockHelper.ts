@@ -1,9 +1,8 @@
 import { IParsedBlocks } from '../interface/block/IParsedBlocks';
 import { IBlock } from '../interface/block/IBlock';
-
-const isArray = require('lodash/isArray');
-const isObject = require('lodash/isObject');
-const upperFirst = require('lodash/upperFirst');
+import isArray from 'lodash/isArray';
+import isObject from 'lodash/isObject';
+import upperFirst from 'lodash/upperFirst';
 
 /**
  * @class BlockHelper
@@ -17,6 +16,7 @@ export default class BlockHelper {
    * @type {number}
    */
   public static counter: number = 0;
+
   /**
    * @public
    * @static availableBlocks
