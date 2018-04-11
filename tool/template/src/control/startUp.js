@@ -12,7 +12,7 @@ import { getValue } from 'util/injector';
 import { CONFIG_MANAGER, GATEWAY } from 'data/Injectables';
 import localeLoader from 'util/localeLoader';
 
-const initPlugins = (store) => {
+const initPlugins = store => {
   const configManager = getValue(CONFIG_MANAGER);
 
   // expose objects to the Vue prototype for easy access in your vue templates and components
@@ -29,6 +29,8 @@ const initPlugins = (store) => {
     RoutePaths,
     Params,
     createPath,
+    ButtonType,
+    LinkType
   });
 
   Vue.use(BlockSystem, {
