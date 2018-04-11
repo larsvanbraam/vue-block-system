@@ -2,12 +2,7 @@
 </script>
 
 <template>
-  <div>
-    <div class="jumbotron">
-      <h1>vue-block-system</h1>
-      <p>The vue block system uses server side generated data to dynamically generate components in the client. This makes it possible to have a fully customizable frontend build.</p>
-    </div>
-    <h2>Page blocks:</h2>
+  <div class="wrapper">
     <component
       v-for="(block, index) in blocks"
       @isReady="handleBlockComponentReady"

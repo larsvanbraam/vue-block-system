@@ -19,8 +19,8 @@
             <li :class="[{'active': pagePath === '/home' || pagePath === '/'}]">
               <router-link :to="{path: '/home'}">Home</router-link>
             </li>
-            <li :class="[{'active': pagePath === '/about'}]">
-              <router-link :to="{path: '/about'}">About</router-link>
+            <li :class="[{'active': pagePath === '/code'}]">
+              <router-link :to="{path: '/code'}">Code</router-link>
             </li>
           </ul>
         </div>

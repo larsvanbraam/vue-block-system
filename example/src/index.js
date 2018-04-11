@@ -19,6 +19,10 @@ Vue.use(BlockSystem, {
     },
     debugLabel: {
       nestedLabels: true,
+      style: {
+        left: 'auto',
+        right: '0px',
+      }
     },
   },
 });
