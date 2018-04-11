@@ -33,7 +33,7 @@ I've included an example setup where you can see the loader in action, to run th
 - `yarn dev`
 - Open your browser `localhost:8080`
 
-or click [this link](https://larsvanbraam.github.io/vue-block-system/example) to preview online
+or click [this link](https://larsvanbraam.github.io/vue-block-system/example/) to preview online
 
 ## Usage
 
