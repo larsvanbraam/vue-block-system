@@ -26,7 +26,7 @@ deploy:
     secure: 'AhXSTUB+e0165OHsvhs8EO1YtuVAeOiAmm8NdDyK2yOXC0DxLaRfgyoLZddQrWpdWk+tsPC6hBFRtP1/cItgDAGB+iZzjSYwSneF97F1zEKO8LtysM1pcXyE1Awr7RrN+yD2ygbZ7OiSNLmfXFX++ic2Ibsw9fHTyLmv2pV18UzG75YW7eVQ6PtyYdr3IoZH3D2/Rh1dTWB93F5zUBLlEG9fUrkMs8gyAew+H2y/Y01LvUTrt3y/FH66Gifwx/xF6VTIcq3+mfuQP14cLndf5L+KFQUEAVTghFtihaurVfvZ+Ct7OOyMj8eRJDGvMPsRRBn3rkPvGh6hKLNF3amAdqSGn0ZhO80dOgC9wSvhKeiGjEQIWLQc7EQDoXK6D8XZ/T54zoqVQSWJwzVScxyGZJ/4gByVacL/EEgScwmuwu2lqOm7lU2kAQzbTo5FD5cfCM7W2oM/lncQ+hQic9qIREAKflXQMNrQU9CcpwjiqZJQrZUXG2Jkpj2+IyKYuP2BUFFZsf4Uvjm1CdjU4Mu4V9XfxuaQ3c8sLFe4fXKzY723bPG4ovzLDwVjGbrP6UCvPblWT+639lV2il5vxiNYaJJxajmlZZUaz9EZGrON/TQrJYRhOS1jmczjZrsgVhd/k/N6nrg5yf5VcNj6dq2U6Zr0/mDCAq0scoaNG1b13d0="'
   on:
     tags: true
-    node: '6'
+    node: '8'
   skip_cleanup: true
 
 addons:
