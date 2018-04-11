@@ -1,5 +1,4 @@
 [![Travis](https://img.shields.io/travis/larsvanbraam/vue-block-system.svg?maxAge=2592000)](https://travis-ci.org/larsvanbraam/vue-block-system)
-[![Code Climate](https://img.shields.io/codeclimate/github/larsvanbraam/vue-block-system.svg?maxAge=2592000)](https://codeclimate.com/github/larsvanbraam/vue-block-system)
 [![npm](https://img.shields.io/npm/dm/vue-block-system.svg?maxAge=2592000)](https://www.npmjs.com/package/vue-block-system)
 [![GitHub issues](https://img.shields.io/github/issues/larsvanbraam/vue-block-system.svg?style=flat-square)](https://github.com/larsvanbraam/vue-block-system/issues)
 
