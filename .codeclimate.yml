@@ -6,14 +6,14 @@ engines:
     config:
       languages:
       - javascript
-      - typescript
   fixme:
       enabled: true
 ratings:
   paths:
   - src/**
 exclude_paths:
-- docs/**/*
+- doc/**/*
 - dist/**/*
 - test/**/*
 - vendor/**/*
+- example/**/*

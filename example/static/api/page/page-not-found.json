@@ -1,0 +1,22 @@
+{
+  "statusCode": 200,
+  "data": {
+    "title": "Page not found",
+    "data": {},
+    "blocks": [
+      {
+        "id": "DummyBlockA",
+        "data": {
+          "theme": "primary",
+          "copy": "<p>This page cannot be found</p>",
+          "cta": {
+            "label": "Home",
+            "title": "Home",
+            "type": "link-type-internal",
+            "target": "/home"
+          }
+        }
+      }
+    ]
+  }
+}

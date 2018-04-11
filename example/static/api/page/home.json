@@ -1,0 +1,15 @@
+{
+  "statusCode": 200,
+  "data": {
+    "title": "Home",
+    "data": {},
+    "blocks": [
+      {
+        "id": "IntroductionBlock",
+        "data": {
+
+        }
+      }
+    ]
+  }
+}

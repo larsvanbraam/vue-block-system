@@ -1,31 +1,23 @@
 language: node_js
 
-cache:
-  directories:
-  - node_modules
+cache: yarn
 
 node_js:
+  - 'stable'
   - '6'
+  - '8'
 
 sudo: false
 
-dist: precise
-
 before_install:
-  - if [[ `npm -v` != 5* ]]; then npm i -g npm@5; fi
-  - npm install -g typings
-  - npm install -g codeclimate-test-reporter
+  - yarn global add codeclimate-test-reporter
 
 script:
-  - npm run build
-  - npm run validate
+  - yarn test
 
 after_script:
   - codeclimate-test-reporter < coverage/lcov.info
   - node_modules/.bin/coveralls < coverage/lcov.info
-
-before_deploy:
-  - npm run build:dist && node ./script/package-dist.js
 
 deploy:
   provider: npm

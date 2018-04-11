@@ -1,5 +1,4 @@
 [![Travis](https://img.shields.io/travis/larsvanbraam/vue-block-system.svg?maxAge=2592000)](https://travis-ci.org/larsvanbraam/vue-block-system)
-[![Code Climate](https://img.shields.io/codeclimate/github/larsvanbraam/vue-block-system.svg?maxAge=2592000)](https://codeclimate.com/github/larsvanbraam/vue-block-system)
 [![npm](https://img.shields.io/npm/dm/vue-block-system.svg?maxAge=2592000)](https://www.npmjs.com/package/vue-block-system)
 [![GitHub issues](https://img.shields.io/github/issues/larsvanbraam/vue-block-system.svg?style=flat-square)](https://github.com/larsvanbraam/vue-block-system/issues)
 
@@ -7,12 +6,12 @@
     <img src="http://vue-block-system.larsvanbraam.nl/vue-block-system-1024.png" alt="vue-block-system" width="512"/>
 </p>
 
-Easily create block based websites! 
+Easily create block based websites!
 
-The block system uses the vue-transition-component to handle all component transitions. If you want to read more about this see the [documentation](https://larsvanbraam.github.io/vue-transition-component/). All blocks are transitioned when they enter the viewport. This is done using the [seng-scroll-tracker](https://mediamonks.github.io/seng-scroll-tracker/). 
+The block system uses the vue-transition-component to handle all component transitions. If you want to read more about this see the [documentation](https://larsvanbraam.github.io/vue-transition-component/). All blocks are transitioned when they enter the viewport. This is done using the [seng-scroll-tracker](https://mediamonks.github.io/seng-scroll-tracker/).
 
-## Global note: 
-All examples below are based on the [vue-skeleton](https://github.com/hjeti/vue-skeleton) by [hjeti](https://github.com/hjeti/). 
+## Global note:
+All examples below are based on the [vue-skeleton](https://github.com/hjeti/vue-skeleton) by [hjeti](https://github.com/hjeti/).
 
 ## Installation
 ### yarn / npm
@@ -25,13 +24,16 @@ yarn add vue-block-system
 npm i -S vue-block-system
 ```
 
-## Demo
-I've created a demo repository that contains the setup for the latest vue-skeleton (v0.8.1) with the vue-block-system
-(v0.7.3) installed. You can inspect the code there or if you just want to preview the block system you can visit the
-demo online!
+## Example
+I've included an example setup where you can see the loader in action, to run the project follow these steps:
 
-### [Demo repository](https://github.com/larsvanbraam/vue-block-system-demo)
-### [Online demo](http://vue-block-system.larsvanbraam.nl)
+- `git clone https://github.com/larsvanbraam/vue-block-system.git`
+- `cd vue-block-system/example`
+- `yarn`
+- `yarn dev`
+- Open your browser `localhost:8080`
+
+or click [this link](https://larsvanbraam.github.io/vue-block-system/example) to preview online
 
 ## Usage
 

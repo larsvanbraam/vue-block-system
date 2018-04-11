@@ -103,7 +103,6 @@ const parseActions = (actions) => {
 // Run promises in a loop after each other
 const sequentialPromises = (promises) => {
   return new Promise((resolve, reject) => {
-    const promiseCount = promises.length;
     const resolvePromise = promise =>
       promise()
       .then(() => (promises.length > 0 ? resolvePromise(promises.shift()) : resolve()))
