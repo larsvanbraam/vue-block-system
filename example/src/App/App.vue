@@ -6,6 +6,12 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" @click="handleToggleMenu">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
           <router-link :to="{path: '/home'}" class="navbar-brand">vue-block-system</router-link>
         </div>
         <div :class="['collapse', 'navbar-collapse', {'collapse in': mobileMenuActive}]" id="bs-example-navbar-collapse-1">

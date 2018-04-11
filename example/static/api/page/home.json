@@ -8,34 +8,24 @@
         "id": "DummyBlockA",
         "data": {
           "theme": "primary",
-          "copy": "<p>This is a dummy home page with some blocks</p>",
-          "cta": {
-            "label": "About",
-            "title": "About",
-            "type": "link-type-internal",
-            "target": "/about"
-          }
-        }
-      },
-      {
-        "id": "DummyBlockA",
-        "data": {
-          "theme": "danger",
-          "copy": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id malesuada tellus. Nunc auctor est laoreet libero lobortis, at vulputate massa egestas. Fusce ultrices dolor diam, quis consequat nunc volutpat ac. Suspendisse eget urna congue, sollicitudin est ut, cursus turpis. Nam at mattis augue, at facilisis felis. Donec vel libero ut ipsum pulvinar iaculis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque viverra laoreet tortor, sit amet rutrum mauris dapibus a. Cras sollicitudin metus id nunc pellentesque, ut aliquet libero ornare. Vivamus purus mi, gravida id pretium ut, rutrum nec leo. Pellentesque mattis quam orci, sed efficitur augue convallis id. Nullam eu sapien sed ligula dictum ornare. Proin gravida tempor justo aliquet condimentum. Quisque euismod nibh dolor. Praesent gravida purus ac egestas semper.</p><p>In commodo felis tincidunt convallis laoreet. Proin tristique est et justo sollicitudin mattis. Phasellus ac lacus dui. Mauris eu purus in felis elementum fringilla at et augue. Curabitur at dignissim risus, vitae egestas felis. Mauris non efficitur diam. Nulla iaculis enim hendrerit lacus hendrerit, nec posuere ligula imperdiet. Praesent rhoncus pulvinar orci sit amet mattis. Maecenas in mattis nibh. Morbi quis urna nulla. Donec maximus viverra elementum.</p>"
+          "copy": "<p>Since all pages are dynamically rendered in the frontend the backend should return an array of blocks that will be rendered on the page. An example response for <code>/home</code> could look like this:</p>",
+          "code": "{\n  \"statusCode\": 200,\n  \"data\": {\n    \"title\": \"Home\",\n    \"data\": {},\n    \"blocks\": [\n      {\n        \"id\": \"DummyBlockA\",\n        \"data\": {\n          \"theme\": \"info\",\n          \"copy\":\"&lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;\"\n        }\n      },\n    ]\n  }\n}\n"
         }
       },
       {
         "id": "DummyBlockA",
         "data": {
           "theme": "info",
-          "copy": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id malesuada tellus. Nunc auctor est laoreet libero lobortis, at vulputate massa egestas. Fusce ultrices dolor diam, quis consequat nunc volutpat ac. Suspendisse eget urna congue, sollicitudin est ut, cursus turpis. Nam at mattis augue, at facilisis felis. Donec vel libero ut ipsum pulvinar iaculis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque viverra laoreet tortor, sit amet rutrum mauris dapibus a. Cras sollicitudin metus id nunc pellentesque, ut aliquet libero ornare. Vivamus purus mi, gravida id pretium ut, rutrum nec leo. Pellentesque mattis quam orci, sed efficitur augue convallis id. Nullam eu sapien sed ligula dictum ornare. Proin gravida tempor justo aliquet condimentum. Quisque euismod nibh dolor. Praesent gravida purus ac egestas semper.</p><p>In commodo felis tincidunt convallis laoreet. Proin tristique est et justo sollicitudin mattis. Phasellus ac lacus dui. Mauris eu purus in felis elementum fringilla at et augue. Curabitur at dignissim risus, vitae egestas felis. Mauris non efficitur diam. Nulla iaculis enim hendrerit lacus hendrerit, nec posuere ligula imperdiet. Praesent rhoncus pulvinar orci sit amet mattis. Maecenas in mattis nibh. Morbi quis urna nulla. Donec maximus viverra elementum.</p>"
+          "copy": "<p>The block system components work like any other vue component except for the fact that they extend the <code>AbstractBlockComponent</code> and have a typed prop called data which is used for passing along the block data</p>",
+          "code": "import AbstractBlockComponent from 'vue-block-system';\nimport VueTypes from 'vue-types';\nimport DummyButton from '../../component/button/DummyButton';\nimport DummyBlockAData from './DummyBlockAData';\nimport DummyBlockATransitionController from './DummyBlockATransitionController';\n\nexport default {\n  name: 'DummyBlockA',\n  extends: AbstractBlockComponent,\n  props: {\n    data: VueTypes.shape(DummyBlockAData),\n  },\n  components: {\n    DummyButton,\n  },\n  methods: {\n    handleAllComponentsReady() {\n      this.transitionController = new DummyBlockATransitionController(this);\n      this.isReady();\n    },\n  },\n};\n"
         }
       },
       {
         "id": "DummyBlockA",
         "data": {
-          "theme": "success",
-          "copy": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id malesuada tellus. Nunc auctor est laoreet libero lobortis, at vulputate massa egestas. Fusce ultrices dolor diam, quis consequat nunc volutpat ac. Suspendisse eget urna congue, sollicitudin est ut, cursus turpis. Nam at mattis augue, at facilisis felis. Donec vel libero ut ipsum pulvinar iaculis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque viverra laoreet tortor, sit amet rutrum mauris dapibus a. Cras sollicitudin metus id nunc pellentesque, ut aliquet libero ornare. Vivamus purus mi, gravida id pretium ut, rutrum nec leo. Pellentesque mattis quam orci, sed efficitur augue convallis id. Nullam eu sapien sed ligula dictum ornare. Proin gravida tempor justo aliquet condimentum. Quisque euismod nibh dolor. Praesent gravida purus ac egestas semper.</p><p>In commodo felis tincidunt convallis laoreet. Proin tristique est et justo sollicitudin mattis. Phasellus ac lacus dui. Mauris eu purus in felis elementum fringilla at et augue. Curabitur at dignissim risus, vitae egestas felis. Mauris non efficitur diam. Nulla iaculis enim hendrerit lacus hendrerit, nec posuere ligula imperdiet. Praesent rhoncus pulvinar orci sit amet mattis. Maecenas in mattis nibh. Morbi quis urna nulla. Donec maximus viverra elementum.</p>"
+          "theme": "info",
+          "copy": "<p>When creating a new block you have to define the data structure of your block, this way it's easier to detect inconsistencies between the backend and the frontend and make your debugging a whole lot easier.</p><p>To allow for typing in vue we use <a href='https://github.com/dwightjack/vue-types' target='_blank'>vue-types</a> to define the shape of the data object, have a look at their documentation for more information. Each block will have a <code>BlocNameData.js</code> file that should contain the structure of your data object, an example structure could look like this.</p>",
+          "code": "import VueTypes from 'vue-types';\nimport { LinkType } from 'vue-block-system';\n\nexport default {\n  theme: VueTypes.string.isRequired,\n  copy: VueTypes.string.isRequired,\n  code: VueTypes.string,\n  cta: VueTypes.shape({\n    label: VueTypes.string.isRequired,\n    title: VueTypes.string.isRequired,\n    target: VueTypes.string,\n    type: VueTypes.oneOf([\n      LinkType.INTERNAL,\n      LinkType.EXTERNAL,\n      LinkType.EXTERNAL_BLANK,\n      LinkType.SCROLL_TO_NEXT_BLOCK,\n    ]),\n  }),\n};\n"
         }
       }
     ]

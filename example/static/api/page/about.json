@@ -8,13 +8,20 @@
         "id": "DummyBlockA",
         "data": {
           "theme": "danger",
-          "copy": "<p>This is a dummy page with some blocks</p>",
+          "copy": "<p>Cras lectus libero, eleifend sed vehicula at, efficitur id neque. Morbi mattis placerat tortor. Mauris velit libero, blandit at semper in, venenatis eget enim. Maecenas id pretium diam, vitae vulputate velit. Nam ultrices eu lorem eu placerat. Integer cursus tincidunt volutpat. Aenean auctor semper ex et auctor. Pellentesque dictum imperdiet justo, id ornare tortor accumsan eu. In euismod sem sed ornare iaculis. Vestibulum tellus dolor, porta at arcu nec, ultricies maximus lectus. Etiam volutpat risus odio, sed aliquam lectus consequat vel. Maecenas nisi nibh, facilisis eu aliquam sit amet, lobortis ac erat. Aliquam scelerisque euismod scelerisque.</p>",
           "cta": {
-            "label": "Home",
-            "title": "Home",
+            "label": "To the home page",
+            "title": "To the home page",
             "type": "link-type-internal",
             "target": "/home"
           }
+        }
+      },
+      {
+        "id": "DummyBlockA",
+        "data": {
+          "theme": "warning",
+          "copy": "<p>Cras lectus libero, eleifend sed vehicula at, efficitur id neque. Morbi mattis placerat tortor. Mauris velit libero, blandit at semper in, venenatis eget enim. Maecenas id pretium diam, vitae vulputate velit. Nam ultrices eu lorem eu placerat. Integer cursus tincidunt volutpat. Aenean auctor semper ex et auctor. Pellentesque dictum imperdiet justo, id ornare tortor accumsan eu. In euismod sem sed ornare iaculis. Vestibulum tellus dolor, porta at arcu nec, ultricies maximus lectus. Etiam volutpat risus odio, sed aliquam lectus consequat vel. Maecenas nisi nibh, facilisis eu aliquam sit amet, lobortis ac erat. Aliquam scelerisque euismod scelerisque.</p>"
         }
       },
       {

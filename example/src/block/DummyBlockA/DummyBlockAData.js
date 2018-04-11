@@ -4,6 +4,7 @@ import LinkType from '../../../../src/lib/enum/LinkType';
 export default {
   theme: VueTypes.string.isRequired,
   copy: VueTypes.string.isRequired,
+  code: VueTypes.string,
   cta: VueTypes.shape({
     label: VueTypes.string.isRequired,
     title: VueTypes.string.isRequired,

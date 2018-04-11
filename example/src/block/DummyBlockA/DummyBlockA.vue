@@ -7,6 +7,7 @@
     </div>
     <div class="panel-body">
       <div v-html="data.copy"></div>
+      <pre v-if="data.code" v-html="data.code"></pre>
       <DummyButton
         ref="DummyButton"
         :theme="data.theme"
