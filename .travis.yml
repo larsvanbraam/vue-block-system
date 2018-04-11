@@ -20,15 +20,16 @@ after_script:
   - node_modules/.bin/coveralls < coverage/lcov.info
 
 deploy:
-  - provider: npm
-    email: 'devmonk@mediamonks.com'
-    api_key: $NPM_TOKEN
-    on:
-      tags: true
-      node: '8'
-    skip_cleanup: true
+  provider: npm
+  email: 'larsvanbraam@gmail.com'
+  api_key:
+    secure: 'AhXSTUB+e0165OHsvhs8EO1YtuVAeOiAmm8NdDyK2yOXC0DxLaRfgyoLZddQrWpdWk+tsPC6hBFRtP1/cItgDAGB+iZzjSYwSneF97F1zEKO8LtysM1pcXyE1Awr7RrN+yD2ygbZ7OiSNLmfXFX++ic2Ibsw9fHTyLmv2pV18UzG75YW7eVQ6PtyYdr3IoZH3D2/Rh1dTWB93F5zUBLlEG9fUrkMs8gyAew+H2y/Y01LvUTrt3y/FH66Gifwx/xF6VTIcq3+mfuQP14cLndf5L+KFQUEAVTghFtihaurVfvZ+Ct7OOyMj8eRJDGvMPsRRBn3rkPvGh6hKLNF3amAdqSGn0ZhO80dOgC9wSvhKeiGjEQIWLQc7EQDoXK6D8XZ/T54zoqVQSWJwzVScxyGZJ/4gByVacL/EEgScwmuwu2lqOm7lU2kAQzbTo5FD5cfCM7W2oM/lncQ+hQic9qIREAKflXQMNrQU9CcpwjiqZJQrZUXG2Jkpj2+IyKYuP2BUFFZsf4Uvjm1CdjU4Mu4V9XfxuaQ3c8sLFe4fXKzY723bPG4ovzLDwVjGbrP6UCvPblWT+639lV2il5vxiNYaJJxajmlZZUaz9EZGrON/TQrJYRhOS1jmczjZrsgVhd/k/N6nrg5yf5VcNj6dq2U6Zr0/mDCAq0scoaNG1b13d0="'
+  on:
+    tags: true
+    node: '6'
+  skip_cleanup: true
 
 addons:
   code_climate:
     repo_token:
-      secure: 'jMib2LNFGzfKiINRK0fOwibNgHnizTh87Fb1YK0Q2UpWtF7WiigEBhNyiX3pF02HH3iRuICHKYzE1QrZbIzk88XVTUhilO7vI+h1VpgbcuOxq7nkE+kSfxAiTpkD6eY7c0s8wSViKTPOVPPrpRfp8RYYLx6Vcox9jlN7StOHAgDuiwGwHPZ6lz2KGzX1xx8Z8ZLnHIIihv7rqQgetu7BNoPcrPv2Dz63qZI3DbFPWVJIe05B6I7iuiPgzlRZzIvUWofpp6zM5jT9ktrGyF786sh15mDzixoDzUDKmw6ptbc7MeoEuT2Co7FYr4LibXClSaoXcfKJ37/6E5Xzya1e7Sz/83+H1Xi34LCUcVHySzmCWSMWa1fGnZMCHJUdhCVmY5EJMQSGJEvPwHt+1beRYsWAm0cP2RsZ3LhIj9uB6jVXUz1pmhlkL2AFiuBZ2D3vKw4DTtnKqBounsI/FFm0Z0bhsOfkUs7HzAtdnPGjkzlHYW//YvncmTaO0fnMswJVLTKlMq9J/VnqLF1bH2CVYO9zBXIvf786SwgNrWAW/nmyOHE0kOzo79OVfm147qTPmF93ajwLWA814HUK8xpPZ5nMLgFaPpqlNO8co/5gpGm3cRrxRQ2yeOMCealz/EVJYS9LUmYugR42Ayg6iHLRoqwCKdtsjhMFZNEAOwsMs80='
+      secure: 'ONHyuZ4TqJq07CDYNtF2RU7vM0nBIGd1fPk8MvDbWWOeXvJ5B8bnhmHejW8yxodKZLkKnnDHCWw0GPPYlVwC+NbZLGFPz3vpifcUWlPS0jyL60DiNaMxKQc7bYLFpcoQaKZ2x/QLqIxa25pGH2ivXMaK/P9r2/e17Z9IxDhLu9WPcky6FeRyD5jKYtTQqWQ/COWj0gkMjdJdoDe/9lfWVea+sJUVu57ABx53sgDtNmNvkQPfhfllF2x6ly87G0xjIqItCR6Al4DAAzHf87HRi7EnMdf3rTLga/flrkDXzcZDOoaHqN6l5pQAZQGuzq5ZdudDXDx6+uy6J6WqHG8IXCQEu7NoSQ/OI6LN5gwVgegsK/d/JZk2Kru+0lnTjDmRhCP19Qkgu2++3tEO6CPOXG7WgIULYqsXn3zvit0kSKsYekNnjRYpCyQthivz3gWGX8GS3i6TtamdL83YcOP91QoKie+S4eVmamwuttxFEIaQAz97J1bBtHgMvYgAGoT6YOr0OBKKZ2q+sak2+8KmRIP4PGWrziXMuJoJYZGf6ip7LYkRcy0vNC+piXw7wgNMU+NxytkWvNjo7UoIHlyDh3vxgpP5f940nNsGp4fF0eGdEXd8xgVKVh6QXpWS3dE+KAqKj4Kcog7Z0pIPiJk9Ed49CLwTa3df6bOqGsOqH8A='
