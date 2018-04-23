@@ -2,7 +2,7 @@ import { IAbstractTransitionComponent } from 'vue-transition-component';
 import { IAbstractContentPageComponent } from './IAbstractContentPageComponent';
 import { IAbstractBlockComponent } from './IAbstractBlockComponent';
 
-interface IAbstractComponent extends IAbstractTransitionComponent {
+export interface IAbstractComponent extends IAbstractTransitionComponent {
   /**
    * @public
    * @method getParentPage
@@ -18,5 +18,3 @@ interface IAbstractComponent extends IAbstractTransitionComponent {
    */
   getParentBlock(): IAbstractBlockComponent;
 }
-
-export default IAbstractComponent;

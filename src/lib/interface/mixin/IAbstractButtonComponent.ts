@@ -1,4 +1,4 @@
-import IAbstractComponent from './IAbstractComponent';
+import { IAbstractComponent } from './IAbstractComponent';
 import { ILink } from '../action/ILink';
 
 export interface IAbstractButtonComponent extends IAbstractComponent {

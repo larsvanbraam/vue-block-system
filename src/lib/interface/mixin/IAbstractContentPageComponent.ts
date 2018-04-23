@@ -1,5 +1,5 @@
 import { IAbstractBlockComponent } from './IAbstractBlockComponent';
-import IAbstractComponent from './IAbstractComponent';
+import { IAbstractComponent } from './IAbstractComponent';
 
 export interface IAbstractContentPageComponent extends IAbstractComponent {
   /**
