@@ -3,11 +3,11 @@ import {AbstractTransitionController, IAbstractTransitionComponent} from 'vue-tr
 
 export default class DummyBlockATransitionController extends AbstractTransitionController {
   /**
-   * @public
+   * @protected
    * @method setupTransitionInTimeline
    * @param {gsap.TimelineLite | gsap.TimelineMax} timeline
    */
-  public setupTransitionInTimeline(timeline: TimelineLite | TimelineMax): void {
+  protected setupTransitionInTimeline(timeline: TimelineLite | TimelineMax): void {
     const { DummyButton } = this.parentController.$refs;
 
     timeline.fromTo(
@@ -30,13 +30,20 @@ export default class DummyBlockATransitionController extends AbstractTransitionC
   }
 
   /**
-   * @public
+   * @protected
    * @method setupTransitionOutTimeline
    * @param {gsap.TimelineLite | gsap.TimelineMax} timeline
    */
-  public setupTransitionOutTimeline(timeline: TimelineLite | TimelineMax): void {
+  protected setupTransitionOutTimeline(timeline: TimelineLite | TimelineMax): void {
     timeline.to(this.parentController.$el, 0.5, {
       autoAlpha: 0,
     });
   }
+
+  /**
+   * @public
+   * @method stopLoopingAnimation
+   * @description Stop the looping animations on the current component
+   */
+  protected setupLoopingAnimationTimeline(timeline: TimelineMax): void {}
 }

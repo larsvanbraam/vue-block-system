@@ -143,6 +143,8 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="iabstractcomponent.html#handleallcomponentsready" class="tsd-kind-icon">handle<wbr>All<wbr>Components<wbr>Ready</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="iabstractcomponent.html#isready" class="tsd-kind-icon">is<wbr>Ready</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-private"><a href="iabstractcomponent.html#setregistrablecomponents" class="tsd-kind-icon">set<wbr>Registrable<wbr>Components</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="iabstractcomponent.html#startloopinganimation" class="tsd-kind-icon">start<wbr>Looping<wbr>Animation</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="iabstractcomponent.html#stoploopinganimation" class="tsd-kind-icon">stop<wbr>Looping<wbr>Animation</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="iabstractcomponent.html#transitionin" class="tsd-kind-icon">transition<wbr>In</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="iabstractcomponent.html#transitionout" class="tsd-kind-icon">transition<wbr>Out</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="iabstractcomponent.html#updateregistrablecomponents" class="tsd-kind-icon">update<wbr>Registrable<wbr>Components</a></li>
@@ -968,7 +970,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/larsvanbraam/vue-block-system/blob/acf48cf/src/lib/interface/mixin/IAbstractComponent.ts#L19">src/lib/interface/mixin/IAbstractComponent.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/larsvanbraam/vue-block-system/blob/b3185b1/src/lib/interface/mixin/IAbstractComponent.ts#L19">src/lib/interface/mixin/IAbstractComponent.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -995,7 +997,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/larsvanbraam/vue-block-system/blob/acf48cf/src/lib/interface/mixin/IAbstractComponent.ts#L12">src/lib/interface/mixin/IAbstractComponent.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/larsvanbraam/vue-block-system/blob/b3185b1/src/lib/interface/mixin/IAbstractComponent.ts#L12">src/lib/interface/mixin/IAbstractComponent.ts:12</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1091,6 +1093,62 @@
 									</dd>
 									<dt>description</dt>
 									<dd><p>Update the array of registrableComponents</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+					<a name="startloopinganimation" class="tsd-anchor"></a>
+					<h3>start<wbr>Looping<wbr>Animation</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">start<wbr>Looping<wbr>Animation<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from IAbstractTransitionComponent.startLoopingAnimation</p>
+								<ul>
+									<li>Defined in node_modules/vue-transition-component/lib/interface/IAbstractTransitionComponent.d.ts:31</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>method</dt>
+									<dd><p>startLoopingAnimation</p>
+									</dd>
+									<dt>description</dt>
+									<dd><p>Start the looping animations on the current component</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+					<a name="stoploopinganimation" class="tsd-anchor"></a>
+					<h3>stop<wbr>Looping<wbr>Animation</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">stop<wbr>Looping<wbr>Animation<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from IAbstractTransitionComponent.stopLoopingAnimation</p>
+								<ul>
+									<li>Defined in node_modules/vue-transition-component/lib/interface/IAbstractTransitionComponent.d.ts:37</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>method</dt>
+									<dd><p>stopLoopingAnimation</p>
+									</dd>
+									<dt>description</dt>
+									<dd><p>Stop the looping animations on the current component</p>
 									</dd>
 								</dl>
 							</div>
@@ -1399,6 +1457,12 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-private">
 								<a href="iabstractcomponent.html#setregistrablecomponents" class="tsd-kind-icon">set<wbr>Registrable<wbr>Components</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+								<a href="iabstractcomponent.html#startloopinganimation" class="tsd-kind-icon">start<wbr>Looping<wbr>Animation</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+								<a href="iabstractcomponent.html#stoploopinganimation" class="tsd-kind-icon">stop<wbr>Looping<wbr>Animation</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 								<a href="iabstractcomponent.html#transitionin" class="tsd-kind-icon">transition<wbr>In</a>

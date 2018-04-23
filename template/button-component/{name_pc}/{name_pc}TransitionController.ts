@@ -1,19 +1,28 @@
 import { AbstractTransitionController } from 'vue-transition-component';
+import { TimelineLite, TimelineMax } from 'gsap';
 
 export default class {{name_pc}}TransitionController extends AbstractTransitionController {
   /**
-   * @public
+   * @protected
    * @method setupTransitionInTimeline
+   * @param {TimelineLite | TimelineMax} timeline
    * @description Use this method to setup your transition in timeline
-   */
-  protected setupTransitionInTimeline(): void {
-  }
+   **/
+  protected setupTransitionInTimeline(timeline:TimelineLite|TimelineMax): void {}
 
   /**
-   * @public
+   * @protected
    * @method setupTransitionOutTimeline
+   * @param {TimelineLite | TimelineMax} timeline
    * @description Use this method to setup your transition out timeline
-   */
-  protected setupTransitionOutTimeline(): void {
-  }
+   **/
+  protected setupTransitionOutTimeline(timeline:TimelineLite|TimelineMax): void {}
+
+  /**
+   * @protected
+   * @method setupLoopingAnimationTimeline
+   * @param {TimelineMax} timeline
+   * @description Use this method to setup your looping timeline
+   **/
+  protected setupLoopingAnimationTimeline(timeline:TimelineMax): void {}
 }
