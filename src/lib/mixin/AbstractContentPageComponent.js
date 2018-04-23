@@ -96,7 +96,7 @@ export default {
     }),
     handleBlockComponentReady(component) {
       // Register the new block
-      this.blockComponents[component.$_componentId] = component;
+      this.blockComponents[component.componentId] = component;
       // Check if all blocks are ready
       if (Object.keys(this.blockComponents).length === this.totalBlocks) {
         // When all components are ready we start adding the blocks to the scroll tracker

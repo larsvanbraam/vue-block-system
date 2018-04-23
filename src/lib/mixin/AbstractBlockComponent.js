@@ -34,10 +34,10 @@ export default {
         parent.componentType === ComponentType.CONTENT_PAGE &&
         config.debugLabel.nestedLabels
       ) {
-        breadCrumbs = `${parent.$_componentId} » ${breadCrumbs}`;
+        breadCrumbs = `${parent.componentId} » ${breadCrumbs}`;
         parent = parent.$parent;
       }
-      debugLabel.innerHTML = breadCrumbs + this.$_componentId;
+      debugLabel.innerHTML = breadCrumbs + this.componentId;
       TweenLite.set(debugLabel, config.debugLabel.style);
       this.$el.appendChild(debugLabel);
     },
