@@ -177,7 +177,7 @@ export default {
           const parent = block.$parent.$el;
           const yPosition = Math.round(parent.offsetTop + element.offsetTop + threshold);
           const elementHeight = element.offsetHeight - threshold;
-          const scrollTrackerPoint = this.scrollTracker.addPoint(yPosition, elementHeight);
+          const scrollTrackerPoint = this.scrollTracker.addPoint(yPosition, elementHeight - 1);
 
           // Store the reference
           this.scrollTrackerPoints[blockId] = {
