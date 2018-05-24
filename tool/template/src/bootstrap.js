@@ -16,7 +16,6 @@ import { sync } from 'vuex-router-sync';
 import setupInjects from 'util/setupInjects';
 import localeLoader from 'util/localeLoader';
 import App from 'App';
-import { VariableNames } from './data/enum/configNames';
 import block from 'block';
 
 // register filters globally
