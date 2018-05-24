@@ -1,6 +1,5 @@
 import Vue from 'vue';
-import BlockSystem, { ButtonType, LinkType } from 'vue-block-system';
-import block from 'block';
+import { ButtonType, LinkType } from 'vue-block-system';
 import axios from 'axios';
 import VueExposePlugin from 'util/VueExposePlugin';
 import { URLNames, PropertyNames, VariableNames } from 'data/enum/configNames';
@@ -31,17 +30,6 @@ const initPlugins = store => {
     createPath,
     ButtonType,
     LinkType
-  });
-
-  Vue.use(BlockSystem, {
-    store,
-    block,
-    config: {
-      api: {
-        pageCall: 'api/page/{page}.json',
-        initCall: 'api/init.json',
-      },
-    },
   });
 };
 
