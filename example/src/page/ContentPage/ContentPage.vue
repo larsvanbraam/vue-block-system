@@ -8,7 +8,6 @@
       @isReady="handleBlockComponentReady"
       :scrollId="block.scrollId"
       :data="block.data"
-      :debugLabel="true"
       :is="block.id"
       :ref="block.id + '.' + block.blockIndex"
       :key="index"/>

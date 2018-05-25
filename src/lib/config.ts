@@ -16,16 +16,24 @@ export default {
     layoutCache: true,
     stripLeadingSlash: false,
   },
-  debugLabel: {
-    nestedLabels: true,
-    style: {
-      font: '10px/1 sans-serif',
-      backgroundColor: 'red',
-      color: 'white',
-      padding: '5px',
-      position: 'absolute',
-      top: '0px',
-      left: '0px',
+  debug: {
+    blockLabel: {
+      enabled: false,
+      style: {
+        font: '10px/1 sans-serif',
+        backgroundColor: 'red',
+        color: 'white',
+        padding: '5px',
+        position: 'absolute',
+        top: '0px',
+        left: '0px',
+      },
+    },
+    scrollTrackerLabel: {
+      enabled: false,
+      style: {
+        color: 'red',
+      },
     },
   },
 };

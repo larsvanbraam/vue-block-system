@@ -3274,9 +3274,13 @@ lodash.isplainobject@4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
 
-lodash@^4.11.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0:
+lodash@^4.13.1, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
+
+lodash@^4.17.10:
+  version "4.17.10"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
 log-symbols@^1.0.2:
   version "1.0.2"
@@ -4619,11 +4623,13 @@ scoped-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/scoped-regex/-/scoped-regex-1.0.0.tgz#a346bb1acd4207ae70bd7c0c7ca9e566b6baddb8"
 
-scroll-tracker@^1.0.11:
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/scroll-tracker/-/scroll-tracker-1.0.11.tgz#79d59ef042a667a7d82f9e7e73f66991e5f778a9"
+scroll-tracker-component-manager@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/scroll-tracker-component-manager/-/scroll-tracker-component-manager-1.0.5.tgz#55e606186d13b314af620bee00944bfb04126ef4"
   dependencies:
-    lodash "^4.11.0"
+    "@babel/runtime" "^7.0.0-beta.35"
+    lodash "^4.17.10"
+    seng-scroll-tracker "^1.1.2"
 
 select-hose@^2.0.0:
   version "2.0.0"
@@ -5207,9 +5213,9 @@ tough-cookie@~2.3.0:
   dependencies:
     punycode "^1.4.1"
 
-transition-controller@^0.1.10:
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/transition-controller/-/transition-controller-0.1.10.tgz#e84c0ae1c810c416c7fda96a33b77c02f289bad1"
+transition-controller@^0.1.13:
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/transition-controller/-/transition-controller-0.1.13.tgz#641ec1711255c1e734de5d514dea84fb003dc5d7"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.35"
     "@types/gsap" "^1.19.1"
@@ -5524,9 +5530,9 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
-vue-transition-component@^2.0.1-alpha.5:
-  version "2.0.1-alpha.5"
-  resolved "https://registry.yarnpkg.com/vue-transition-component/-/vue-transition-component-2.0.1-alpha.5.tgz#28cdb9f27862df4fb55650e1b923312e48487094"
+vue-transition-component@^2.0.1-alpha.10:
+  version "2.0.1-alpha.10"
+  resolved "https://registry.yarnpkg.com/vue-transition-component/-/vue-transition-component-2.0.1-alpha.10.tgz#ce1e84ec1fcec580430d654db085caee8a8072f4"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.35"
     bowser "^1.8.0"
@@ -5539,7 +5545,7 @@ vue-transition-component@^2.0.1-alpha.5:
     rimraf "^2.6.2"
     seng-disposable "^1.1.3"
     seng-event "^1.2.3"
-    transition-controller "^0.1.10"
+    transition-controller "^0.1.13"
     vue "2.5.2"
 
 vue-types@^1.2.2:

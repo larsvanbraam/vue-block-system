@@ -17,12 +17,13 @@ Vue.use(BlockSystem, {
       pageCall: 'static/api/page/{page}.json',
       initCall: 'static/api/init.json',
     },
-    debugLabel: {
-      nestedLabels: true,
-      style: {
-        left: 'auto',
-        right: '0px',
-      }
+    debug: {
+      blockLabel: {
+        enabled: true,
+      },
+      scrollTrackerLabel: {
+        enabled: true,
+      },
     },
   },
 });

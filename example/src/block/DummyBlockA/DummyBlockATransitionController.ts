@@ -25,7 +25,7 @@ export default class DummyBlockATransitionController extends AbstractTransitionC
     );
 
     if (DummyButton) {
-      timeline.add(this.getSubTimeline(<IAbstractTransitionComponent>DummyButton));
+      timeline.add(this.getTimeline(<IAbstractTransitionComponent>DummyButton));
     }
   }
 

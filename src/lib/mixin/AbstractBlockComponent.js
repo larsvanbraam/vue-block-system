@@ -9,7 +9,6 @@ export default {
   extends: AbstractComponent,
   props: {
     data: VueTypes.object.isRequired,
-    debugLabel: VueTypes.bool.def(false),
     transitionInThreshold: VueTypes.number.def(0.25),
   },
   data() {
@@ -25,6 +24,15 @@ export default {
       // Bubble up to the parent page
       this.getParentPage().handleBlockComponentReady(component);
     },
+    enterView() {
+      return this.transitionIn().then(() => this.startLoopingAnimation());
+    },
+    beyondView() {
+      return this.transitionIn();
+    },
+    leaveView() {
+      this.stopLoopingAnimation();
+    },
     addDebugLabel() {
       const debugLabel = document.createElement('div');
       let breadCrumbs = '';
@@ -32,18 +40,18 @@ export default {
       while (
         parent &&
         parent.componentType === ComponentType.CONTENT_PAGE &&
-        config.debugLabel.nestedLabels
+        config.debug.blockLabel.nestedLabels
       ) {
         breadCrumbs = `${parent.componentId} » ${breadCrumbs}`;
         parent = parent.$parent;
       }
       debugLabel.innerHTML = breadCrumbs + this.componentId;
-      TweenLite.set(debugLabel, config.debugLabel.style);
+      TweenLite.set(debugLabel, config.debug.blockLabel.style);
       this.$el.appendChild(debugLabel);
     },
   },
   mounted() {
-    if (this.debugLabel) {
+    if (config.debug.blockLabel.enabled) {
       this.addDebugLabel();
     }
   },
