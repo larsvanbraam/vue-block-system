@@ -25,12 +25,14 @@ export default {
       this.getParentPage().handleBlockComponentReady(component);
     },
     enterView() {
+      this.inView = true;
       return this.transitionIn().then(() => this.startLoopingAnimation());
     },
     beyondView() {
       return this.transitionIn();
     },
     leaveView() {
+      this.inView = false;
       this.stopLoopingAnimation();
     },
     addDebugLabel() {
