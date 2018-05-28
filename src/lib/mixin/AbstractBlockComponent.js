@@ -14,6 +14,7 @@ export default {
   data() {
     return {
       inView: false,
+      hasEntered: false,
     };
   },
   beforeCreate() {
@@ -28,12 +29,14 @@ export default {
       this.inView = true;
       return this.transitionIn().then(() => this.startLoopingAnimation());
     },
-    beyondView() {
-      return this.transitionIn();
-    },
     leaveView() {
       this.inView = false;
       this.stopLoopingAnimation();
+    },
+    beyondView() {
+      if (!this.hasEntered) {
+        this.transitionIn();
+      }
     },
     addDebugLabel() {
       const debugLabel = document.createElement('div');
