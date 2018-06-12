@@ -103,6 +103,12 @@ export default {
       this.blockComponents[component.componentId] = component;
       // Check if all blocks are ready
       if (Object.keys(this.blockComponents).length === this.totalBlocks) {
+        // Strip out the blocks that should not be added to the scroll tracker
+        Object.keys(this.blockComponents).forEach(key => {
+          if (!this.blockComponents[key].addToScrollTracker) {
+            delete this.blockComponents[key];
+          }
+        });
         // When all components are ready we start adding the blocks to the scroll tracker
         this.scrollTrackerComponentManager.addComponentsToScrollTrackers(this.blockComponents);
         // All blocks loaded so check if we need to scroll to the hash from the url

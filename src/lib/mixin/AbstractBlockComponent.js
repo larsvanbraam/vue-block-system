@@ -9,6 +9,7 @@ export default {
   extends: AbstractComponent,
   props: {
     data: VueTypes.object.isRequired,
+    addToScrollTracker: VueTypes.bool.def(true),
     transitionInThreshold: VueTypes.number.def(0.25),
   },
   data() {
