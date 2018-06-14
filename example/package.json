@@ -15,7 +15,7 @@
     "gsap": "^1.20.4",
     "highlight.js": "^9.12.0",
     "lodash": "^4.17.5",
-    "scroll-tracker-component-manager": "^1.1.0",
+    "scroll-tracker-component-manager": "^1.1.2",
     "seng-event": "^1.2.3",
     "ts-loader": "^4.1.0",
     "vue": "^2.2.5",

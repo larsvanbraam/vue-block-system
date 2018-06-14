@@ -109,7 +109,7 @@
     "lodash": "^4.17.5",
     "node-run-cmd": "^1.0.1",
     "rimraf": "^2.6.2",
-    "scroll-tracker-component-manager": "^1.1.0",
+    "scroll-tracker-component-manager": "^1.1.2",
     "seng-event": "^1.2.3",
     "vue-scrollto": "^2.11.0",
     "vue-transition-component": "^2.0.1-alpha.10",
