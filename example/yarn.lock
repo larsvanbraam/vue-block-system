@@ -2389,7 +2389,11 @@ grouped-queue@^0.3.3:
   dependencies:
     lodash "^4.17.2"
 
-gsap@^1.20.3, gsap@^1.20.4:
+gsap@^1.20.3:
+  version "1.20.6"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-1.20.6.tgz#0f6829052e94fbfffa92be3265f24b88729c9d1d"
+
+gsap@^1.20.4:
   version "1.20.4"
   resolved "https://registry.yarnpkg.com/gsap/-/gsap-1.20.4.tgz#005fba2a7bfbb3b9d27bd77e1634d2bad365a86a"
 
@@ -5530,9 +5534,9 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
-vue-transition-component@^2.0.1-alpha.11:
-  version "2.0.1-alpha.11"
-  resolved "https://registry.yarnpkg.com/vue-transition-component/-/vue-transition-component-2.0.1-alpha.11.tgz#5e34fd69bc50002a90da0d89ebd3590d98e93c73"
+vue-transition-component@^2.0.1-beta.1:
+  version "2.0.1-beta.1"
+  resolved "https://registry.yarnpkg.com/vue-transition-component/-/vue-transition-component-2.0.1-beta.1.tgz#eaa54b03dd88ed31d511b5230d8460e461d64b8f"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.35"
     bowser "^1.8.0"
