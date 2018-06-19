@@ -111,8 +111,9 @@
     "rimraf": "^2.6.2",
     "scroll-tracker-component-manager": "^1.1.2",
     "seng-event": "^1.2.3",
+    "vue": "^2.5.16",
     "vue-scrollto": "^2.11.0",
-    "vue-transition-component": "^2.0.1-alpha.10",
+    "vue-transition-component": "^2.0.1-alpha.11",
     "vue-types": "^1.2.2",
     "vuex": "^3.0.1"
   }
