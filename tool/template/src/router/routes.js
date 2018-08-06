@@ -1,6 +1,6 @@
-import ContentPage from 'page/ContentPage';
-import RoutePaths from 'data/enum/RoutePaths';
-import RouteNames from 'data/enum/RouteNames';
+import ContentPage from '../page/ContentPage';
+import RoutePaths from '../data/enum/RoutePaths';
+import RouteNames from '../data/enum/RouteNames';
 
 export default [
   {

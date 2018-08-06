@@ -1,22 +1,22 @@
-import 'polyfill';
-import 'asset/style/screen.scss';
 import 'modernizr';
-import 'settings';
-import BlockSystem from 'vue-block-system';
 import Vue from 'vue';
-import filter from 'filter';
-import directive from 'directive';
-import component from 'component';
-import getRouter from 'router';
-import getStore from 'store';
-import startUp from 'control/startUp';
-import getLocaleConfig from 'config/localeConfig';
 import VueI18nManager from 'vue-i18n-manager';
 import { sync } from 'vuex-router-sync';
-import setupInjects from 'util/setupInjects';
-import localeLoader from 'util/localeLoader';
-import App from 'App';
-import block from 'block';
+
+import './asset/style/screen.scss';
+
+import './settings';
+import directive from './directive';
+import component from './component';
+import getRouter from './router';
+import getStore from './store';
+import startUp from './control/startUp';
+import getLocaleConfig from './config/localeConfig';
+import setupInjects from './util/setupInjects';
+import localeLoader from './util/localeLoader';
+import App from './App';
+import filter from './filter';
+import block from './block';
 
 // register filters globally
 Object.keys(filter).forEach(key => Vue.filter(key, filter[key]));
