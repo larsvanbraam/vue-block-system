@@ -2,6 +2,7 @@ import 'modernizr';
 import Vue from 'vue';
 import VueI18nManager from 'vue-i18n-manager';
 import { sync } from 'vuex-router-sync';
+import BlockSystem from 'vue-block-system';
 
 import './asset/style/screen.scss';
 
