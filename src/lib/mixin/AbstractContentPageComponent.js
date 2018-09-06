@@ -57,8 +57,10 @@ export default {
     next(vm => vm.handleRouteChange(to.path === '/' ? vm.landingRoute : to.path));
   },
   beforeRouteUpdate(to, from, next) {
-    if (to.path === from.path && from.hash !== to.hash) {
-      this.scrollToBlockFromUrl(config.buttonConfig.scrollToNextBlockDuration);
+    if (to.path === from.path) {
+      if (from.hash !== to.hash) {
+        this.scrollToBlockFromUrl(config.buttonConfig.scrollToNextBlockDuration);
+      }
       next();
     } else {
       Promise.all(
