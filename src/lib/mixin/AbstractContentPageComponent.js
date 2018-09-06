@@ -54,12 +54,7 @@ export default {
     });
   },
   beforeRouteEnter(to, from, next) {
-    if (to.path === from.path && from.hash !== to.hash) {
-      next();
-    } else {
-      // Wait for it to be done, then trigger the route change
-      next(vm => vm.handleRouteChange(to.path === '/' ? vm.landingRoute : to.path));
-    }
+    next(vm => vm.handleRouteChange(to.path === '/' ? vm.landingRoute : to.path));
   },
   beforeRouteUpdate(to, from, next) {
     if (to.path === from.path && from.hash !== to.hash) {
