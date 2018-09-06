@@ -5,11 +5,11 @@ import routes from './routes';
 
 Vue.use(VueRouter);
 
-let router = null;
+let router:VueRouter = null;
 
 const getRouter = () => {
   if (!router) {
-    router = new VueRouter({
+    router = new VueRouter(<any>{
       routes,
       base: '/',
     });
