@@ -54,16 +54,13 @@ export default {
     });
   },
   beforeRouteEnter(to, from, next) {
-    if (to.path === from.path && from.hash !== to.hash) {
-      next();
-    } else {
-      // Wait for it to be done, then trigger the route change
-      next(vm => vm.handleRouteChange(to.path === '/' ? vm.landingRoute : to.path));
-    }
+    next(vm => vm.handleRouteChange(to.path === '/' ? vm.landingRoute : to.path));
   },
   beforeRouteUpdate(to, from, next) {
-    if (to.path === from.path && from.hash !== to.hash) {
-      this.scrollToBlockFromUrl(config.buttonConfig.scrollToNextBlockDuration);
+    if (to.path === from.path) {
+      if (from.hash !== to.hash) {
+        this.scrollToBlockFromUrl(config.buttonConfig.scrollToNextBlockDuration);
+      }
       next();
     } else {
       Promise.all(
@@ -71,17 +68,13 @@ export default {
           ? Object.keys(this.blockComponents).map(key => this.blockComponents[key].transitionOut())
           : [Promise.resolve()],
       ).then(() => {
-        // Empty the dom before we update the route
         this.resetLayout();
         // Wait for the DOM to be empty before updating the view
         this.$nextTick(() => {
-          // The route is about to be updated so remove all the blocks from the scrollTracker
           this.scrollTrackerComponentManager.removeComponentsFromScrollTracker(
             this.blockComponents,
           );
-          // Remove the block reference because they will be destroyed
           this.blockComponents = {};
-          // Route update should be done right away!
           this.handleRouteChange(to.path)
             .then(() => next())
             .catch(() => {
