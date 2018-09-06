@@ -68,17 +68,13 @@ export default {
           ? Object.keys(this.blockComponents).map(key => this.blockComponents[key].transitionOut())
           : [Promise.resolve()],
       ).then(() => {
-        // Empty the dom before we update the route
         this.resetLayout();
         // Wait for the DOM to be empty before updating the view
         this.$nextTick(() => {
-          // The route is about to be updated so remove all the blocks from the scrollTracker
           this.scrollTrackerComponentManager.removeComponentsFromScrollTracker(
             this.blockComponents,
           );
-          // Remove the block reference because they will be destroyed
           this.blockComponents = {};
-          // Route update should be done right away!
           this.handleRouteChange(to.path)
             .then(() => next())
             .catch(() => {
