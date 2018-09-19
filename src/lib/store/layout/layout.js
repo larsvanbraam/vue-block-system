@@ -56,39 +56,46 @@ export default {
       state.pageData = layout.data;
       state.pageId = layout.pageId;
     },
-    [SET_PAGE_URL](state, url) {
-      state.pageUrl = url;
+    [SET_PAGE_URL](state, fullUrl) {
+      state.pageUrl = fullUrl;
     },
-    [SET_CACHED_LAYOUT](state, { layout, url }) {
-      state.layoutCache[url] = layout;
+    [SET_CACHED_LAYOUT](state, { layout, fullUrl }) {
+      state.layoutCache[fullUrl] = layout;
     },
-    [ADD_UNKNOWN_URL](state, { url }) {
-      if (state.unknownUrls.indexOf(url) === -1) {
-        state.unknownUrls.push(url);
+    [ADD_UNKNOWN_URL](state, { fullUrl }) {
+      if (state.unknownUrls.indexOf(fullUrl) === -1) {
+        state.unknownUrls.push(fullUrl);
       }
     },
   },
   actions: {
-    [UPDATE_LAYOUT]({ commit, state }, sourceUrl) {
-      const url = config.api.stripLeadingSlash ? sourceUrl.replace(/^\/+/g, '') : sourceUrl;
+    [UPDATE_LAYOUT]({ commit, state }, { route, query }) {
+      const queryParams = Object.keys(query);
+      const queryString =
+        queryParams.length > 0
+          ? `?${queryParams.map(key => `${key}=${query[key]}`).join('&')}`
+          : '';
+      const parsedRoute = config.api.stripLeadingSlash ? route.replace(/^\/+/g, '') : route;
+      const fullUrl = `${parsedRoute}${queryString}`;
+
       // Note: without the <any> cast it will throw an error when building for npm (compile:npm) when creating the
       // definitions file (Default export of the module has or is using private name 'Promise'.)
       return new Promise((resolve, reject) => {
         // Check if the layout is already in cache!
-        if (state.layoutCache[url]) {
+        if (state.layoutCache[fullUrl]) {
           // Update the current page url
-          commit(SET_PAGE_URL, url);
+          commit(SET_PAGE_URL, fullUrl);
           // Update the current UI
-          commit(SET_LAYOUT, state.layoutCache[url]);
+          commit(SET_LAYOUT, state.layoutCache[fullUrl]);
           // Return the new blocks
           resolve(state.blocks);
         } else {
           let layout = null;
           const gateway = config.api.axiosInstance || axios;
           gateway
-            .get(config.api.pageCall.replace('{page}', url))
+            .get(`${config.api.pageCall.replace('{page}', parsedRoute)}${queryString}`)
             // Parse the result to the correct format!
-            .then(result => PageLayoutHelper.parse(result.data.data, url))
+            .then(result => PageLayoutHelper.parse(result.data.data, fullUrl))
             // Temp store it
             .then(parsedResult => {
               layout = parsedResult;
@@ -98,11 +105,11 @@ export default {
               // Cache the layout if set by the config AND the page-response does not disable the caching
               // for this specific layout.
               if (config.api.layoutCache && !layout.disableCache) {
-                commit(SET_CACHED_LAYOUT, { layout, url });
+                commit(SET_CACHED_LAYOUT, { layout, fullUrl });
               }
             })
             // Update the current page url
-            .then(() => commit(SET_PAGE_URL, url))
+            .then(() => commit(SET_PAGE_URL, fullUrl))
             // Update the current UI
             .then(() => commit(SET_LAYOUT, layout))
             // Return the new blocks!
@@ -110,7 +117,7 @@ export default {
             // Something went wrong!!!
             .catch(error => {
               // Save the broken URL in the store
-              commit(ADD_UNKNOWN_URL, { url });
+              commit(ADD_UNKNOWN_URL, { fullUrl });
               // Notify the parent about the failure
               reject(
                 new Error(`[UpdateLayout] Something went wrong updating the layout: ${error}`),

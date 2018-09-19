@@ -54,7 +54,7 @@ export default {
     });
   },
   beforeRouteEnter(to, from, next) {
-    next(vm => vm.handleRouteChange(to.path === '/' ? vm.landingRoute : to.path));
+    next(vm => vm.handleRouteChange(to.path === '/' ? vm.landingRoute : to.path, to.query));
   },
   beforeRouteUpdate(to, from, next) {
     if (to.path === from.path) {
@@ -75,7 +75,7 @@ export default {
             this.blockComponents,
           );
           this.blockComponents = {};
-          this.handleRouteChange(to.path)
+          this.handleRouteChange(to.path, to.query)
             .then(() => next())
             .catch(() => {
               throw new Error(
@@ -108,8 +108,8 @@ export default {
         this.scrollToBlockFromUrl(1, 1000);
       }
     },
-    handleRouteChange(route) {
-      return this.updateLayout(route)
+    handleRouteChange(route, query) {
+      return this.updateLayout({ route, query })
         .then(() => this.handleRouteChangeComplete())
         .catch(() => {
           if (this.notFoundRoute === this.$router.currentRoute.path) {
