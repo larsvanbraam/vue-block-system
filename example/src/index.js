@@ -16,6 +16,7 @@ Vue.use(BlockSystem, {
     api: {
       pageCall: 'static/api/page/{page}.json',
       initCall: 'static/api/init.json',
+      stripLeadingSlash: true,
     },
     debug: {
       blockLabel: {
