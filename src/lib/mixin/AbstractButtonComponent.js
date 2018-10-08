@@ -25,6 +25,7 @@ export default {
   methods: {
     handleClick(event) {
       event.preventDefault(); // Always kill the default action because otherwise it will execute the href
+      this.$emit('click');
       switch (this.type) {
         case ButtonType.LINK:
           switch (this.link.type) {
@@ -52,7 +53,7 @@ export default {
           break;
         case ButtonType.ACTION:
         default:
-          this.$emit('click');
+          // Leaving this empty because we always emit an event and we have nothing defined for this case yet.
           break;
       }
     },
