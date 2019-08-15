@@ -111,7 +111,10 @@ export default {
     handleRouteChange(route, query) {
       return this.updateLayout({ route, query })
         .then(() => this.handleRouteChangeComplete())
-        .catch(() => {
+        .catch(error => {
+          // eslint-disable-next-line no-console
+          console.error(error);
+
           if (this.notFoundRoute === this.$router.currentRoute.path) {
             this.handleRouteChange(this.notFoundRoute);
           } else {
