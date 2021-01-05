@@ -10,7 +10,7 @@
   "author": "Lars van Braam <larsvanbraam@gmail.com> (larsvanbraam)",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bowser": "^1.9.3",
     "gsap": "^1.20.4",
     "highlight.js": "^9.12.0",
